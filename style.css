@@ -1,0 +1,265 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/* --.-.--.-.-.-.-.--.-.--.-.-.-.-.-.-.--My code--.-.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.-.-.-.-.-.----------- */
+* {
+  margin: 0.5vw;
+  padding: 1vw;
+}
+
+body {
+margin: 0;
+background-color: black;
+}
+
+
+/*--------------------------Menu-----------------------------*/
+
+nav {
+  z-index: 2;
+  position: fixed;
+
+}
+
+
+/*---menu-----*/
+
+.work{
+  position:fixed;
+  display: block;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left:0.5em;
+  font-size: 1.5em;
+  line-height: 1em;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+
+}
+
+
+/*---submenu about----*/
+.about{
+
+}
+
+.aboutbtn {
+  display: inline-block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.aboutbtn:hover{
+  text-shadow: 0 0 1px white,
+               0 0 3px white,
+               0 0 4px white;
+  transition-duration: 0.3s;
+}
+
+
+
+
+
+/*---submenu links----*/
+
+.btn {
+  display: inline-block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover{
+  text-shadow: 0 0 1px white,
+               0 0 3px white,
+               0 0 4px white;
+  transition-duration: 0.3s;
+}
+
+/*---submenu contact----*/
+
+
+.contactbtn {
+  display: inline;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.contactbtn:hover {
+  text-shadow: 0 0 1px white,
+               0 0 3px white,
+               0 0 4px white;
+  transition-duration: 0.3s;
+}
+
+/*---------------------------Conteudo--------------------------*/
+/*----HOME----*/
+.wrapper {
+  display: flex;
+
+  top: 0vh;
+  left:0;
+  right: 0;
+  height:100vh;
+  width:100vw;
+  overflow: hidden;
+
+}
+
+.back {
+  z-index: 1;
+  position: fixed;
+  display: block;
+  height: 100vh;
+  font-size: 1.5em;
+  width: 19.5em;
+
+}
+
+/*...imagens...*/
+
+
+.imgcentral {
+
+  display: block;
+  text-align: left;
+  flex: none;
+  position: fixed;
+  height:100vh;
+  left:0;
+
+}
+
+/*---------------------------copyright--------------------------*/
+
+.c {
+  z-index: 2;
+  position: fixed;
+  top: 97.5%;
+  bottom: 0;
+  width: 100%;
+}
+.white {
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 0.9vh;
+  line-height: 4vh;
+  font-weight: 300;
+  margin-right: 1vh;
+  text-align: right;
+  color: white;
+  display: block;
+}
