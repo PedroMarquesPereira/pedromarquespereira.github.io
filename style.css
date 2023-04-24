@@ -255,11 +255,12 @@ nav {
 }
 
 .language a{
+  font-size: 0.9em;
   display: inline;
   text-decoration: none;
   color: white;
   cursor: pointer;
-  
+
 }
 
 
