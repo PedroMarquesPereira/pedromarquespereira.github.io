@@ -235,7 +235,6 @@ nav {
   position: fixed;
   height:100vh;
   left:0;
-
 }
 
 /*------Language-------*/
@@ -246,7 +245,6 @@ nav {
   top:auto;
   bottom: 1em;
   left:0.5em;
-  display: inline;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 1.5em;
   font-weight: 400;
@@ -257,10 +255,11 @@ nav {
 }
 
 .language a{
-
+  display: inline;
   text-decoration: none;
   color: white;
   cursor: pointer;
+  background-color: red;
 }
 
 
@@ -278,7 +277,8 @@ nav {
   position: fixed;
   top: 97.5%;
   bottom: 0;
-  width: 100%;
+  right:0;
+  left:50%;
 }
 .white {
   text-decoration: none;
