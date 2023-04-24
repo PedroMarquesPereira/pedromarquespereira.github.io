@@ -243,7 +243,6 @@ nav {
 /*------Language-------*/
 
 .language{
-  z-index: 6;
   position: fixed;
   text-align: left;
   top:auto;
@@ -260,7 +259,7 @@ nav {
 }
 
 .language a{
-  
+
   text-decoration: none;
   color: white;
   cursor: pointer;
