@@ -157,9 +157,8 @@ nav {
 
 .aboutbtn:hover{
   text-shadow: 0 0 1px white,
-               0 0 3px white,
                0 0 4px white;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
 }
 
 
@@ -180,9 +179,8 @@ nav {
 
 .btn:hover{
   text-shadow: 0 0 1px white,
-               0 0 3px white,
                0 0 4px white;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
 }
 
 /*---submenu contact----*/
@@ -200,9 +198,8 @@ nav {
 
 .contactbtn:hover {
   text-shadow: 0 0 1px white,
-               0 0 3px white,
                0 0 4px white;
-  transition-duration: 0.3s;
+  transition-duration: 0.5s;
 }
 
 /*---------------------------Conteudo--------------------------*/
@@ -242,6 +239,40 @@ nav {
   left:0;
 
 }
+
+/*------Language-------*/
+
+.language{
+  z-index: 6;
+  position: fixed;
+  text-align: left;
+  top:auto;
+  bottom: 1em;
+  left:0.5em;
+  display: inline;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.5em;
+  font-weight: 400;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  cursor: default;
+}
+
+.language a{
+  font-size: 0.9em;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+.language a:hover{
+  text-shadow: 0 0 1px white,
+               0 0 4px white;
+  transition-duration: 0.5s;
+}
+
 
 /*---------------------------copyright--------------------------*/
 
