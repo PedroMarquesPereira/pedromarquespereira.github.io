@@ -206,7 +206,6 @@ nav {
 /*----HOME----*/
 .wrapper {
   display: flex;
-
   top: 0vh;
   left:0;
   right: 0;
@@ -230,7 +229,6 @@ nav {
 
 
 .imgcentral {
-
   display: block;
   text-align: left;
   flex: none;
