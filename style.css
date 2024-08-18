@@ -399,6 +399,7 @@ small{
   padding-top: 75px;
   width: 700px;
   max-width: 100dvw;
+  z-index: -1;
 
 }
 .cimg{
