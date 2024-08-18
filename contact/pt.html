@@ -14,12 +14,12 @@
 <body class="fade center">
     <div class="top">
         <a href="../pt" class="name btn">Pedro Marques Pereira</a>
-        <div class="dropdown dotscontact">
+        <div class="dropdown">
             <span class="dropd">&bull;&bull;&bull;</span>
             <ul class="dropcontent">
               <li><a href="../about/pt" class="dropbtn">sobre</a></li>
-                <li><a href="https://youtube.com/playlist?list=PLibxdEk1cX3Q7KwJLabRHcZkmuzdqQgnt&si=p7UZVeSJ40lLz6dj" target="_blank" class="dropbtn">trabalho</a></li>
-                <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank">social</a></li>
+              <li><a href="https://youtube.com/playlist?list=PLibxdEk1cX3Q7KwJLabRHcZkmuzdqQgnt&si=p7UZVeSJ40lLz6dj" target="_blank" class="dropbtn">trabalho</a></li>
+              <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank">social</a></li>
             </ul>
         </div>
     </div>
@@ -42,45 +42,45 @@
         <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
     </div>
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const dropd = document.querySelector(".dropd");
-    const dropcontent = document.querySelector(".dropcontent");
+    document.addEventListener("DOMContentLoaded", function() {
+        const dropd = document.querySelector(".dropd");
+        const dropcontent = document.querySelector(".dropcontent");
 
-    let isDropdownOpen = false;
+        let isDropdownOpen = false;
 
-    dropd.addEventListener("mouseover", function() {
-        dropcontent.classList.add("show");
-    });
-
-    dropcontent.addEventListener("mouseover", function() {
-        dropcontent.classList.add("show");
-    });
-
-    dropd.addEventListener("mouseout", function() {
-        setTimeout(function() {
-            if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-                dropcontent.classList.remove("show");
-            }
-        }, 100);
-    });
-
-    dropcontent.addEventListener("mouseout", function() {
-        setTimeout(function() {
-            if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-                dropcontent.classList.remove("show");
-            }
-        }, 100);
-    });
-
-    dropd.addEventListener("click", function() {
-        isDropdownOpen = !isDropdownOpen;
-        if (isDropdownOpen) {
+        dropd.addEventListener("mouseover", function() {
             dropcontent.classList.add("show");
-        } else {
-            dropcontent.classList.remove("show");
-        }
+        });
+
+        dropcontent.addEventListener("mouseover", function() {
+            dropcontent.classList.add("show");
+        });
+
+        dropd.addEventListener("mouseout", function() {
+            setTimeout(function() {
+                if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
+                    dropcontent.classList.remove("show");
+                }
+            }, 100);
+        });
+
+        dropcontent.addEventListener("mouseout", function() {
+            setTimeout(function() {
+                if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
+                    dropcontent.classList.remove("show");
+                }
+            }, 100);
+        });
+
+        dropd.addEventListener("click", function() {
+            isDropdownOpen = !isDropdownOpen;
+            if (isDropdownOpen) {
+                dropcontent.classList.add("show");
+            } else {
+                dropcontent.classList.remove("show");
+            }
+        });
     });
-});
 </script>
 </body>
 </html>
