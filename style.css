@@ -84,6 +84,25 @@ input, select {
 }
 body
 {margin: 0;background-color: black;height: 100%;}
+.center{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Adjust if necessary */
+    width: 100%;
+    height: 100%;
+}
+.fade{
+  animation: fade 0.5s forwards;
+}
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
 /*--------------------------Menu-----------------------------*/
 nav {
   display: grid;
@@ -165,54 +184,112 @@ nav {
                0 0 4px white;
   transition-duration: 0.5s;
 }
-/*-- - - - - -----about---- --- --  --  -----*/
+/*-- - - - - -----about+contact---- --- --  --  -----*/
 /*----top----*/
 .top {
-    position: fixed;
-    display: block;
-    width: 100vw;
-    height: 60px;
-    background-color: black;
-    box-shadow: 0 0 1px black,
-                0 0 3px black,
-                0 0 10px black,
-                0 0 12px black,
-                0 0 15px black;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 700px;
+  height: 60px;
+  background-color: black;
+  box-shadow: 0 0 1px black,
+              0 0 3px black,
+              0 0 10px black,
+              0 0 12px black,
+              0 0 15px black;
 }
 .name {
-    position: fixed;
-    display: flex;
-    top: 20px;
-    font-size: 24px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 400;
-    color: white;
-    cursor: pointer;
+  position: fixed;
+  display: flex;
+  top: 20px;
+  font-size: 22px;
+  font-family: 'inter', sans-serif;
+  cursor: pointer;
+  z-index: 10;
 }
-.name:hover {
-    text-shadow: 0 0 1px white,
-                 0 0 4px white;
-    transition-duration: 0.5s;
+/*---Drop--*/
+.dropdown{
+  position: fixed;
+  top: 30px;
+  width:700px;
+  max-width: 100dvw;
+  text-align: right;
+  z-index: 9;
+}
+.dropd{
+  display: inline;
+  font-family: "inter", sans-serif;
+  color: white;
+  font-size: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.dropd:hover{
+  text-shadow: 0 0 1px white,
+               0 0 4px white;
+  transition-duration: 0.5s;
+}
+.dropcontent{
+  display: none;
+  position: absolute;
+  right: 0;
+  width:100px;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 5px;
+  line-height: 33px;
+  list-style: none;
+}
+.dropbtn{
+  font-family: "inter", sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin-right: 15px;
+  width: 75px;
+  cursor: pointer;
+  text-shadow: 0 0 1px black,
+              0 0 3px black,
+              0 0 10px black,
+              0 0 12px black,
+              0 0 15px black;
+}
+.dropbtn:hover{
+  text-shadow: 0 0 1px grey,
+               0 0 4px grey;
+  transition-duration: 0.5s;
+}
+.dropcontent.show {
+    display: flex;
 }
 /* Bottom */
 .bottom {
-    position: fixed;
-    display: block;
-    width: 100vw;
-    bottom: 0;
-    left: 0;
-    right: auto;
-    height: 60px;
-    outline: 3px;
-    outline-color: black;
-    background-color: black;
-    box-shadow: 0 0 1px black,
-                0 0 3px black,
-                0 0 7px black,
-                0 0 10px black,
-                0 0 12px black,
-                0 0 15px black,
-                0 0 18px black;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 700px;
+  height: 60px;
+  outline: 3px;
+  outline-color: black;
+  background-color: black;
+  box-shadow: 0 0 1px black,
+              0 0 3px black,
+              0 0 7px black,
+              0 0 10px black,
+              0 0 12px black,
+              0 0 15px black,
+              0 0 18px black;
 }
 .sublang {
     position: fixed;
@@ -241,7 +318,7 @@ nav {
 .bio {
     display: grid;
     row-gap:10px;
-    padding-top: 70px;
+    padding-top: 75px;
     max-width: 100dvw;
     width: 700px;
 }
@@ -271,52 +348,26 @@ nav {
   grid-row: 2 / 3;
   text-align: justify;
 }
-.contacts {
-    grid-row: 3 / 4;
-}
 .cv {
-    grid-row: 4 / 5;
+    grid-row: 3 / 4;
 }
 .bottom-gap {
     grid-column: 1 / 2;
-    grid-row: 5 / 6;
+    grid-row: 4 / 5;
     color: black;
     width: 700px;
     max-width: 100dvw;
-    height: 80px;
+    height: 70px;
 }
 /*fontsstyle*/
 .stat p{
   grid-column: 1 / 2;
   line-height: 25px;
-  padding: 0 15px 10px 15px;
+  padding: 10px 15px 0 15px;
   font-size: 15px;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   color: white;
-}
-.contacts p{
-  line-height: 25px;
-  padding: 0 15px 0 15px;
-  font-size: 15px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: white;
-  text-decoration: none;
-  text-align: justify;
-}
-.contacts a{
-  font-size: 15px;
-  font-style: italic;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: white;
-  text-decoration: none;
-}
-.contacts a:hover {
-  text-shadow: 0 0 1px white,
-               0 0 4px white;
-  transition-duration: 0.5s;
 }
 .btncv {
     grid-column: 1 / 2;
@@ -340,4 +391,63 @@ small{
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   color: white;
+  list-style: none;
+}
+/*contact*/
+.contact{
+  display: grid;
+  padding-top: 75px;
+  width: 700px;
+  max-width: 100dvw;
+
+}
+.cimg{
+  grid-row: 1 / 2;
+  margin: 0 15px 0 15px;
+}
+.cimg video{
+  display: flex;
+  max-width: 100%;
+}
+.cimg span{
+  display: flex;
+  padding-bottom: 10px;
+  font-size: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: white;
+}
+.cnote{
+  grid-row: 2 / 3;
+  line-height: 25px;
+  padding: 30px 15px 5px 15px;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: white;
+  text-decoration: none;
+  text-align: justify;
+}
+.cinfo{
+  grid-row: 3 / 4;
+  font-size: 15px;
+  padding: 0 15px 0 15px;
+  line-height: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: white;
+}
+.cinfo a{
+  grid-row: 3 / 4;
+  font-size: 15px;
+  font-style: italic;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: white;
+  text-decoration: none;
+}
+.cinfo a:hover {
+  text-shadow: 0 0 1px white,
+               0 0 4px white;
+  transition-duration: 0.5s;
 }
