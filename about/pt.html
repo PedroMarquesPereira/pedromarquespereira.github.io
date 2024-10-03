@@ -47,10 +47,16 @@
             </ul>
         </div>
         <div class="cvothers">
-          <h3 class="btncv">Outros</h3>
+          <h3 class="btncv">Publicações</h3>
             <ul class="cvothersinfo">
-              <li>2022&nbsp; Residência artística no Studio Kura, Itoshima JP</li>
-              <li>2022&nbsp; Publicação da Zine <i>Passagens VII</i>, Lisboa PT</li>
+              <li>2024&nbsp; CAHIER d’images - V2, Luxemburgo, LX</li>
+              <li>2022&nbsp; <i>Passagens VII</i>, Lisboa PT</li>
+            </ul>
+        </div>
+        <div class="cvothers">
+          <h3 class="btncv">Residências</h3>
+            <ul class="cvothersinfo">
+              <li>2022&nbsp; Studio Kura, Itoshima JP</li>
             </ul>
         </div>
       </div>
@@ -61,46 +67,5 @@
         <div class="sublang"><a href="../about" class="btn">eng</a></div>
         <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
     </div>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const dropd = document.querySelector(".dropd");
-    const dropcontent = document.querySelector(".dropcontent");
-
-    let isDropdownOpen = false;
-
-    dropd.addEventListener("mouseover", function() {
-        dropcontent.classList.add("show");
-    });
-
-    dropcontent.addEventListener("mouseover", function() {
-        dropcontent.classList.add("show");
-    });
-
-    dropd.addEventListener("mouseout", function() {
-        setTimeout(function() {
-            if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-                dropcontent.classList.remove("show");
-            }
-        }, 100);
-    });
-
-    dropcontent.addEventListener("mouseout", function() {
-        setTimeout(function() {
-            if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-                dropcontent.classList.remove("show");
-            }
-        }, 100);
-    });
-
-    dropd.addEventListener("click", function() {
-        isDropdownOpen = !isDropdownOpen;
-        if (isDropdownOpen) {
-            dropcontent.classList.add("show");
-        } else {
-            dropcontent.classList.remove("show");
-        }
-    });
-});
-</script>
 </body>
 </html>
