@@ -6,82 +6,75 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
 </head>
-<body class="fade center">
-    <div class="top">
-        <a href="./" class="name btn">Pedro Marques Pereira</a>
-        <div class="dropdown dotscontact">
-            <span class="dropd">&bull;&bull;&bull;</span>
-            <ul class="dropcontent">
-              <li><a href="./about" class="dropbtn">about</a></li>
-                <li><a href="https://youtube.com/playlist?list=PLibxdEk1cX3Q7KwJLabRHcZkmuzdqQgnt&si=p7UZVeSJ40lLz6dj" target="_blank" class="dropbtn">work</a></li>
-                <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank">social</a></li>
-            </ul>
+<body class="fade">
+  <nav>
+      <video class="imgcentral" height="100%" autoplay muted loop playsinline><source src="contact.mp4" type="video/mp4"></video>
+      <div class="back fade2"><a href="./">&#8598;</a></div>
+      <div class="dropdownwork fade2">
+          <span class="dropdw">&bull;&bull;&bull;</span>
+          <ul class="dropcontentw">
+              <li><a href="./about.html" class="dropwbtn">about</a></li>
+              <li><a href="https://youtube.com/playlist?list=PLibxdEk1cX3Q7KwJLabRHcZkmuzdqQgnt&si=p7UZVeSJ40lLz6dj" target="_blank" class="dropwbtn">work</a></li>
+              <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropwbtn" target="_blank">social</a></li>
+          </ul>
+      </div>
+      <div class="contact">
+        <div class="cnote">
+          <p>Feel free to ask for any additional information, commissions, prints, or just to say hi at:</p>
         </div>
-    </div>
-    <div class="contact">
-      <div class="cimg">
-        <video height="100%" autoplay muted loop playsinline><source src="videocontact.mp4" type="video/mp4"></video>
-        <span><i>Untitled</i>&nbsp; 2022</span>
+        <div class="cinfo">
+          <p>email: <i>pmpimagem@gmail.com</i></p>
+          <p>instagram: <a href="https://www.instagram.com/pedro.marques.pereira/" target="_blank">@pedro.marques.pereira</a></p>
+        </div>
       </div>
-      <div class="cnote">
-        <p>Feel free to ask for any additional information, commissions, prints, or just to say hi at:</p>
-      </div>
-      <div class="cinfo">
-        <p>email: <i>pmpimagem@gmail.com</i></p>
-        <p>instagram: <a href="https://www.instagram.com/pedro.marques.pereira/" target="_blank">@pedro.marques.pereira</a></p>
-      </div>
-    </div>
+      <div class="lang fade2"><a href="./contact/pt" class="btn">pt</a></div>
+      <div class="c fade2"><span>© Pedro Marques Pereira 2024</span></div>
+  </nav>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const dropd = document.querySelector(".dropdw");
+  const dropcontent = document.querySelector(".dropcontentw");
+  let isDropdownOpen = false;
 
-    <div class="bottom">
-        <div class="sublang"><a href="./contact/pt" class="btn">pt</a></div>
-        <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
-    </div>
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const dropd = document.querySelector(".dropd");
-    const dropcontent = document.querySelector(".dropcontent");
+  // Show dropdown on hover
+  dropd.addEventListener("mouseover", function() {
+      dropcontent.classList.add("show");
+  });
+  dropcontent.addEventListener("mouseover", function() {
+      dropcontent.classList.add("show");
+  });
 
-    let isDropdownOpen = false;
+  // Hide dropdown when mouse leaves
+  dropd.addEventListener("mouseout", function() {
+      setTimeout(function() {
+          if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
+              dropcontent.classList.remove("show");
+          }
+      }, 100);
+  });
+  dropcontent.addEventListener("mouseout", function() {
+      setTimeout(function() {
+          if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
+              dropcontent.classList.remove("show");
+          }
+      }, 100);
+  });
 
-    dropd.addEventListener("mouseover", function() {
-        dropcontent.classList.add("show");
-    });
-
-    dropcontent.addEventListener("mouseover", function() {
-        dropcontent.classList.add("show");
-    });
-
-    dropd.addEventListener("mouseout", function() {
-        setTimeout(function() {
-            if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-                dropcontent.classList.remove("show");
-            }
-        }, 100);
-    });
-
-    dropcontent.addEventListener("mouseout", function() {
-        setTimeout(function() {
-            if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-                dropcontent.classList.remove("show");
-            }
-        }, 100);
-    });
-
-    dropd.addEventListener("click", function() {
-        isDropdownOpen = !isDropdownOpen;
-        if (isDropdownOpen) {
-            dropcontent.classList.add("show");
-        } else {
-            dropcontent.classList.remove("show");
-        }
-    });
+  // Toggle dropdown on click
+  dropd.addEventListener("click", function() {
+      isDropdownOpen = !isDropdownOpen;
+      if (isDropdownOpen) {
+          dropcontent.classList.add("show");
+      } else {
+          dropcontent.classList.remove("show");
+      }
+  });
 });
-</script>
+  </script>
 
 </body>
 </html>
