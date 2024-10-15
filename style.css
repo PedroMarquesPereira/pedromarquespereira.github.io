@@ -234,6 +234,9 @@ nav {
   color: white;
   cursor: pointer;
   text-decoration: none;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .back:hover{
   text-shadow: 0 0 1px white,
