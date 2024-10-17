@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedro Marques Pereira</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" as="style">
+    <link rel="preload" href="video.mp4" as="video">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <style>
+      a,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,hr,menu,nav,section{display:block}a,hr{padding:0}.imgcentral,.menu{grid-row-start:1;grid-row-end:8}.lang,.menu{grid-column-end:2;-webkit-user-select:none;-ms-user-select:none}.imgcentral,.lang,.menu{grid-column-end:2}.c,.menu{display:flex}.c,.lang{grid-column-start:2;cursor:default}.btn,.c span{color:#fff;text-decoration:none}.btn,.c span,ins{text-decoration:none}abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:0 0}ins,mark{background-color:#ff9;color:#000}body{line-height:1;background-color:#000;height:100%}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}a{font-size:100%;vertical-align:baseline;background:0 0}mark{font-style:italic;font-weight:700}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{height:1px;border:0;border-top:1px solid #ccc;margin:1em 0}input,select{vertical-align:middle}*{margin:.5vw;padding:1vw}.fade{animation:1s forwards fade}.fade2{animation:.5s forwards fade}@keyframes fade{0%{opacity:0}100%{opacity:100%}}nav{display:grid;height:100dvh;overflow:hidden}.imgcentral{z-index:-1;grid-column-start:2;height:100dvh;min-height:-webkit-fill-available}.menu{z-index:1;grid-column-start:2;flex-direction:column;justify-content:center;line-height:27px;user-select:none;opacity:1;transition:opacity .4s}.lang{z-index:2;grid-row-end:7;padding-bottom:20px;user-select:none}.c{z-index:1;grid-column-end:3;grid-row-end:8;justify-content:flex-end;align-items:flex-end;font-size:8px;width:133dvh;max-width:100vw;text-align:right;-webkit-user-select:none;-ms-user-select:none;user-select:none}.c span{font-family:sans-serif;font-weight:300;margin-right:3px}.btn{font-size:23px;padding-left:15px;font-family:inter,sans-serif;font-weight:400;cursor:pointer}
+    </style>
+    <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
   </head>
-  <body>
+  <body class="fade">
     <nav>
-        <video class="imgcentral" height="100%" autoplay muted loop playsinline preload="metadata" poster="video.webp"><source src="video.mp4" type="video/mp4"></video>
+        <video class="imgcentral" height="100%" autoplay muted loop playsinline preload="metadata" poster="video.jpg"><source src="video.mp4" type="video/mp4"></video>
           <div class="menu">
             <div><a href="./about/pt" class="btn">sobre</a></div>
             <div><a href="https://youtube.com/playlist?list=PLibxdEk1cX3Q7KwJLabRHcZkmuzdqQgnt&si=p7UZVeSJ40lLz6dj" target="_blank" rel="noopener noreferrer" class="btn">trabalho</a></div>
             <div><a href="./contact/pt" class="btn">contacto</a></div>
             <div><a href="https://www.instagram.com/pedro.marques.pereira/" target="_blank" rel="noopener noreferrer" class="btn">social</a></div>
           </div>
-          <div class="lang"><a href="./" class="btn">eng</a></div>
+          <div class="lang"><a href="./" lang="en" class="btn">eng</a></div>
           <div class="c"><span>© Pedro Marques Pereira 2024</span></div>
     </nav>
   </body>
