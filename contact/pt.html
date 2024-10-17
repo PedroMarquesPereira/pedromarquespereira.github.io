@@ -35,45 +35,7 @@
       <div class="c fade2"><span>© Pedro Marques Pereira 2024</span></div>
   </nav>
   <script>
-  document.addEventListener("DOMContentLoaded", function() {
-  const dropd = document.querySelector(".dropdw");
-  const dropcontent = document.querySelector(".dropcontentw");
-  let isDropdownOpen = false;
-
-  // Show dropdown on hover
-  dropd.addEventListener("mouseover", function() {
-      dropcontent.classList.add("show");
-  });
-  dropcontent.addEventListener("mouseover", function() {
-      dropcontent.classList.add("show");
-  });
-
-  // Hide dropdown when mouse leaves
-  dropd.addEventListener("mouseout", function() {
-      setTimeout(function() {
-          if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-              dropcontent.classList.remove("show");
-          }
-      }, 100);
-  });
-  dropcontent.addEventListener("mouseout", function() {
-      setTimeout(function() {
-          if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-              dropcontent.classList.remove("show");
-          }
-      }, 100);
-  });
-
-  // Toggle dropdown on click
-  dropd.addEventListener("click", function() {
-      isDropdownOpen = !isDropdownOpen;
-      if (isDropdownOpen) {
-          dropcontent.classList.add("show");
-      } else {
-          dropcontent.classList.remove("show");
-      }
-  });
-});
+  document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropdw"),t=document.querySelector(".dropcontentw");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));
   </script>
 
 </body>
