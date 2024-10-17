@@ -68,45 +68,6 @@
         <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
     </div>
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const dropd = document.querySelector(".dropd");
-    const dropcontent = document.querySelector(".dropcontent");
-
-    let isDropdownOpen = false;
-
-    dropd.addEventListener("mouseover", function() {
-        dropcontent.classList.add("show");
-    });
-
-    dropcontent.addEventListener("mouseover", function() {
-        dropcontent.classList.add("show");
-    });
-
-    dropd.addEventListener("mouseout", function() {
-        setTimeout(function() {
-            if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-                dropcontent.classList.remove("show");
-            }
-        }, 100);
-    });
-
-    dropcontent.addEventListener("mouseout", function() {
-        setTimeout(function() {
-            if (!dropcontent.matches(":hover") && !dropd.matches(":hover")) {
-                dropcontent.classList.remove("show");
-            }
-        }, 100);
-    });
-
-    dropd.addEventListener("click", function() {
-        isDropdownOpen = !isDropdownOpen;
-        if (isDropdownOpen) {
-            dropcontent.classList.add("show");
-        } else {
-            dropcontent.classList.remove("show");
-        }
-    });
-});
-</script>
+document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropd"),t=document.querySelector(".dropcontent");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));</script>
 </body>
 </html>
