@@ -359,9 +359,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    
-
-
   }
   .image-wrapper{
     display: inline-block;
@@ -371,6 +368,16 @@
     height: 55dvh;
     max-width: 100dvw;
   }
+  @media only screen and (min-device-width: 360px) and (max-device-width: 375px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
+  .image-wrapper {
+    display: flex; /* changing to flex to ensure alignment works */
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px; /* Adjusting padding for a tighter fit */
+    height: 40dvh;
+    max-width: 100dvw;
+  }
+}
   .gallery-image{
     display: block;
     max-height: 100%;
