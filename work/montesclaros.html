@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Jexe25yZrqi_kKhEpiRcIGP85mnKzrqiQqF0oZaJYYA" />
+    <meta name="description" content="Pedro Marques Pereira - Montes Claros 2020">
+    <meta property="og:title" content="Pedro Marques Pereira - Montes Claros 2020" />
+    <meta property="og:description" content="Montes Claros 2020" />
+    <meta property="og:image" content="https://pedromarquespereira.github.io/work/img/montesclaros/montesclaros_1.webp" />
+    <meta property="og:url" content="https://pedromarquespereira.github.io" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pedro Marques Pereira" />
+    <title>Pedro Marques Pereira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Roboto&display=swap" as="style">
+    <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <style>
+    .back,
+  .btn,
+  .dropd,
+  .subc span {
+      text-shadow: 0 0 5px #000;
+  }
+  .back,
+  .bottom,
+  .dropdown,
+  .subc,
+  .sublang,
+  .top,
+  .video {
+      position: fixed;
+  }
+  .bottom,
+  .top,
+  .video {
+      left: 50%;
+      transform: translateX(-50%);
+  }
+  a,
+  body {
+      margin: 0;
+  }
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  hr,
+  menu,
+  nav,
+  section {
+      display: block;
+  }
+  a,
+  hr {
+      padding: 0;
+  }
+  .dropdown,
+  .top {
+      max-width: 100dvw;
+  }
+  .dropcontent,
+  nav ul {
+      list-style: none;
+  }
+  .dropbtn,
+  .dropd {
+      margin-right: 15px;
+  }
+  .back,
+  .btn,
+  .dropbtn,
+  .dropd {
+      font-family: 'inter', sans-serif;
+      cursor: pointer;
+  }
+  .bottom,
+  .top {
+      height: 60px;
+  }
+  .back,
+  .btn,
+  .dropbtn,
+  .dropd,
+  .subc span {
+      color: #fff;
+  }
+  .back,
+  .btn,
+  .cinfo,
+  .cinfo a,
+  .dropbtn,
+  .subc span,
+  ins {
+      text-decoration: none;
+  }
+  abbr,
+  address,
+  article,
+  aside,
+  audio,
+  b,
+  blockquote,
+  body,
+  canvas,
+  caption,
+  cite,
+  code,
+  dd,
+  del,
+  details,
+  dfn,
+  div,
+  dl,
+  dt,
+  em,
+  fieldset,
+  figcaption,
+  figure,
+  footer,
+  form,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  header,
+  hgroup,
+  html,
+  i,
+  iframe,
+  img,
+  ins,
+  kbd,
+  label,
+  legend,
+  li,
+  mark,
+  menu,
+  nav,
+  object,
+  ol,
+  p,
+  pre,
+  q,
+  samp,
+  section,
+  small,
+  span,
+  strong,
+  sub,
+  summary,
+  sup,
+  table,
+  tbody,
+  td,
+  tfoot,
+  th,
+  thead,
+  time,
+  tr,
+  ul,
+  var,
+  video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+      background: 0 0;
+  }
+  ins,
+  mark {
+      background-color: #ff9;
+      color: #000;
+  }
+  body {
+      line-height: 1;
+      background-color: #000;
+      height: 100%;
+  }
+  blockquote,
+  q {
+      quotes: none;
+  }
+  blockquote:after,
+  blockquote:before,
+  q:after,
+  q:before {
+      content: "";
+      content: none;
+  }
+  a {
+      font-size: 100%;
+      vertical-align: baseline;
+      background: 0 0;
+  }
+  mark {
+      font-style: italic;
+      font-weight: 700;
+  }
+  del {
+      text-decoration: line-through;
+  }
+  abbr[title],
+  dfn[title] {
+      border-bottom: 1px dotted;
+      cursor: help;
+  }
+  table {
+      border-collapse: collapse;
+      border-spacing: 0;
+  }
+  hr {
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 1em 0;
+  }
+  input,
+  select {
+      vertical-align: middle;
+  }
+  * {
+      margin: 0.5vw;
+      padding: 1vw;
+  }
+  .top {
+      top: 0;
+      width: 133.33dvh;
+  }
+  .back {
+      display: flex;
+      top: 20px;
+      margin-left: 15px;
+      font-size: 30px;
+      z-index: 10;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+  .btn {
+      font-size: 23px;
+      padding-left: 15px;
+      font-weight: 400;
+  }
+  .dropdown {
+      top: 30px;
+      width: 100%;
+      text-align: right;
+      z-index: 9;
+  }
+  .dropd {
+      display: inline;
+      font-size: 15px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+  .subc,
+  .sublang {
+      display: flex;
+      cursor: default;
+      user-select: none;
+  }
+  .dropcontent.show {
+      display: flex;
+
+  }
+  .bottom {
+      bottom: 0;
+      width: 100%;
+      max-width: 133.33dvh;
+      outline: #000 3px;
+  }
+  .sublang {
+      padding-top: 8px;
+  }
+  .subc {
+      bottom: 0;
+      right: 0;
+  }
+  .subc span {
+      font-family: sans-serif;
+      font-size: 8px;
+      font-weight: 300;
+      margin-right: 5px;
+  }
+
+    .proj-info{
+      position: fixed;
+      z-index: -1;
+      top: 65px;
+      left:50%;
+      transform: translateX(-50%);
+      width: 133.33vh;
+      max-width: 100dvw;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .info-title{
+      font-size: 23px;
+      padding-left: 15px;
+      font-weight: 400;
+    }
+    .year {
+        font-size: 14px;
+        margin: 0 5px;
+    }
+    .info-subtitle{
+      font-size: 15px;
+      padding:13px 0 15px 15px;
+      font-weight: 400;
+    }
+    .nr{
+      font-size: 13px;
+    }
+    .info-content{
+      font-size: 13px;
+      padding:10px 0 10px 15px;
+      line-height: 25px;
+      font-weight: 400;
+    }
+    .info-link{
+      font-size: 13px;
+      padding:10px 0 10px 15px;
+      font-weight: 400;
+    }
+    .info-link{
+      color: white;
+      text-decoration: none;
+    }
+    a:hover{
+      text-shadow: 0 0 1px white,
+                   0 0 4px white;
+      transition-duration: 0.5s;
+    }
+
+  .gallery-container{
+    z-index: 2;
+    position: fixed;
+    left:50%;
+    transform: translateX(-50%);
+    width:100dvw;
+    display: flex;
+    top:260px;
+    height:auto;
+    max-width: 100dvw;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .image-wrapper{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    padding:0 15px;
+    height: 55dvh;
+    max-width: 100dvw;
+  }
+  .gallery-image{
+    display: block;
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+  }
+  .arrow-container{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+
+
+  }
+  .nav-arrow{
+    display: inline;
+    margin:10px 0;
+    font-size: 20px;
+    font-family: 'inter', sans-serif;
+    color: white;
+    cursor: pointer;
+  }
+  .left {
+    display: none;
+    margin-right: auto;
+  }
+  .right {
+    margin-left: auto;
+  }
+  .nav-arrow:hover{
+    text-shadow: 0 0 1px white,
+                 0 0 4px white;
+    transition-duration: 0.5s;
+  }
+    </style>
+    <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
+  </head>
+  <body class="fade">
+    <div class="top">
+        <a href="../work" class="back">*</a>
+        <div class="dropdown">
+            <span class="dropd">&bull;&bull;&bull;</span>
+            <ul class="dropcontent">
+                <li><a href="../about" class="dropbtn">about</a></li>
+                <li><a href="../contact" target="_blank" rel="noopener noreferrer" class="dropbtn">contact</a></li>
+                <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank" rel="noopener noreferrer">social</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="proj-info">
+      <h1 class="info-title">Montes Claros<span class="year">2020</span></h1>
+      <p class="info-subtitle">short-film <span class="nr">| 10</span> min<span class="nr"> 40</span> sec</p>
+      <p class="info-content">A forest walled by roads, refuge from the city.<br>A young men rests in Montes Claros.</p>
+      <a class="info-link" href="https://youtu.be/DLKIZmDx_yk" target="_blank" rel="noopener noreferrer">watch here</a>
+    </div>
+    <div class="gallery-container">
+      <div class="image-wrapper">
+        <img id="gallery-image" class="gallery-image" src="img/montesclaros/montesclaros_1.webp" alt="MontesClaros_Still_1">
+        <div class="arrow-container">
+            <div id="prev-button" class="nav-arrow left">&#x2190;</div>
+            <div id="next-button" class="nav-arrow right">&#x2192;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+        <div class="sublang"><a href="./contact/pt" lang="pt" class="btn">pt</a></div>
+        <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
+    </div>
+    <script defer>
+document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropd"),t=document.querySelector(".dropcontent");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));
+const image = document.getElementById("gallery-image");
+const arrowContainer = document.querySelector(".arrow-container");
+
+document.addEventListener("DOMContentLoaded", function() {
+    const images = [
+      "img/montesclaros/montesclaros_1.webp",
+      "img/montesclaros/montesclaros_2.webp",
+      "img/montesclaros/montesclaros_3.webp",
+      "img/montesclaros/montesclaros_4.webp",
+      "img/montesclaros/montesclaros_5.webp",
+    ];
+
+    let currentIndex = 0; // Start at the first image (cover)
+
+    const imageElement = document.getElementById("gallery-image");
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
+
+    function updateGallery() {
+      // Update the image source
+      imageElement.src = images[currentIndex];
+
+      // Show/hide arrows based on current index
+      prevButton.style.display = currentIndex === 0 ? 'none' : 'inline';
+      nextButton.style.display = currentIndex === images.length - 1 ? 'none' : 'inline';
+    }
+
+    // Event listeners for arrows
+    nextButton.addEventListener("click", function() {
+      if (currentIndex < images.length - 1) {
+        currentIndex++;
+        updateGallery();
+      }
+    });
+
+    prevButton.addEventListener("click", function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateGallery();
+      }
+    });
+
+    // Initialize the gallery with the first image
+    updateGallery();
+  });
+</script>
+  </body>
+</html>
