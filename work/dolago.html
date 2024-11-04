@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Jexe25yZrqi_kKhEpiRcIGP85mnKzrqiQqF0oZaJYYA" />
-    <meta name="description" content="Pedro Marques Pereira - Do Lago">
-    <meta property="og:title" content="Do Lago - Short-film" />
-    <meta property="og:description" content="Explore this photography Zine" />
-    <meta property="og:image" content="https://pedromarquespereira.github.io/work/img/zine/cover.webp" />
+    <meta name="description" content="Pedro Marques Pereira - Do Lago 2021">
+    <meta property="og:title" content="Pedro Marques Pereira - Do Lago 2021" />
+    <meta property="og:description" content="Do Lago | 2021" />
+    <meta property="og:image" content="https://pedromarquespereira.github.io/work/img/dolago/dolago_1.webp" />
     <meta property="og:url" content="https://pedromarquespereira.github.io" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Pedro Marques Pereira" />
@@ -336,8 +336,21 @@
     }
     .info-content{
       font-size: 13px;
-      padding:0 0 10px 15px;
+      padding:10px 0 18px 15px;
+      line-height: 25px;
       font-weight: 400;
+    }
+    .info-link {
+      font-size: 13px;
+      padding:0 0 0 15px;
+      font-weight: 400;
+      color: white;
+    }
+
+    a:hover{
+      text-shadow: 0 0 1px white,
+                   0 0 4px white;
+      transition-duration: 0.5s;
     }
 
   .gallery-container{
@@ -347,7 +360,7 @@
     transform: translateX(-50%);
     width:100dvw;
     display: flex;
-    top:210px;
+    top:265px;
     height:auto;
     max-width: 100dvw;
     justify-content: center;
@@ -368,16 +381,6 @@
     height: 55dvh;
     max-width: 100dvw;
   }
-  @media only screen and (min-device-width: 360px) and (max-device-width: 375px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
-  .image-wrapper {
-    display: flex; /* changing to flex to ensure alignment works */
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px; /* Adjusting padding for a tighter fit */
-    height: 40dvh;
-    max-width: 100dvw;
-  }
-}
   .gallery-image{
     display: block;
     max-height: 100%;
@@ -403,7 +406,6 @@
     display: none;
     margin-right: auto;
   }
-
   .right {
     margin-left: auto;
   }
@@ -431,12 +433,12 @@
     <div class="proj-info">
       <h1 class="info-title">Do Lago<span class="year">2021</span></h1>
       <p class="info-subtitle">short-film <span class="nr">| 10</span> min<span class="nr"> 30</span> sec</p>
-      <p class="info-content"><span class="nr">14,8</span> x <span class="nr">21</span> cm, <span class="nr">18</span> pages</p>
-      <p class="info-content"><span class="nr">56</span> copies (sold out)</p>
+      <p class="info-content">A forest walled by roads, refuge from the city.<br>A young men rests in Montes Claros.</p>
+      <a class="info-link" href="https://youtu.be/j62cJIY69jk" target="_blank" rel="noopener noreferrer">watch here</a>
     </div>
     <div class="gallery-container">
       <div class="image-wrapper">
-        <img id="gallery-image" class="gallery-image" src="img/dolago/dolago_4.webp" alt="DoLago_Still_1">
+        <img id="gallery-image" class="gallery-image" src="img/dolago/dolago_1.webp" alt="MontesClaros_Still_1">
         <div class="arrow-container">
             <div id="prev-button" class="nav-arrow left">&#x2190;</div>
             <div id="next-button" class="nav-arrow right">&#x2192;</div>
@@ -455,11 +457,10 @@ const arrowContainer = document.querySelector(".arrow-container");
 
 document.addEventListener("DOMContentLoaded", function() {
     const images = [
-      "img/dolago/dolago_4.webp",        // 1. Cover
-      "img/dolago/dolago_5.webp",    // 2.
-      "img/dolago/dolago_6.webp",    // 3.
-      "img/dolago/dolago_3.webp",    // 4.
-      "img/dolago/dolago_1.webp",    // 5.
+      "img/dolago/dolago_1.webp",
+      "img/dolago/dolago_2.webp",
+      "img/dolago/dolago_3.webp",
+      "img/dolago/dolago_4.webp",
     ];
 
     let currentIndex = 0; // Start at the first image (cover)
