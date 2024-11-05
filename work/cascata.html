@@ -21,349 +21,343 @@
     <link rel="shortcut icon" type="image/png" href="../favicon.png">
     <style>
     .back,
-  .btn,
-  .dropd,
-  .subc span {
-      text-shadow: 0 0 5px #000;
-  }
-  .back,
-  .bottom,
-  .dropdown,
-  .subc,
-  .sublang,
-  .top,
-  .video {
-      position: fixed;
-  }
-  .bottom,
-  .top,
-  .video {
-      left: 50%;
-      transform: translateX(-50%);
-  }
-  a,
-  body {
-      margin: 0;
-  }
-  article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  hr,
-  menu,
-  nav,
-  section {
-      display: block;
-  }
-  a,
-  hr {
-      padding: 0;
-  }
-  .dropdown,
-  .top {
-      max-width: 100dvw;
-  }
-  .dropcontent,
-  nav ul {
-      list-style: none;
-  }
-  .dropbtn,
-  .dropd {
-      margin-right: 15px;
-  }
-  .back,
-  .btn,
-  .dropbtn,
-  .dropd {
-      font-family: 'inter', sans-serif;
-      cursor: pointer;
-  }
-  .bottom,
-  .top {
-      height: 60px;
-  }
-  .back,
-  .btn,
-  .dropbtn,
-  .dropd,
-  .subc span {
-      color: #fff;
-  }
-  .back,
-  .btn,
-  .cinfo,
-  .cinfo a,
-  .dropbtn,
-  .subc span,
-  ins {
-      text-decoration: none;
-  }
-  abbr,
-  address,
-  article,
-  aside,
-  audio,
-  b,
-  blockquote,
-  body,
-  canvas,
-  caption,
-  cite,
-  code,
-  dd,
-  del,
-  details,
-  dfn,
-  div,
-  dl,
-  dt,
-  em,
-  fieldset,
-  figcaption,
-  figure,
-  footer,
-  form,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  header,
-  hgroup,
-  html,
-  i,
-  iframe,
-  img,
-  ins,
-  kbd,
-  label,
-  legend,
-  li,
-  mark,
-  menu,
-  nav,
-  object,
-  ol,
-  p,
-  pre,
-  q,
-  samp,
-  section,
-  small,
-  span,
-  strong,
-  sub,
-  summary,
-  sup,
-  table,
-  tbody,
-  td,
-  tfoot,
-  th,
-  thead,
-  time,
-  tr,
-  ul,
-  var,
-  video {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      outline: 0;
-      font-size: 100%;
-      vertical-align: baseline;
-      background: 0 0;
-  }
-  ins,
-  mark {
-      background-color: #ff9;
-      color: #000;
-  }
-  body {
-      line-height: 1;
-      background-color: #000;
-      height: 100%;
-  }
-  blockquote,
-  q {
-      quotes: none;
-  }
-  blockquote:after,
-  blockquote:before,
-  q:after,
-  q:before {
-      content: "";
-      content: none;
-  }
-  a {
-      font-size: 100%;
-      vertical-align: baseline;
-      background: 0 0;
-  }
-  mark {
-      font-style: italic;
-      font-weight: 700;
-  }
-  del {
-      text-decoration: line-through;
-  }
-  abbr[title],
-  dfn[title] {
-      border-bottom: 1px dotted;
-      cursor: help;
-  }
-  table {
-      border-collapse: collapse;
-      border-spacing: 0;
-  }
-  hr {
-      height: 1px;
-      border: 0;
-      border-top: 1px solid #ccc;
-      margin: 1em 0;
-  }
-  input,
-  select {
-      vertical-align: middle;
-  }
-  * {
-      margin: 0.5vw;
-      padding: 1vw;
-  }
-  .top {
-      top: 0;
-      width: 133.33dvh;
-  }
-  .back {
-      display: flex;
-      top: 20px;
-      margin-left: 15px;
-      font-size: 30px;
-      z-index: 10;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-  }
-  .btn {
-      font-size: 23px;
-      padding-left: 15px;
-      font-weight: 400;
-  }
-  .dropdown {
-      top: 30px;
-      width: 100%;
-      text-align: right;
-      z-index: 9;
-  }
-  .dropd {
-      display: inline;
-      font-size: 15px;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-  }
-  .subc,
-  .sublang {
-      display: flex;
-      cursor: default;
-      user-select: none;
-  }
-  .dropcontent.show {
-      display: flex;
-
-  }
-  .bottom {
-      bottom: 0;
-      width: 100%;
-      max-width: 133.33dvh;
-      outline: #000 3px;
-  }
-  .sublang {
-      padding-top: 8px;
-  }
-  .subc {
-      bottom: 0;
-      right: 0;
-  }
-  .subc span {
-      font-family: sans-serif;
-      font-size: 8px;
-      font-weight: 300;
-      margin-right: 5px;
-  }
-
-    .proj-info{
-      position: fixed;
-      z-index: -1;
-      top: 65px;
-      left:50%;
-      transform: translateX(-50%);
-      width: 133.33vh;
-      max-width: 100dvw;
-      font-family: 'Inter', sans-serif;
-      color: white;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    .info-title{
-      font-size: 23px;
-      padding-left: 15px;
-      font-weight: 400;
-
-    }
-    .year {
-        font-size: 14px;
-        margin: 0 5px;
-    }
-    .info-subtitle{
-      line-height: 25px;
-      font-size: 15px;
-      padding:13px 0 10px 15px;
-      font-weight: 400;
-    }
-    .nr{
-      font-size: 13px;
-    }
-    .info-content{
-      font-size: 13px;
-      padding:10px 0 13px 15px;
-      line-height: 25px;
-      font-weight: 400;
-    }
-    .info-link {
-      font-size: 13px;
-      padding:0 0 0 15px;
-      font-weight: 400;
-      color: white;
-    }
-
-    a:hover{
-      text-shadow: 0 0 1px white,
-                   0 0 4px white;
-      transition-duration: 0.5s;
-    }
-
-  .gallery-container{
+.btn,
+.dropd,
+.subc span {
+    text-shadow: 0 0 5px #000;
+}
+.back,
+.bottom,
+.dropdown,
+.subc,
+.sublang,
+.top,
+.video {
+    position: fixed;
+}
+.bottom,
+.top,
+.video {
+    left: 50%;
+    transform: translateX(-50%);
+}
+a,
+body {
+    margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+hr,
+menu,
+nav,
+section {
+    display: block;
+}
+a,
+hr {
+    padding: 0;
+}
+.dropdown,
+.top {
+    max-width: 100dvw;
+}
+.dropcontent,
+nav ul {
+    list-style: none;
+}
+.dropbtn,
+.dropd {
+    margin-right: 1rem;
+}
+.back,
+.btn,
+.dropbtn,
+.dropd {
+    font-family: 'inter', sans-serif;
+    cursor: pointer;
+}
+.bottom,
+.top {
+    height: 3.75rem;
+}
+.back,
+.btn,
+.dropbtn,
+.dropd,
+.subc span {
+    color: #fff;
+}
+.back,
+.btn,
+.cinfo,
+.cinfo a,
+.dropbtn,
+.subc span,
+ins {
+    text-decoration: none;
+}
+abbr,
+address,
+article,
+aside,
+audio,
+b,
+blockquote,
+body,
+canvas,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: 0 0;
+}
+ins,
+mark {
+    background-color: #ff9;
+    color: #000;
+}
+body {
+    line-height: 1;
+    background-color: #000;
+    height: 100%;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+    content: "";
+    content: none;
+}
+a {
+    font-size: 100%;
+    vertical-align: baseline;
+    background: 0 0;
+}
+mark {
+    font-style: italic;
+    font-weight: 700;
+}
+del {
+    text-decoration: line-through;
+}
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+hr {
+    height: 0.0625rem;
+    border: 0;
+    border-top: 0.0625rem solid #ccc;
+    margin: 1em 0;
+}
+input,
+select {
+    vertical-align: middle;
+}
+* {
+    margin: 0.5vw;
+    padding: 1vw;
+}
+.top {
+    top: 0;
+    width: 133.33dvh;
+}
+.back {
+    display: flex;
+    top: 1.25rem;
+    margin-left: 1rem;
+    font-size: 1.875rem;
+    z-index: 10;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.btn {
+    font-size: 1.4375rem;
+    padding-left: 1rem;
+    font-weight: 400;
+}
+.dropdown {
+    top: 1.875rem;
+    width: 100%;
+    text-align: right;
+    z-index: 9;
+}
+.dropd {
+    display: inline;
+    font-size: 0.9375rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.subc,
+.sublang {
+    display: flex;
+    cursor: default;
+    user-select: none;
+}
+.dropcontent.show {
+    display: flex;
+}
+.bottom {
+    bottom: 0;
+    width: 100%;
+    max-width: 133.33dvh;
+    outline: #000 0.1875rem;
+}
+.sublang {
+    padding-top: 0.5rem;
+}
+.subc {
+    bottom: 0;
+    right: 0;
+}
+.subc span {
+    font-family: sans-serif;
+    font-size: 0.5rem;
+    font-weight: 300;
+    margin-right: 0.3125rem;
+}
+.proj-info {
+    position: fixed;
+    z-index: -1;
+    top: 4.0625rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 133.33vh;
+    max-width: 100dvw;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.info-title {
+    font-size: 1.4375rem;
+    padding-left: 1rem;
+    font-weight: 400;
+}
+.year {
+    font-size: 0.875rem;
+    margin: 0 0.3125rem;
+}
+.info-subtitle {
+    line-height: 1.5625rem;
+    font-size: 0.9375rem;
+    padding: 0.8125rem 0 0.625rem 1rem;
+    font-weight: 400;
+}
+.nr {
+    font-size: 0.8125rem;
+}
+.info-content {
+    font-size: 0.8125rem;
+    padding: 0.625rem 0 0.8125rem 1rem;
+    line-height: 1.5625rem;
+    font-weight: 400;
+}
+.info-link {
+    font-size: 0.8125rem;
+    padding: 0 0 0 1rem;
+    font-weight: 400;
+    color: white;
+}
+a:hover {
+    text-shadow: 0 0 0.0625rem white, 0 0 0.25rem white;
+    transition-duration: 0.5s;
+}
+.gallery-container {
     z-index: 2;
     position: fixed;
-    left:50%;
+    left: 50%;
     transform: translateX(-50%);
-    width:100dvw;
+    width: 100dvw;
     display: flex;
-    top:370px;
-    height:auto;
+    top: 23.125rem;
+    height: auto;
     max-width: 100dvw;
     justify-content: center;
     align-items: center;
@@ -374,48 +368,46 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  .image-wrapper{
+}
+.image-wrapper {
     display: inline-block;
     align-items: center;
     justify-content: center;
-    padding:0 15px;
+    padding: 0 1rem;
     height: 48dvh;
     max-width: 100dvw;
-  }
-  .gallery-image{
+}
+.gallery-image {
     display: block;
     max-height: 100%;
     width: auto;
     max-width: 100%;
-  }
-  .arrow-container{
-    width:100%;
+}
+.arrow-container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-
-
-  }
-  .nav-arrow{
+}
+.nav-arrow {
     display: inline;
-    margin:10px 0;
-    font-size: 20px;
+    margin: 0.625rem 0;
+    font-size: 1.25rem;
     font-family: 'inter', sans-serif;
     color: white;
     cursor: pointer;
-  }
-  .left {
+}
+.left {
     display: none;
     margin-right: auto;
-  }
-  .right {
+}
+.right {
     margin-left: auto;
-  }
-  .nav-arrow:hover{
-    text-shadow: 0 0 1px white,
-                 0 0 4px white;
+}
+.nav-arrow:hover {
+    text-shadow: 0 0 0.0625rem white, 0 0 0.25rem white;
     transition-duration: 0.5s;
-  }
+}
+
     </style>
     <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
   </head>
@@ -434,7 +426,7 @@
 
     <div class="proj-info">
       <h1 class="info-title">Cascata<span class="year">2024</span></h1>
-      <p class="info-subtitle">Video with sound <br><span class="nr"> 5</span> min <span class="nr">(looped), 2880</span> × <span class="nr">2160</span></p>
+      <p class="info-subtitle">Video with sound <br><span class="nr"> 5</span> min <span class="nr">(looped), 2880</span> × <span class="nr">2160</span> px</p>
       <p class="info-content">The sound of the waterfall drones my sight.<br>White threads linger, bodies to become mist.<br>They all take photographs of the flowing cliff.</p>
       <p class="info-content">shown at:<br>Re-Feast 2024, CultureHub</p>
       <a class="info-link" href="https://youtu.be/ul3Wc2m21Hs" target="_blank" rel="noopener noreferrer">watch here</a>
