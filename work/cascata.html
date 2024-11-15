@@ -359,10 +359,11 @@ select {
   font-family: 'Inter', sans-serif;
   color: white;
 }
-@media only screen and (max-width: 768px) and (pointer: coarse) and (hover: none) {
+@media only screen and (max-width: 810px) and (max-width: 133.33dvh) and (pointer: coarse) and (hover: none) {
   body {
    overflow-x: scroll; /* Allow horizontal scroll for the body */
  }
+ 
  .window{
    display: none;
  }
@@ -506,6 +507,44 @@ img{
   </div>
   <script defer>
 document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropd"),t=document.querySelector(".dropcontent");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Detect touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    if (isTouchDevice) {
+        // Fix for `position: fixed` issue
+        const fixedElements = document.querySelectorAll('.top, .bottom');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY; // Get the current scroll position
+            fixedElements.forEach(el => {
+                el.style.transform = `translateY(${scrollY}px)`;
+            });
+        });
+
+        // Prevent zoom
+        document.addEventListener('touchstart', function (e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+        });
+
+        // Enforce consistent viewport
+        const metaViewport = document.querySelector('meta[name="viewport"]');
+        if (metaViewport) {
+            metaViewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+        }
+    }
+});
+
+
+
 </script>
 </body>
 </html>
