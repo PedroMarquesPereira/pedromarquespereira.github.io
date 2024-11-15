@@ -397,6 +397,13 @@
     display: inline;
     margin:0 0 0 auto;
   }
+
+  .arrow-container .left.active {
+  display: inline; /* Show left arrow if index > 0 */
+  }
+  .arrow-container .right.active {
+  display: inline; /* Show right arrow if index < images.length - 1 */
+  }
   .nav-arrow:hover{
     text-shadow: 0 0 1px white,
                  0 0 4px white;
@@ -444,17 +451,17 @@ const arrowContainer = document.querySelector(".arrow-container");
 
 document.addEventListener("DOMContentLoaded", function() {
     const images = [
-      "img/zine/cover.webp",        // 1. Cover
-      "img/zine/spread-1.webp",    // 2.
-      "img/zine/spread-2.webp",    // 3.
-      "img/zine/spread-3.webp",    // 4.
-      "img/zine/spread-4.webp",    // 5.
-      "img/zine/spread-5.webp",    // 6.
-      "img/zine/spread-6.webp",    // 7.
-      "img/zine/spread-7.webp",    // 8.
-      "img/zine/spread-8.webp",    // 9.
-      "img/zine/spread-9.webp",    // 10.
-      "img/zine/cover-back.webp"    // 11. Back Cover
+        "img/zine/cover.webp",        // 1. Cover
+        "img/zine/spread-1.webp",    // 2.
+        "img/zine/spread-2.webp",    // 3.
+        "img/zine/spread-3.webp",    // 4.
+        "img/zine/spread-4.webp",    // 5.
+        "img/zine/spread-5.webp",    // 6.
+        "img/zine/spread-6.webp",    // 7.
+        "img/zine/spread-7.webp",    // 8.
+        "img/zine/spread-8.webp",    // 9.
+        "img/zine/spread-9.webp",    // 10.
+        "img/zine/cover-back.webp"   // 11. Back Cover
     ];
 
     let currentIndex = 0; // Start at the first image (cover)
@@ -464,32 +471,42 @@ document.addEventListener("DOMContentLoaded", function() {
     const nextButton = document.getElementById("next-button");
 
     function updateGallery() {
-      // Update the image source
-      imageElement.src = images[currentIndex];
+        // Update the image source
+        imageElement.src = images[currentIndex];
 
-      // Show/hide arrows based on current index
-      prevButton.style.display = currentIndex === 0 ? 'none' : 'inline';
-      nextButton.style.display = currentIndex === images.length - 1 ? 'none' : 'inline';
+        // Show/hide the arrows based on the current image index
+        if (currentIndex === 0) {
+            prevButton.style.display = "none"; // Hide prev button on the first image
+            nextButton.style.display = "inline"; // Show next button
+        } else if (currentIndex === images.length - 1) {
+            prevButton.style.display = "inline"; // Show prev button on the last image
+            nextButton.style.display = "none"; // Hide next button
+        } else {
+            prevButton.style.display = "inline"; // Show prev button
+            nextButton.style.display = "inline"; // Show next button
+        }
     }
 
-    // Event listeners for arrows
-    nextButton.addEventListener("click", function() {
-      if (currentIndex < images.length - 1) {
-        currentIndex++;
-        updateGallery();
-      }
-    });
-
+    // Event listeners for the arrows
     prevButton.addEventListener("click", function() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateGallery();
-      }
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateGallery();
+        }
     });
 
-    // Initialize the gallery with the first image
+    nextButton.addEventListener("click", function() {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+            updateGallery();
+        }
+    });
+
+    // Initialize gallery
     updateGallery();
-  });
+});
+
+
 </script>
   </body>
 </html>
