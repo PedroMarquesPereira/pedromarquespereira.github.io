@@ -25,8 +25,7 @@
 .dropdown,
 .subc,
 .sublang,
-.top,
-.title {
+.top {
     position: fixed;
 }
 .bottom,
@@ -298,6 +297,7 @@ select {
     margin-right: 5px;
 }
 .title{
+  position: fixed;
   top: 60px;
   font-family: 'Inter', sans-serif;
   color: white;
@@ -359,22 +359,10 @@ select {
   font-family: 'Inter', sans-serif;
   color: white;
 }
-@media only screen and (max-width: 810px) and (max-width: 133.33dvh) and (pointer: coarse) and (hover: none) {
+@media only screen and (max-width: 1000px) and (pointer: coarse) and (hover: none) {
   body {
-  overflow-x: auto;
-  overflow-y: hidden;
-  height:100%;/* Allow horizontal scroll for the body */
+   overflow-x: scroll; /* Allow horizontal scroll for the body */
  }
- .back,
- .bottom,
- .dropdown,
- .subc,
- .sublang,
- .top,
- .title{
-     position: fixed;
- }
-
  .window{
    display: none;
  }
@@ -422,7 +410,7 @@ body::after {
 }
  .proj-wrapper {
    width: 100%;
-   overflow-x: auto; /* Allow horizontal scroll on this div */
+   overflow-x: scroll; /* Allow horizontal scroll on this div */
  }
 
  .image-wrapper {
@@ -481,11 +469,11 @@ img{
   <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
 </head>
 <body class="fade2">
-  <div class="top"><a href="../work" class="back">*</a>
+  <div class="top"><a href="./" class="back">*</a>
       <div class="dropdown"><span class="dropd">&bull;&bull;&bull;</span>
                             <ul class="dropcontent">
-                              <li><a href="../about" class="dropbtn">about</a></li>
-                              <li><a href="../contact" class="dropbtn">contact</a></li>
+                              <li><a href="https://youtube.com/playlist?list=PLibxdEk1cX3Q7KwJLabRHcZkmuzdqQgnt&si=p7UZVeSJ40lLz6dj" target="_blank" rel="noopener noreferrer" class="dropbtn">work</a></li>
+                              <li><a href="./contact" target="_blank" rel="noopener noreferrer" class="dropbtn">contact</a></li>
                               <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank" rel="noopener noreferrer">social</a></li>
                             </ul>
       </div>
@@ -518,82 +506,6 @@ img{
   </div>
   <script defer>
 document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropd"),t=document.querySelector(".dropcontent");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    // Detect touch devices
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-    if (isTouchDevice) {
-        // Fix for `position: fixed` issue
-        const fixedElements = document.querySelectorAll('.top, .bottom');
-
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY; // Get the current scroll position
-            fixedElements.forEach(el => {
-                el.style.transform = `translateY(${scrollY}px)`;
-            });
-        });
-
-        // Prevent zoom
-        document.addEventListener('touchstart', function (e) {
-            if (e.touches.length > 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        document.addEventListener('gesturestart', function (e) {
-            e.preventDefault();
-        });
-
-        // Enforce consistent viewport
-        const metaViewport = document.querySelector('meta[name="viewport"]');
-        if (metaViewport) {
-            metaViewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-        }
-    }
-});
-</script>
-<script>
-// Select the fixed elements
-const backElement = document.querySelector('.back');
-const bottomElement = document.querySelector('.bottom');
-const dropdownElement = document.querySelector('.dropdown');
-const subcElement = document.querySelector('.subc');
-const sublangElement = document.querySelector('.sublang');
-const topElement = document.querySelector('.top');
-const titleElement = document.querySelector('.title');
-
-// Function to check if the device is a touch screen
-function isTouchDevice() {
-    return ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0);
-}
-
-// Function to update the position of fixed elements on scroll
-function updateFixedElementsPosition() {
-    // Check if we're on a mobile device and a touch screen
-    if (window.innerWidth <= 810 && isTouchDevice()) {
-        // Get the current scroll position
-        const scrollX = window.scrollX;
-
-        // Set the position of each fixed element based on scrollX
-        backElement.style.transform = `translateX(${scrollX}px)`;
-        bottomElement.style.transform = `translateX(-50%) translateX(${scrollX}px)`;
-        dropdownElement.style.transform = `translateX(${scrollX}px)`;
-        subcElement.style.transform = `translateX(${scrollX}px)`;
-        sublangElement.style.transform = `translateX(${scrollX}px)`;
-        topElement.style.transform = `translateX(-50%) translateX(${scrollX}px)`;
-        titleElement.style.transform = `translateX(${scrollX}px)`;
-    }
-}
-
-// Add the scroll event listener to the window
-window.addEventListener('scroll', updateFixedElementsPosition);
-
-// Call the function once to set the initial position
-updateFixedElementsPosition();
-
-
 </script>
 </body>
 </html>
