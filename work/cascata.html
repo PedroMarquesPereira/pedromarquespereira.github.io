@@ -554,46 +554,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
-<script>
-// Select the fixed elements
-const backElement = document.querySelector('.back');
-const bottomElement = document.querySelector('.bottom');
-const dropdownElement = document.querySelector('.dropdown');
-const subcElement = document.querySelector('.subc');
-const sublangElement = document.querySelector('.sublang');
-const topElement = document.querySelector('.top');
-const titleElement = document.querySelector('.title');
-
-// Function to check if the device is a touch screen
-function isTouchDevice() {
-    return ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0);
-}
-
-// Function to update the position of fixed elements on scroll
-function updateFixedElementsPosition() {
-    // Check if we're on a mobile device and a touch screen
-    if (window.innerWidth <= 810 && isTouchDevice()) {
-        // Get the current scroll position
-        const scrollX = window.scrollX;
-
-        // Set the position of each fixed element based on scrollX
-        backElement.style.transform = `translateX(${scrollX}px)`;
-        bottomElement.style.transform = `translateX(-50%) translateX(${scrollX}px)`;
-        dropdownElement.style.transform = `translateX(${scrollX}px)`;
-        subcElement.style.transform = `translateX(${scrollX}px)`;
-        sublangElement.style.transform = `translateX(${scrollX}px)`;
-        topElement.style.transform = `translateX(-50%) translateX(${scrollX}px)`;
-        titleElement.style.transform = `translateX(${scrollX}px)`;
-    }
-}
-
-// Add the scroll event listener to the window
-window.addEventListener('scroll', updateFixedElementsPosition);
-
-// Call the function once to set the initial position
-updateFixedElementsPosition();
-
-
-</script>
 </body>
 </html>
