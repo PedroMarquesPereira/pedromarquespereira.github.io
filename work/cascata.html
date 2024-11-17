@@ -14,27 +14,6 @@
   <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
   <link rel="shortcut icon" type="image/png" href="../favicon.png">
   <style>
-  .back,
-.btn,
-.dropd,
-.subc span {
-    text-shadow: 0 0 5px #000;
-}
-.back,
-.bottom,
-.dropdown,
-.subc,
-.sublang,
-.top,
-.title {
-    position: fixed;
-}
-.bottom,
-.top,
-.video {
-    left: 50%;
-    transform: translateX(-50%);
-}
 a,
 body {
     margin: 0;
@@ -57,14 +36,6 @@ a,
 hr {
     padding: 0;
 }
-.dropdown,
-.top {
-    max-width: 100dvw;
-}
-.dropcontent,
-nav ul {
-    list-style: none;
-}
 .dropbtn,
 .dropd {
     margin-right: 15px;
@@ -76,9 +47,7 @@ nav ul {
     font-family: 'inter', sans-serif;
     cursor: pointer;
 }
-.top{
-  height:100px;
-}
+
 .bottom{
     height: 60px;
 }
@@ -91,8 +60,6 @@ nav ul {
 }
 .back,
 .btn,
-.cinfo,
-.cinfo a,
 .dropbtn,
 .subc span,
 ins {
@@ -231,12 +198,25 @@ select {
     margin: 0.5vw;
     padding: 1vw;
 }
+.back,
+.bottom,
+.dropdown,
+.subc,
+.sublang,
+.top,
+.title {
+    position: fixed;
+}
+.bottom,
+.top {
+    left: 50%;
+    transform: translateX(-50%);
+}
 .top {
     top: 0;
     width: 100%;
     max-width: 133.33dvh;
 }
-
 .back {
     display: flex;
     top: 20px;
@@ -374,6 +354,13 @@ select {
  .title{
      position: fixed;
  }
+ .top,
+ .title,
+ .bottom{
+   left:0;
+   width: 100%;
+   transform: translate(0);
+ }
 
  .window{
    display: none;
@@ -447,7 +434,8 @@ img{
 }
 .info{
   display: block;
-  max-height: 50dvh;
+  max-width: 50dvh;
+  height:auto;
   width: 430px;
   max-width: 80dvw;
   text-align: justify;
@@ -458,7 +446,7 @@ img{
     width: 100dvh;
   }
 }
-.info-content, .shown, .info-link{
+.info-content, .shown{
   position: relative;
   max-width: 430px;
   font-size: 15px;
@@ -466,9 +454,6 @@ img{
   line-height: 25px;
   font-family: 'roboto', sans-serif;
   color:white;
-}
-.info a{
-  top: 10px;
 }
 
 .info-content{
@@ -480,7 +465,7 @@ img{
   </style>
   <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
 </head>
-<body class="fade2">
+<body>
   <div class="top"><a href="../work" class="back">*</a>
       <div class="dropdown"><span class="dropd">&bull;&bull;&bull;</span>
                             <ul class="dropcontent">
@@ -489,9 +474,7 @@ img{
                               <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank" rel="noopener noreferrer">social</a></li>
                             </ul>
       </div>
-    <div class="window">
-
-    </div>
+    <div class="window"></div>
     <div class="title">
         <h1 class="info-title">Cascata<span class="year">2024</span></h1>
         <p class="info-subtitle">video with sound <br><span class="nr"> 5</span> min <span class="nr">(looped), 2880 </span> × <span class="nr"> 2160</span> px</p>
@@ -506,7 +489,6 @@ img{
       <img src="./img/cascata/cascata_5.webp" alt="" loading="lazy">
       <div class="info">
         <p class="info-content">A looped video where presence and absence pulse like water. Transparent figures gather and dissolve at the foot of a waterfall, their cameras raised to capture what cannot be held.</p>
-        <a class="info-link" href="https://youtu.be/ul3Wc2m21Hs" target="_blank" rel="noopener noreferrer">watch here</a>
         <p class="shown">shown at:<br>Re-Fest 2024, CultureHub</p>
       </div>
     </div>
@@ -553,6 +535,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+</script>
+<script>
+document.body.style.zoom = "1.0";
+
 </script>
 </body>
 </html>
