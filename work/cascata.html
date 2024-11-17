@@ -269,7 +269,7 @@ select {
 }
 .subc {
     bottom: 0;
-    right: 0;
+    right: 5px;
 }
 .subc span {
     font-family: sans-serif;
@@ -297,7 +297,7 @@ select {
 }
 .info-subtitle{
   font-size: 14px;
-  margin: 10px 15px 20px;
+  margin: 15px 15px 20px;
   line-height: 23px;
   font-family: 'roboto', sans-serif;
 }
@@ -338,6 +338,44 @@ select {
   height: 100%;
   font-family: 'Inter', sans-serif;
   color: white;
+}
+.image-wrapper{
+  position: absolute;
+  top:auto;
+  bottom:80px;
+  display: flex;
+  width: auto;
+  padding: 0 10px;
+  text-align: justify;
+}
+img{
+  display: inline-block;
+  max-width: 50dvh;
+  height: auto;
+  padding: 0 5px;
+}
+.info{
+  display: block;
+  max-width: 50dvh;
+  height:auto;
+  width: 430px;
+  max-width: 80dvw;
+  text-align: justify;
+  box-sizing:border-box;
+}
+.info-content, .shown{
+  position: relative;
+  max-width: 430px;
+  font-size: 15px;
+  padding: 20px 5px 0 10px;
+  line-height: 25px;
+  font-family: 'roboto', sans-serif;
+  color:white;
+}
+
+.info-content{
+  padding:0 5px 0 10px;
+  text-align: justify;
 }
 @media only screen and (max-width: 810px) {
   body {
@@ -495,52 +533,11 @@ body::after {
    width: max-content; /* This helps to enable horizontal scrolling for images */
  }
 }
-.image-wrapper{
-  position: absolute;
-  top:auto;
-  bottom:70px;
-  display: flex;
-  width: auto;
-  padding: 0 10px;
-  text-align: justify;
-}
-img{
-  display: inline-block;
-  max-width: 50dvh;
-  height: auto;
-  padding: 0 5px;
-}
-.info{
-  display: block;
-  max-width: 50dvh;
-  height:auto;
-  width: 430px;
-  max-width: 80dvw;
-  text-align: justify;
-  box-sizing:border-box;
-}
-
 @media only screen and (min-width: 133.33dvh){
   .info{
-    width: 100dvh;
+    width: calc(50dvw);
   }
 }
-.info-content, .shown{
-  position: relative;
-  max-width: 430px;
-  font-size: 15px;
-  padding: 20px 5px 0 10px;
-  line-height: 25px;
-  font-family: 'roboto', sans-serif;
-  color:white;
-}
-
-.info-content{
-  padding:0 5px 0 10px;
-  text-align: justify;
-}
-
-
   </style>
   <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
 </head>
@@ -556,7 +553,7 @@ img{
     <div class="window"></div>
     <div class="title">
         <h1 class="info-title">Cascata<span class="year">2024</span></h1>
-        <p class="info-subtitle">video with sound <br><span class="nr"> 5</span> min <span class="nr">(looped), 2880 </span> × <span class="nr"> 2160</span> px</p>
+        <p class="info-subtitle">single channel video<br><span class="nr"> 5</span> min <span class="nr">(looped), 2880 </span> × <span class="nr"> 2160</span> px</p>
     </div>
   </div>
   <div class="proj-wrapper">
