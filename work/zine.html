@@ -366,6 +366,7 @@
     max-height: 100%;
     width: auto;
     max-width: 100%;
+    cursor: pointer;
   }
   .arrow-container{
     display: flex;
@@ -382,7 +383,6 @@
     font-family: 'inter', sans-serif;
     color: white;
     cursor: pointer;
-
   }
   .left{
     display: none;
@@ -444,7 +444,7 @@ document.addEventListener("DOMContentLoaded",(function(){const e=document.queryS
 const image = document.getElementById("gallery-image");
 const arrowContainer = document.querySelector(".arrow-container");
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const images = [
         "img/zine/cover.webp",        // 1. Cover
         "img/zine/spread-1.webp",    // 2.
@@ -483,23 +483,49 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Event listeners for the arrows
-    prevButton.addEventListener("click", function() {
+    prevButton.addEventListener("click", function () {
         if (currentIndex > 0) {
             currentIndex--;
             updateGallery();
         }
     });
 
-    nextButton.addEventListener("click", function() {
+    nextButton.addEventListener("click", function () {
         if (currentIndex < images.length - 1) {
             currentIndex++;
             updateGallery();
         }
     });
 
+    // Add event listener for clicking on the image
+    imageElement.addEventListener("click", function (event) {
+        const rect = imageElement.getBoundingClientRect();
+        const clickX = event.clientX - rect.left; // X position relative to the image
+        const imageWidth = rect.width;
+
+        if (currentIndex === 0) {
+            // First image: always advance
+            currentIndex++;
+        } else if (currentIndex === images.length - 1) {
+            // Last image: always go back
+            currentIndex--;
+        } else {
+            // Middle images: divide into left/right zones
+            if (clickX < imageWidth / 2) {
+                // Left half: go back
+                currentIndex = Math.max(currentIndex - 1, 0);
+            } else {
+                // Right half: advance
+                currentIndex = Math.min(currentIndex + 1, images.length - 1);
+            }
+        }
+        updateGallery();
+    });
+
     // Initialize gallery
     updateGallery();
 });
+
 </script>
   </body>
 </html>
