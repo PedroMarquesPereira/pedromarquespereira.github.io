@@ -363,7 +363,15 @@ select {
  }
 
  .window{
+   z-index: 0;
    display: none;
+   transform: translate(0);
+   position: fixed;
+   width:100%;
+   max-width: 133.33dvh;
+   height: 100dvh;
+   pointer-events: none;
+   box-shadow: none;
  }
  body::before {
   content: '';
@@ -417,6 +425,7 @@ body::after {
    width: max-content; /* This helps to enable horizontal scrolling for images */
  }
 }
+
 .image-wrapper{
   position: absolute;
   top:auto;
@@ -441,6 +450,7 @@ img{
   text-align: justify;
   box-sizing:border-box;
 }
+
 @media only screen and (min-width: 133.33dvh){
   .info{
     width: 100dvh;
