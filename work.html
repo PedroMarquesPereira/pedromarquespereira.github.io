@@ -65,9 +65,21 @@
         .separator {
           font-size: 14px;
           font-family: 'Inter', sans-serif;
-
         }
-
+        .fade {
+            animation: 1s forwards fade;
+        }
+        .fade2 {
+            animation: 0.5s forwards fade;
+        }
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 100%;
+            }
+        }
     </style>
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
   </head>
@@ -106,7 +118,7 @@
 
               <a class="project" href="./work/dolago">do lago</a><span class="year">2021</span>
 
-              <a class="project" >seabed</a><span class="year">2021</span>
+              <a class="project">seabed</a><span class="year">2021</span>
 
               <a class="project" href="./work/montesclaros">montes claros</a><span class="year">2020</span>
 
