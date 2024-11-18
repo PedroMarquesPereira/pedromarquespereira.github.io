@@ -1,46 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Jexe25yZrqi_kKhEpiRcIGP85mnKzrqiQqF0oZaJYYA" />
-    <meta name="description" content="Pedro Marques Pereira - Montes Claros 2020">
-    <meta property="og:title" content="Pedro Marques Pereira - Montes Claros 2020" />
-    <meta property="og:description" content="Montes Claros 2020" />
-    <meta property="og:image" content="https://pedromarquespereira.github.io/work/img/montesclaros/montesclaros_1.webp" />
-    <meta property="og:url" content="https://pedromarquespereira.github.io" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Pedro Marques Pereira" />
-    <title>Pedro Marques Pereira</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Roboto&display=swap" as="style">
-    <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
-    <link rel="shortcut icon" type="image/png" href="../favicon.png">
-    <style>
-    .back,
-.btn,
-.dropd,
-.subc span {
-    text-shadow: 0 0 0.3125rem #000;
-}
-.back,
-.bottom,
-.dropdown,
-.subc,
-.sublang,
-.top,
-.video {
-    position: fixed;
-}
-.bottom,
-.top,
-.video {
-    left: 50%;
-    transform: translateX(-50%);
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cascata 2024">
+  <meta property="og:description" content="Cascata 2024" />
+  <meta property="og:image" content="https://pedromarquespereira.github.io/work/img/cascata/cascata_2.webp"/>
+  <meta property="og:type" content="website"/>
+  <title>Pedro Marques Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Roboto&display=swap" as="style">
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+  <link rel="shortcut icon" type="image/png" href="../favicon.png">
+  <style>
 a,
 body {
     margin: 0;
@@ -63,17 +39,9 @@ a,
 hr {
     padding: 0;
 }
-.dropdown,
-.top {
-    max-width: 100dvw;
-}
-.dropcontent,
-nav ul {
-    list-style: none;
-}
 .dropbtn,
 .dropd {
-    margin-right: 0.9375rem;
+    margin-right: 15px;
 }
 .back,
 .btn,
@@ -82,9 +50,9 @@ nav ul {
     font-family: 'inter', sans-serif;
     cursor: pointer;
 }
-.bottom,
-.top {
-    height: 3.75rem;
+
+.bottom{
+    height: 60px;
 }
 .back,
 .btn,
@@ -95,8 +63,6 @@ nav ul {
 }
 .back,
 .btn,
-.cinfo,
-.cinfo a,
 .dropbtn,
 .subc span,
 ins {
@@ -232,43 +198,61 @@ select {
     vertical-align: middle;
 }
 * {
-    margin: 0.3125rem;
-    padding: 0.625rem;
+    margin: 0.5vw;
+    padding: 1vw;
+}
+.back,
+.bottom,
+.dropdown,
+.subc,
+.sublang,
+.top,
+.title {
+    position: fixed;
+}
+.bottom,
+.top {
+    left: 50%;
+    transform: translateX(-50%);
 }
 .top {
     top: 0;
-    width: 133.33dvh;
+    width: 100%;
+    max-width: 133.33dvh;
 }
 .back {
     display: flex;
-    top: 1.25rem;
-    margin-left: 0.9375rem;
-    font-size: 1.875rem;
+    top: 20px;
+    margin-left: 15px;
+    font-size: 30px;
     z-index: 10;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .btn {
-    font-size: 1.4375rem;
-    padding-left: 0.9375rem;
+    font-size: 23px;
+    padding-left: 15px;
     font-weight: 400;
+    -webkit-tap-highlight-color: transparent;
 }
 .dropdown {
-    top: 1.875rem;
+    top: 30px;
     width: 100%;
     text-align: right;
     z-index: 9;
 }
 .dropd {
     display: inline;
-    font-size: 0.9375rem;
+    font-size: 15px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .subc,
 .sublang {
@@ -278,219 +262,333 @@ select {
 }
 .dropcontent.show {
     display: flex;
+
 }
 .bottom {
     bottom: 0;
     width: 100%;
     max-width: 133.33dvh;
-    outline: #000 0.1875rem;
+    outline: #000 3px;
 }
 .sublang {
-    padding-top: 0.5rem;
+    padding-top: 8px;
 }
 .subc {
     bottom: 0;
-    right: 0;
+    right: 5px;
 }
 .subc span {
     font-family: sans-serif;
-    font-size: 0.5rem;
+    font-size: 8px;
     font-weight: 300;
-    margin-right: 0.3125rem;
+    margin-right: 5px;
 }
-.proj-info {
-    position: fixed;
-    z-index: -1;
-    top: 4.0625rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 133.33vh;
-    max-width: 100dvw;
-    font-family: 'Inter', sans-serif;
-    color: white;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.title{
+  top: 60px;
+  font-family: 'Inter', sans-serif;
+  color: white;
+
 }
-.info-title {
-    font-size: 1.4375rem;
-    padding-left: 0.9375rem;
-    font-weight: 400;
+.info-title{
+  font-size: 21px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  padding-left: 15px;
 }
 .year {
-    font-size: 0.875rem;
-    margin: 0 0.3125rem;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin: 0 5px;
 }
-.info-subtitle {
-    font-size: 0.9375rem;
-    padding: 0.8125rem 0 0.9375rem 0.9375rem;
-    font-weight: 400;
+.info-subtitle{
+  font-size: 14px;
+  margin: 10px 15px 20px;
+  line-height: 23px;
+  font-family: 'roboto', sans-serif;
 }
-.nr {
-    font-size: 0.8125rem;
+.info-subtitle a{
+  color: white;
 }
-.info-content {
-    font-size: 0.8125rem;
-    padding: 0.625rem 0 1.125rem 0.9375rem;
-    line-height: 1.5625rem;
-    font-weight: 400;
+.nr{
+  font-size: 13px;
 }
-.info-link {
-    font-size: 0.8125rem;
-    padding: 0 0 0 0.9375rem;
-    font-weight: 400;
-    color: white;
+.window{
+  z-index: 0;
+  position: fixed;
+  left:50%;
+  transform: translateX(-50%);
+  width:100%;
+  max-width: 133.33dvh;
+  height: 100dvh;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0); /* Fully transparent */
+  outline: calc(100dvw - 133.33dvh) solid rgba(1, 0, 0, 1);
+  box-shadow:
+  /* Outer shadow */
+  0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+  0px 0px 5px #000,
+  0px 0px 7px #000, 0px 0px 9px #000, 0px 0px 11px #000, 0px 0px 13px #000,
+  0px 0px 15px #000,
+
+  /* Inset shadow */
+  inset 0px 0px 1px #000, inset 0px 0px 2px #000, inset 0px 0px 3px #000,
+  inset 0px 0px 4px #000, inset 0px 0px 5px #000,
+  inset 0px 0px 7px #000, inset 0px 0px 9px #000, inset 0px 0px 11px #000,
+  inset 0px 0px 13px #000, inset 0px 0px 15px #000;
 }
-a:hover {
-    text-shadow: 0 0 0.0625rem white,
-                 0 0 0.25rem white;
-    transition-duration: 0.5s;
+.proj-wrapper{
+  z-index: -1;
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  width:100%;
+  max-width: 133.33dvh;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  color: white;
 }
-.gallery-container {
-    z-index: 2;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100dvw;
-    display: flex;
-    top: 16.5625rem;
-    height: auto;
-    max-width: 100dvw;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.image-wrapper{
+  position: absolute;
+  top:auto;
+  bottom:80px;
+  display: flex;
+  width: auto;
+  padding: 0 10px;
+  text-align: justify;
 }
-.image-wrapper {
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.9375rem;
-    height: 34.375rem;
-    max-width: 100dvw;
+img{
+  display: inline-block;
+  max-width: calc(100dvw - 40px);
+  max-height: 40dvh;
+  height: auto;
+  padding: 0 5px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.gallery-image {
-    display: block;
-    max-height: 100%;
-    width: auto;
-    max-width: 100%;
+.info{
+  display: block;
+  max-width: 50dvh;
+  height:auto;
+  width: 320px;
+  max-width: 80dvw;
+  text-align: justify;
+  box-sizing:border-box;
 }
-.arrow-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-.nav-arrow {
-    display: inline;
-    margin: 0.625rem 0;
-    font-size: 1.25rem;
-    font-family: 'inter', sans-serif;
-    color: white;
-    cursor: pointer;
-}
-.left {
-    display: none;
-    margin-right: auto;
-}
-.right {
-    margin-left: auto;
-}
-.nav-arrow:hover {
-    text-shadow: 0 0 0.0625rem white,
-                 0 0 0.25rem white;
-    transition-duration: 0.5s;
+.info-content, .shown{
+  position: relative;
+  font-size: 15px;
+  padding: 20px 5px 0 10px;
+  line-height: 25px;
+  font-family: 'roboto', sans-serif;
+  color:white;
 }
 
-   </style>
-    <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
-  </head>
-  <body class="fade">
-    <div class="top">
-        <a href="../work" class="back">*</a>
-        <div class="dropdown">
-            <span class="dropd">&bull;&bull;&bull;</span>
-            <ul class="dropcontent">
-                <li><a href="../about" class="dropbtn">about</a></li>
-                <li><a href="../contact" target="_blank" rel="noopener noreferrer" class="dropbtn">contact</a></li>
-                <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank" rel="noopener noreferrer">social</a></li>
-            </ul>
-        </div>
-    </div>
+.info-content{
+  padding:0 5px 0 10px;
+  text-align: justify;
+}
+@media only screen and (max-width: 810px) {
+  body {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height:100%;/* Allow horizontal scroll for the body */
+ }
+ .back,
+ .bottom,
+ .dropdown,
+ .subc,
+ .sublang,
+ .top,
+ .title{
+     position: fixed;
+ }
+ .top,
+ .title,
+ .bottom{
+   left:0;
+   width: 100%;
+   transform: translate(0);
+ }
 
-    <div class="proj-info">
-      <h1 class="info-title">Montes Claros<span class="year">2020</span></h1>
-      <p class="info-subtitle">short-film <span class="nr">| 10</span> min<span class="nr"> 40</span> sec</p>
-      <p class="info-content">A forest walled by roads, refuge from the city.<br>A young man rests in Montes Claros.</p>
-      <a class="info-link" href="https://youtu.be/DLKIZmDx_yk" target="_blank" rel="noopener noreferrer">watch here</a>
+ .window{
+   display: none;
+ }
+ body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px; /* Left shadow width */
+  height: 100%;
+  box-shadow:
+  /* Outer shadow */
+  0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+  0px 0px 5px #000,
+  0px 0px 7px #000, 0px 0px 9px #000, 0px 0px 11px #000, 0px 0px 13px #000,
+  0px 0px 15px #000,
+
+  /* Inset shadow */
+  inset 0px 0px 1px #000, inset 0px 0px 2px #000, inset 0px 0px 3px #000,
+  inset 0px 0px 4px #000, inset 0px 0px 5px #000,
+  inset 0px 0px 6px #000, inset 0px 0px 6px #000, inset 0px 0px 8px #000,
+  inset 0px 0px 9px #000, inset 0px 0px 10px #000,inset 0px 0px 11px #000, inset 0px 0px 12px #000, inset 0px 0px 13px #000,
+  inset 0px 0px 14px #000, inset 0px 0px 15px #000,inset 0px 0px 16px #000;
+}
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px; /* Right shadow width */
+  height: 100%;
+  box-shadow:
+  /* Outer shadow */
+  0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+  0px 0px 5px #000,
+  0px 0px 7px #000, 0px 0px 9px #000, 0px 0px 11px #000, 0px 0px 13px #000,
+  0px 0px 15px #000,
+
+  /* Inset shadow */
+  inset 0px 0px 1px #000, inset 0px 0px 2px #000, inset 0px 0px 3px #000,
+  inset 0px 0px 4px #000, inset 0px 0px 5px #000,
+  inset 0px 0px 6px #000, inset 0px 0px 6px #000, inset 0px 0px 8px #000,
+  inset 0px 0px 9px #000, inset 0px 0px 10px #000,inset 0px 0px 11px #000, inset 0px 0px 12px #000, inset 0px 0px 13px #000,
+  inset 0px 0px 14px #000, inset 0px 0px 15px #000,inset 0px 0px 16px #000;
+}
+ .proj-wrapper {
+   width: 100%;
+   overflow-x: auto; /* Allow horizontal scroll on this div */
+ }
+
+ .image-wrapper {
+   display: flex;
+   width: max-content; /* This helps to enable horizontal scrolling for images */
+ }
+}
+@media only screen and (pointer: coarse)  {
+  body {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height:100%;/* Allow horizontal scroll for the body */
+ }
+ .back,
+ .bottom,
+ .dropdown,
+ .subc,
+ .sublang,
+ .top,
+ .title{
+     position: fixed;
+ }
+ .top,
+ .title,
+ .bottom{
+   left:0;
+   width: 100%;
+   transform: translate(0);
+ }
+
+ .window{
+   display: none;
+ }
+ body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px; /* Left shadow width */
+  height: 100%;
+  box-shadow:
+  /* Outer shadow */
+  0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+  0px 0px 5px #000,
+  0px 0px 7px #000, 0px 0px 9px #000, 0px 0px 11px #000, 0px 0px 13px #000,
+  0px 0px 15px #000,
+
+  /* Inset shadow */
+  inset 0px 0px 1px #000, inset 0px 0px 2px #000, inset 0px 0px 3px #000,
+  inset 0px 0px 4px #000, inset 0px 0px 5px #000,
+  inset 0px 0px 6px #000, inset 0px 0px 6px #000, inset 0px 0px 8px #000,
+  inset 0px 0px 9px #000, inset 0px 0px 10px #000,inset 0px 0px 11px #000, inset 0px 0px 12px #000, inset 0px 0px 13px #000,
+  inset 0px 0px 14px #000, inset 0px 0px 15px #000,inset 0px 0px 16px #000;
+}
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px; /* Right shadow width */
+  height: 100%;
+  box-shadow:
+  /* Outer shadow */
+  0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+  0px 0px 5px #000,
+  0px 0px 7px #000, 0px 0px 9px #000, 0px 0px 11px #000, 0px 0px 13px #000,
+  0px 0px 15px #000,
+
+  /* Inset shadow */
+  inset 0px 0px 1px #000, inset 0px 0px 2px #000, inset 0px 0px 3px #000,
+  inset 0px 0px 4px #000, inset 0px 0px 5px #000,
+  inset 0px 0px 6px #000, inset 0px 0px 6px #000, inset 0px 0px 8px #000,
+  inset 0px 0px 9px #000, inset 0px 0px 10px #000,inset 0px 0px 11px #000, inset 0px 0px 12px #000, inset 0px 0px 13px #000,
+  inset 0px 0px 14px #000, inset 0px 0px 15px #000,inset 0px 0px 16px #000;
+}
+ .proj-wrapper {
+   width: 100%;
+   overflow-x: auto; /* Allow horizontal scroll on this div */
+ }
+
+ .image-wrapper {
+   display: flex;
+   width: max-content; /* This helps to enable horizontal scrolling for images */
+ }
+}
+@media only screen and (min-width: 133.33dvh){
+  .info{
+    width: calc(50dvw);
+  }
+}
+  </style>
+  <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
+</head>
+<body>
+  <div class="top"><a href="../work" class="back">*</a>
+      <div class="dropdown"><span class="dropd">&bull;&bull;&bull;</span>
+                            <ul class="dropcontent">
+                              <li><a href="../about" class="dropbtn">about</a></li>
+                              <li><a href="../contact" class="dropbtn">contact</a></li>
+                              <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank" rel="noopener noreferrer">social</a></li>
+                            </ul>
+      </div>
+    <div class="window"></div>
+    <div class="title">
+        <h1 class="info-title">Montes Claros<span class="year">2020</span></h1>
+        <p class="info-subtitle">short film  <a href="https://youtu.be/DLKIZmDx_yk" target="_blank" rel="noopener noreferrer"> watch here</a> <br><span class="nr"> 10</span> min<span class="nr"> 40</span> sec</p>
     </div>
-    <div class="gallery-container">
-      <div class="image-wrapper">
-        <img id="gallery-image" class="gallery-image" src="img/montesclaros/montesclaros_1.webp" alt="MontesClaros_Still_1">
-        <div class="arrow-container">
-            <div id="prev-button" class="nav-arrow left">&#x2190;</div>
-            <div id="next-button" class="nav-arrow right">&#x2192;</div>
-        </div>
+  </div>
+  <div class="proj-wrapper">
+    <div class="image-wrapper">
+      <img src="./img/montesclaros/montesclaros_1.webp" alt="">
+      <img src="./img/montesclaros/montesclaros_2.webp" alt="" loading="lazy">
+      <img src="./img/montesclaros/montesclaros_3.webp" alt="" loading="lazy">
+      <img src="./img/montesclaros/montesclaros_4.webp" alt="" loading="lazy">
+      <div class="info">
+        <p class="info-content">A forest walled by roads, refuge from the city.<br>A young man rests in Montes Claros.</p>
+        <p class="shown">shown at:<br>Passagens VII 2020, Cosmos Campolide</p>
       </div>
     </div>
-
-    <div class="bottom">
-        <div class="sublang"><a href="./contact/pt" lang="pt" class="btn">pt</a></div>
-        <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
-    </div>
-    <script defer>
+  </div>
+  <div class="bottom">
+      <div class="sublang"><a href="./about/pt" lang="pt" class="btn">pt</a></div>
+      <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
+  </div>
+  <script defer>
 document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropd"),t=document.querySelector(".dropcontent");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));
-const image = document.getElementById("gallery-image");
-const arrowContainer = document.querySelector(".arrow-container");
-
-document.addEventListener("DOMContentLoaded", function() {
-    const images = [
-      "img/montesclaros/montesclaros_1.webp",
-      "img/montesclaros/montesclaros_2.webp",
-      "img/montesclaros/montesclaros_3.webp",
-      "img/montesclaros/montesclaros_4.webp",
-    ];
-
-    let currentIndex = 0; // Start at the first image (cover)
-
-    const imageElement = document.getElementById("gallery-image");
-    const prevButton = document.getElementById("prev-button");
-    const nextButton = document.getElementById("next-button");
-
-    function updateGallery() {
-      // Update the image source
-      imageElement.src = images[currentIndex];
-
-      // Show/hide arrows based on current index
-      prevButton.style.display = currentIndex === 0 ? 'none' : 'inline';
-      nextButton.style.display = currentIndex === images.length - 1 ? 'none' : 'inline';
-    }
-
-    // Event listeners for arrows
-    nextButton.addEventListener("click", function() {
-      if (currentIndex < images.length - 1) {
-        currentIndex++;
-        updateGallery();
-      }
-    });
-
-    prevButton.addEventListener("click", function() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateGallery();
-      }
-    });
-
-    // Initialize the gallery with the first image
-    updateGallery();
-  });
 </script>
-  </body>
+</body>
 </html>
