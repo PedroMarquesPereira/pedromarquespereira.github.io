@@ -17,6 +17,55 @@
   <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
   <link rel="shortcut icon" type="image/png" href="../favicon.png">
   <style>
+  .fadetowhite {
+    animation: 1s forwards fadetowhite;
+}
+  .fadetoblack {
+    animation: 1s forwards fadetoblack;
+}
+@keyframes fadetowhite {
+    0% {
+        background-color: #000;
+        outline-color: #000;
+        box-shadow:
+        /* Outer shadow */
+        0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+        0px 0px 5px #000,
+        0px 0px 7px #000, 0px 0px 9px #000, 0px 0px 11px #000, 0px 0px 13px #000,
+        0px 0px 15px #000,
+
+        /* Inset shadow */
+        inset 0px 0px 1px #000, inset 0px 0px 2px #000, inset 0px 0px 3px #000,
+        inset 0px 0px 4px #000, inset 0px 0px 5px #000,
+        inset 0px 0px 7px #000, inset 0px 0px 9px #000, inset 0px 0px 11px #000,
+        inset 0px 0px 13px #000, inset 0px 0px 15px #000;
+
+    }
+    100% {
+        background-color: #fff;
+        outline-color: #fff;
+        box-shadow:
+        /* Outer shadow */
+        0px 0px 1px #fff, 0px 0px 2px #fff, 0px 0px 3px #fff, 0px 0px 4px #fff,
+        0px 0px 5px #fff,
+        0px 0px 7px #fff, 0px 0px 9px #fff, 0px 0px 11px #fff, 0px 0px 13px #fff,
+        0px 0px 15px #fff,
+
+        /* Inset shadow */
+        inset 0px 0px 1px #fff, inset 0px 0px 2px #fff, inset 0px 0px 3px #fff,
+        inset 0px 0px 4px #fff, inset 0px 0px 5px #fff,
+        inset 0px 0px 7px #fff, inset 0px 0px 9px #fff, inset 0px 0px 11px #fff,
+        inset 0px 0px 13px #fff, inset 0px 0px 15px #fff;
+    }
+}
+@keyframes fadetoblack {
+    0% {
+        color: #fff;
+    }
+    100% {
+        color: #000;
+    }
+}
 a,
 body {
     margin: 0;
@@ -550,8 +599,8 @@ body::after {
   </style>
   <link rel="stylesheet" href="./style_white.css" media="print" onload="this.media='all'">
 </head>
-<body>
-  <div class="top"><a href="../work" class="back">*</a>
+<body class="fadetowhite">
+  <div class="top fadetoblack"><a href="../work" class="back">*</a>
       <div class="dropdown"><span class="dropd">&bull;&bull;&bull;</span>
                             <ul class="dropcontent">
                               <li><a href="../about" class="dropbtn">about</a></li>
@@ -559,8 +608,8 @@ body::after {
                               <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank" rel="noopener noreferrer">social</a></li>
                             </ul>
       </div>
-    <div class="window"></div>
-    <div class="title">
+    <div class="window fadetowhite"></div>
+    <div class="title fadetoblack">
         <h1 class="info-title">Dark Day<span class="year">ongoing</span></h1>
         <p class="info-subtitle">photography series</p>
     </div>
@@ -583,7 +632,7 @@ body::after {
     </div>
 
   </div>
-  <div class="bottom">
+  <div class="bottom fadetoblack">
       <div class="sublang"><a href="./about/pt" lang="pt" class="btn">pt</a></div>
       <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
   </div>
