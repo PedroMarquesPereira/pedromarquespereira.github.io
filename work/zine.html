@@ -330,6 +330,9 @@
 
   }
   .info-content{
+    margin-top: 10px;
+  }
+  .info-content,.info-content2{
     max-width: 430px;
     font-size: 14px;
     padding: 0 15px;
@@ -427,14 +430,13 @@
         </div>
         <div class="title">
             <h1 class="info-title">Zine<span class="year">2022</span></h1>
-            <p class="info-subtitle">Passagens <span class="nr">VII</span></p>
             <p class="info-content"><span class="nr">14,8</span> x <span class="nr">21</span> cm, <span class="nr">18</span> pages</p>
-            <p class="info-content"><span class="nr">56</span> copies (sold out)</p>
+            <p class="info-content2"><span class="nr">56</span> copies (sold out)</p>
         </div>
     </div>
     <div class="gallery-container">
       <div class="image-wrapper">
-        <img id="gallery-image" class="gallery-image" src="img/zine/cover.webp" alt="Zine Cover">
+        <img id="gallery-image" class="gallery-image" src="img/zine/zine_cover.webp" alt="Zine Cover">
         <div class="arrow-container">
             <div id="prev-button" class="nav-arrow left"><span>&#8592;</span></div>
             <div id="next-button" class="nav-arrow right"><span>&#8594;</span></div>
@@ -443,7 +445,7 @@
     </div>
 
     <div class="bottom">
-        <div class="sublang"><a href="./contact/pt" lang="pt" class="btn">pt</a></div>
+        <div class="sublang"><a href="./zine/pt" lang="pt" class="btn">pt</a></div>
         <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
     </div>
     <script defer>
@@ -453,17 +455,17 @@ const arrowContainer = document.querySelector(".arrow-container");
 
 document.addEventListener("DOMContentLoaded", function () {
     const images = [
-        "img/zine/cover.webp",        // 1. Cover
-        "img/zine/spread-1.webp",    // 2.
-        "img/zine/spread-2.webp",    // 3.
-        "img/zine/spread-3.webp",    // 4.
-        "img/zine/spread-4.webp",    // 5.
-        "img/zine/spread-5.webp",    // 6.
-        "img/zine/spread-6.webp",    // 7.
-        "img/zine/spread-7.webp",    // 8.
-        "img/zine/spread-8.webp",    // 9.
-        "img/zine/spread-9.webp",    // 10.
-        "img/zine/cover-back.webp"   // 11. Back Cover
+        "img/zine/zine_cover.webp",        // 1. Cover
+        "img/zine/zine_1.webp",    // 2.
+        "img/zine/zine_2.webp",    // 3.
+        "img/zine/zine_3.webp",    // 4.
+        "img/zine/zine_4.webp",    // 5.
+        "img/zine/zine_5.webp",    // 6.
+        "img/zine/zine_6.webp",    // 7.
+        "img/zine/zine_7.webp",    // 8.
+        "img/zine/zine_8.webp",    // 9.
+        "img/zine/zine_9.webp",    // 10.
+        "img/zine/zine_back.webp"   // 11. Back Cover
     ];
 
     let currentIndex = 0; // Start at the first image (cover)
