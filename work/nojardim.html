@@ -364,8 +364,8 @@ select {
 }
 img{
   display: inline-block;
-  max-width: calc(100dvw - 40px);
-  max-height: 40dvh;
+  max-width: calc(100dvw - 30px);
+  max-height: calc(100dvh - 400px);
   height: auto;
   padding: 0 5px;
   -webkit-touch-callout: none;
@@ -377,14 +377,13 @@ img{
 }
 .info{
   display: block;
-  max-width: 50dvh;
+  width: 457px;
+  max-width: calc(100dvw - 30px);
   height:auto;
-  width: 320px;
-  max-width: 80dvw;
   text-align: justify;
   box-sizing:border-box;
 }
-.info-content, .shown{
+.info-content{
   position: relative;
   font-size: 15px;
   padding: 20px 5px 0 10px;
@@ -573,7 +572,7 @@ body::after {
     <div class="window"></div>
     <div class="title">
         <h1 class="info-title">No Jardim<span class="year">2020</span></h1>
-        <p class="info-subtitle">short film  <a href="https://youtu.be/raPMfREe_-8" target="_blank" rel="noopener noreferrer"> watch here</a></p>
+        <p class="info-subtitle">short film &nbsp;&nbsp;<a href="https://youtu.be/raPMfREe_-8" target="_blank" rel="noopener noreferrer">watch here</a></p>
         <p class="info-subtitle2"><span class="nr"> 12</span> min<span class="nr"> 30</span> sec</p>
     </div>
   </div>
@@ -584,8 +583,10 @@ body::after {
       <img src="./img/nojardim/nojardim_3.webp" alt="" loading="lazy">
       <img src="./img/nojardim/nojardim_4.webp" alt="" loading="lazy">
       <div class="info">
-        <p class="info-content">A forest walled by roads, refuge from the city.<br>A young man rests in Montes Claros.</p>
-        <p class="shown">shown at:<br>Passagens VII 2020, Cosmos Campolide</p>
+        <p class="info-content">An affection for this space, its emptiness and stillness.</p>
+        <p class="info-content">A ritual of gathering, sharing, walking, and seeing.</p>
+        <p class="info-content">A portrait of a living, breathing place.</p>
+
       </div>
     </div>
   </div>
