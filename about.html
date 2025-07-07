@@ -3,69 +3,318 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pedro Marques Pereira - about the artist">
+  <meta name="google-site-verification" content="Jexe25yZrqi_kKhEpiRcIGP85mnKzrqiQqF0oZaJYYA" />
+  <meta name="description" content="Lens-based artist working with photography and video">
+  <meta property="og:description" content="Lens-based artist working with photography and video" />
+  <meta property="og:title" content="About - Pedro Marques Pereira" />
+  <meta property="og:url" content="https://pedromarquespereira.github.io/about" />
+  <meta property="og:image" content="https://pedromarquespereira.github.io/margarida.webp"/>
+  <meta property="og:type" content="website"/>
   <title>Pedro Marques Pereira</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Roboto&display=swap" rel="stylesheet">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Roboto&display=swap" as="style">
   <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
   <link rel="shortcut icon" type="image/png" href="favicon.png">
   <style>
-  .back,.btn{font-size:23px;-webkit-tap-highlight-color: transparent;}.bio,.bottom,.top{left:50%;transform:translateX(-50%)}.profile,.stat{box-sizing:border-box}.cv li,.dropcontent,nav ul{list-style:none}.back,.btn,.dropd,.subc span{text-shadow:0 0 5px #000}.back,.bottom,.dropdown,.subc,.sublang,.top{position:fixed}a,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,hr,menu,nav,section{display:block}a,hr{padding:0}.dropdown,.top{max-width:100dvw}.bio,.bottom,.top{max-width:133.33dvh;width:100%}.dropbtn,.dropd{margin-right:15px}.back,.btn,.dropbtn,.dropd{font-family:inter,sans-serif;cursor:pointer}.btncv,small{font-family:'Inter',sans-serif}.bottom,.top{height:60px;background-color:#000;box-shadow:0 0 1px #000,0 0 3px #000,0 0 7px #000,0 0 10px #000,0 0 12px #000,0 0 15px #000,0 0 18px #000}.back,.btn,.dropbtn,.dropd,.subc span{color:#fff}.back,.btn,.cinfo,.cinfo a,.dropbtn,.subc span,ins{text-decoration:none}abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:0 0}ins,mark{background-color:#ff9;color:#000}body{line-height:1;background-color:#000;height:100%}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}a{font-size:100%;vertical-align:baseline;background:0 0}mark{font-style:italic;font-weight:700}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{height:1px;border:0;border-top:1px solid #ccc;margin:1em 0}input,select{vertical-align:middle}*{margin:.5vw;padding:1vw}.top{top:0}.back{display:flex;top:20px;margin-left:15px;z-index:10;-webkit-user-select:none;-ms-user-select:none;user-select:none}.btn{padding-left:15px;font-weight:400}.dropdown{top:30px;width:100%;text-align:right;z-index:9}.dropd{display:inline;font-size:15px;-webkit-tap-highlight-color: transparent;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.subc,.sublang{display:flex;cursor:default;user-select:none}.dropcontent.show{display:flex}.bottom{bottom:0;outline:#000 3px}.sublang{padding-top:8px}.subc{bottom:0;right:0}.subc span{font-family:sans-serif;font-size:8px;font-weight:300;margin-right:5px}.btncv,.cv li,.profile span,.stat p,small{font-weight:400;color:#fff}.bio{z-index:-1;position:absolute;top:68px;padding-bottom:80px}.profile{width:330px;max-width:100dvw;padding:0 15px}.profile img{width:100%}.profile span{display:flex;margin-top:5px;margin-bottom:20px;font-size:10px;font-family:Inter,sans-serif}.stat{width:900px;max-width:100%;text-align:justify}.cv li,.stat p{line-height:25px;font-family:Roboto,sans-serif;color:#fff}.stat p{margin:10px 15px;font-size:15px;font-family:roboto,sans-serif}.btncv{margin:25px 0 15px 15px;font-size:18px}small{font-size:13px}.cv li{margin:0 15px;font-size:14px}
+  /* === CSS RESET === */
+  html,
+  body,
+  section,
+  main,
+  nav,
+  footer,
+  div,
+  span,
+  h1,
+  p,
+  a,
+  img,
+  ul,
+  li
+  {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+  body {
+    background-color: #000;
+    height: 100%;
+    line-height: 1;
+  }
+  /*FADE*/
+  .fade {
+    opacity: 0;
+    animation: fadein 0.3s ease-in forwards;
+  }
+  @keyframes fadein {
+    to {
+      opacity: 1;
+      }
+    }
+  /* === TYPOGRAPHY === */
+  .back,
+  .btn,
+  .dropd {
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    font-size: 23px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .dropd{
+    display: block;
+    margin-top: 9px;
+    font-size: 15px;
+    color: white;
+  }
+  .top,
+  .bottom {
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .top,
+  .bottom {
+    position: fixed;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60px;
+    background-color: #000;
+    box-shadow: 0 0 1px #000, 0 0 3px #000, 0 0 7px #000, 0 0 10px #000;  }
+  .top {
+    top: 0;
+    max-width: 100dvw;
+  }
+  .bottom {
+    bottom: 0;
+    outline: #000 3px;
+  }
+  /* === MENU COMPONENTS === */
+  .back,
+  .menu{
+    position: fixed;
+    display: flex;
+    top: 20px;
+    z-index: 1;
+  }
+  .back {
+    left: 15px;
+    right:auto;
+  }
+  .menu {
+    right:15px;
+    left: auto;
+  }
+  .dropdown {
+  display: none;
+  text-align: right;
+  }
+  .dropd {
+  cursor: pointer;
+  }
+  .btn {
+      text-shadow: 0 0 1px #000, 0 0 3px #000, 0 0 5px #000;
+  }
+  /* DROPvsHORIZONTAL */
+  @media screen and (max-width: 659px) {
+  .dropdown {
+    display: block;
+  }
+  .h-menu {
+    display: none;
+  }
+  }
+  @media screen and (min-width: 660px) {
+  .dropdown {
+    display: none;
+  }
+  .h-menu {
+    display: flex;
+    gap: 15px;
+  }
+  }
+  .c,
+  .lang{
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    top:auto;
+  }
+  .c{
+    bottom:3px;
+    left: auto;
+    right: 5px;
+  }
+  .c span{
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 8px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .lang {
+    bottom: 30px;
+    left: 15px;
+  }
+/*_____PAGE CONTENT____*/
+  h1{
+    font-weight: normal;
+  }
+  .bio {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+    top: 58px;
+    padding-bottom: 80px;
+    width: calc(100dvw - 30px);
+    margin: 0 15px;
+  }
+  .img-cont,
+  .img-cont img,
+  .stat,
+  .cv {
+    position: relative;
+    max-width: 100%;
+  }
+  .stat,
+  .cv{
+    width:900px;
+  }
+  .img-cont{
+    display: flex;
+    margin: 10px 0px;
+    gap: 10px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    flex-direction: column;
+  }
+  .img-cont img {
+    width: 400px;
+  }
+  .img-cont span {
+    display: flex;
+    font-size: 10px;
+  }
+  .stat {
+    margin: 20px 0;
+    text-align: justify;
+  }
+  .btncv {
+    margin: 10px 0 5px 0;
+    font-size: 17px;
+    font-weight: normal;
+  }
+  .cv li {
+    list-style: none;
+    line-height: 40px;
+  }
+  .img-cont,
+  .stat ,
+  .cv {
+    font-family: 'Inter',sans-serif;
+    color:#fff;
+  }
+  .stat p,
+  .btncv{
+    line-height: 28px;
+    letter-spacing: 0.3px;
+  }
+  .stat p,
+  .cv li{
+    font-size: 14px;
+  }
+  .cv a{
+    text-decoration: underline;
+    color: #93ddff;
+  }
+  small {
+    font-size: 12px;
+  }
+  /*____RESIZE_____*/
+  @media screen and (max-width: 1200px){
+    .img-cont,
+    .stat,
+    .cv{
+      width:100%;
+    }
+  }
+  @media screen and (min-width: 900px){
+    .img-cont img {
+      width: 438px;
+    }
+  }
   </style>
   <link rel="stylesheet" href="./style.css" media="print" onload="this.media='all'">
 </head>
-<body class="fade2">
-  <div class="top"><a href="./" class="back">Pedro Marques Pereira</a>
+<body class="fade">
+  <header class="top">
+    <a href="./" class="back"><h1>Pedro Marques Pereira</h1></a>
+    <nav class="menu">
       <div class="dropdown"><span class="dropd">&bull;&bull;&bull;</span>
                             <ul class="dropcontent">
-                              <li><a href="./work" class="dropbtn">work</a></li>
-                              <li><a href="./contact" class="dropbtn">contact</a></li>
-                              <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="dropbtn" target="_blank" rel="noopener noreferrer">social</a></li>
+                              <li><a href="./work" class="btn">work</a></li>
+                              <li><a href="./contact" class="btn">contact</a></li>
+                              <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="btn" target="_blank" rel="noopener noreferrer">social</a></li>
                             </ul>
       </div>
-  </div>
-  <div class="bio">
-    <div class="profile"><img src="margarida.webp" alt=""><span><i>Margarida</i>&nbsp; 2024</span></div>
-    <div class="stat">
-        <p>Pedro Marques Pereira (b. 1996, Portugal) is a lens-based artist exploring the mediums of photography and video. His practice shifts between the still and the moving image, questioning their relationship while focusing on their potentiality, especially in relation to place and perception.</p>
-        <p>He is currently based in Lisbon, where he studied and primarily worked in film productions as an AC and gaffer. His work has been featured in festivals, exhibitions, and private collections. In 2022, he completed a two-month residency at Studio Kura in Japan. Presently, he focuses on developing his own projects and collaborating on cultural events.</p>
-    </div>
-    <div class="cv">
-      <div><h3 class="btncv">Education</h3>
-              <ul>
-                <li>2020&nbsp;-&nbsp;2021 Postgraduate in Visual Studies: Photography and (Post) Cinema, NOVA FCSH, Lisbon PT</li>
-                <li>2014&nbsp;-&nbsp;2017 BA Cinema, ESTC, Lisbon PT</li>
-              </ul>
+      <div class="h-menu">
+        <a href="./work" class="btn">work</a>
+        <a href="./contact" class="btn">contact</a>
+        <a href="https://www.instagram.com/pedro.marques.pereira/" class="btn" target="_blank" rel="noopener noreferrer">social</a>
       </div>
-      <div><h3 class="btncv">Exhibitions <small>(group and solo)</small></h3>
-              <ul>
-                <li>2025&nbsp; <i>Ebb</i> (segundas na z) at Galeria Zé dos Bois, Lisbon PT</li>
-                <li>2024&nbsp; <i>Re-Fest 2024</i> by CultureHub, Virtual</li>
-                <li>2022&nbsp; <i>光景 (Kōkei)</i> at Studio Kura, Itoshima JP</li>
-                <li>2022&nbsp; <i>Passagens VII</i> at Cosmos Campolide, Lisbon PT</li>
-                <li>2019&nbsp; <i>International Photography Exhibition</i> at Downtown Arts Collective, Orlando USA</li>
-              </ul>
-      </div>
-      <div><h3 class="btncv">Publications</h3>
-              <ul>
-                <li>2024&nbsp; CAHIER d’images - V2, Luxembourg LX</li>
-                <li>2022&nbsp; <i>Passagens VII</i>, Lisbon PT</li>
-              </ul>
-      </div>
-      <div><h3 class="btncv">Residencies</h3>
-              <ul>
-                <li>2022&nbsp; Studio Kura, Itoshima JP</li>
-              </ul>
-      </div>
-    </div>
-  </div>
-  <div class="bottom">
-      <div class="sublang"><a href="./about/pt" lang="pt" class="btn">pt</a></div>
-      <div class="subc"><span>© Pedro Marques Pereira 2024</span></div>
-  </div>
+    </nav>
+  </header>
+  <main class="bio">
+      <section class="img-cont">
+        <img src="margarida.webp" alt="Margarida, 2024">
+        <span><i>Margarida</i>&nbsp; 2024</span>
+      </section>
+      <section class="stat">
+        <p>Pedro Marques Pereira (b. 1996, Portugal) is a lens-based artist, working with photography and video. With a degree in cinema and a postgraduate degree in visual studies, he has worked in film and audiovisual productions as a camera assistant and electrician. He has also completed an artist residency in Japan. His practice seeks a fixed and moving image as a central tool in the construction of our ideas of place, memory, and perspective. Supported by a sound dimension, his work proposes a sensitive approach to space and the experience that is constructed from it.</p>
+      </section>
+      <section class="cv">
+        <div><h3 class="btncv">Education</h3>
+                <ul>
+                  <li>2020&nbsp;-&nbsp;2021&nbsp; Postgraduate in Visual Studies: Photography and (Post) Cinema, NOVA FCSH, Lisbon PT</li>
+                  <li>2014&nbsp;-&nbsp;2017&nbsp;&nbsp; BA Cinema, ESTC, Lisbon PT</li>
+                </ul>
+        </div>
+        <div><h3 class="btncv">Exhibitions <small>(group and solo)</small></h3>
+                <ul>
+                  <li>2025&nbsp; <a href="https://zedosbois.org/en/programa/ebb-segundas-na-z/" target="_blank"><i>Ebb</i> (segundas na z) at Galeria Zé dos Bois, Lisbon PT</a></li>
+                  <li>2024&nbsp; <a href="https://www.culturehub.org/re-fest-2024" target="_blank"><i>Re-Fest 2024</i> by CultureHub, Virtual</a></li>
+                  <li>2022&nbsp; <i>光景 (Kōkei)</i> at Studio Kura, Itoshima JP</li>
+                  <li>2022&nbsp; <i>Passagens VII</i> at Cosmos Campolide, Lisbon PT</li>
+                  <li>2019&nbsp; <i>International Photography Exhibition</i> at Downtown Arts Collective, Orlando USA</li>
+                </ul>
+        </div>
+        <div><h3 class="btncv">Publications</h3>
+                <ul>
+                  <li>2024&nbsp; <a href="https://casino-luxembourg.lu/en/agenda/cahier-dimages-v2" target="_blank">CAHIER d’images - V2, Luxembourg LX</a></li>
+                  <li>2022&nbsp; <a href="https://pedromarquespereira.github.io/work/zine" target="_blank"><i>Passagens VII</i>, Lisbon PT</a></li>
+                </ul>
+        </div>
+        <div><h3 class="btncv">Residencies</h3>
+                <ul>
+                  <li>2022&nbsp; <a href="https://studiokura.info/en/pedro-marques-pereira/" target="_blank">Studio Kura, Itoshima JP</a></li>
+                </ul>
+        </div>
+      </section>
+  </main>
+  <footer class="bottom">
+      <div class="lang"><a href="./about/pt" lang="pt" class="btn">pt</a></div>
+      <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
+  </footer>
   <script defer>
 document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropd"),t=document.querySelector(".dropcontent");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));
 </script>
