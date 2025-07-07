@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ebb 2025">
+  <meta property="og:description" content="Ebb 2025" />
+  <meta property="og:title" content="Pedro Marques Pereira - Ebb 2025" />
+  <meta property="og:url" content="https://pedromarquespereira.github.io/work/ebb" />
+  <meta property="og:image" content="https://pedromarquespereira.github.io/work/img/ebb/ebb_1.webp"/>
+  <meta property="og:type" content="website"/>
+  <title>Pedro Marques Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+  <link rel="shortcut icon" type="image/png" href="../favicon.png">
+  <style>
+  /* === CSS RESET === */
+  html,
+  body,
+  div,
+  span,
+  h1,
+  p,
+  a,
+  img,
+  ul,
+  li
+  {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+  body {
+    background-color: #000;
+    height: 100%;
+    line-height: 1;
+  }
+  /*FADE*/
+  .fade {
+    opacity: 0;
+    animation: fadein 0.3s ease-in forwards;
+  }
+  @keyframes fadein {
+    to {
+      opacity: 1;
+      }
+    }
+  /* === TYPOGRAPHY === */
+  .back,
+  .btn,
+  .dropd {
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    font-size: 23px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .dropd{
+    display: block;
+    margin-top: 9px;
+    font-size: 15px;
+    color: white;
+  }
+  .top,
+  .bottom {
+    position: fixed;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60px;
+    background-color: #000;
+    box-shadow: 0 0 1px #000, 0 0 3px #000, 0 0 7px #000, 0 0 10px #000;
+  }
+  .top {
+    top: 0;
+    max-width: 100dvw;
+  }
+  .bottom {
+    bottom: 0;
+    outline: #000 3px;
+  }
+  /* === COMPONENTS === */
+  .back,
+  .menu{
+    position: fixed;
+    display: flex;
+    top: 20px;
+    z-index: 1;
+  }
+  .back {
+    left: 15px;
+    right:auto;
+    font-size: 30px;
+  }
+  .menu {
+    right:15px;
+    left: auto;
+  }
+  .dropdown {
+  display: none;
+  text-align: right;
+  }
+  .dropd {
+  cursor: pointer;
+  }
+  /* DROPvsHORIZONTAL */
+  @media screen and (max-width: 500px) {
+  .dropdown {
+    display: block;
+  }
+  .h-menu {
+    display: none;
+  }
+  }
+  @media screen and (min-width: 501px) {
+  .dropdown {
+    display: none;
+  }
+  .h-menu {
+    display: flex;
+    gap: 15px;
+  }
+  }
+  .c,
+  .lang{
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    top:auto;
+  }
+  .c{
+    bottom:3px;
+    left: auto;
+    right: 5px;
+  }
+  .c span{
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 8px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .lang {
+    bottom: 30px;
+    left: 15px;
+  }
+  /*--------------Project---------------*/
+  .title{
+    display: flex;
+    position: fixed;
+    top:20px;
+    left:40px;
+    color:#fff;
+    align-items: baseline;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+  }
+  .title h1{
+    font-size: 23px;
+    font-weight: 300;
+  }
+  .title span{
+    font-size: 15px;
+    margin-left: 4px;
+  }
+  .proj{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+    top:58px;
+    width: calc(100dvw - 30px);
+    margin: 0 15px;
+    position: absolute;
+  }
+  .img-cont,
+  .description,
+  .info{
+    position: relative;
+    width:725px;
+    max-width: 100%;
+  }
+  .img-cont{
+    display: flex;
+    margin: 10px 0px;
+    gap: 10px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    flex-direction: column;
+  }
+  .img-cont img {
+    width: 100%;
+    cursor: pointer;
+  }
+  .img-cont span{
+    display: flex;
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    margin-left: auto;
+  }
+  .info{
+    text-align: left;
+  }
+  .description{
+    margin-top: 15px;
+    text-align: justify;
+  }
+  @media screen and (max-width: 1024px){
+    .img-cont,
+    .info,
+    .description{
+      width:100%;
+    }
+  }
+  @media screen and (max-width: 1024px) and (max-height: 1050px){
+    .img-cont,
+    .info,
+    .description{
+      width:725px;
+    }
+  }
+  @media screen and (min-width: 1025px) and (min-height: 1201px) {
+    .img-cont,
+    .info,
+    .description{
+      width:1000px;
+    }
+  }
+
+  .description p,
+  .info p{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #fff;
+    line-height: 28px;
+  }
+  .bottom-gap{
+    position: relative;
+    display: block;
+    width:100%;
+    height: 65px;
+  }
+  /*___________gallery---------*/
+  .gallery{
+    z-index: 1;
+    display: none;
+    position: fixed;
+    width:calc(100dvw - 30px);
+    height:calc(100dvh - 15px);
+    margin:0 15px;
+    background-color: #000;
+  }
+  .gallery-back{
+    display: flex;
+    top: 20px;
+    left: 15px;
+    right:auto;
+    position: fixed;
+    font-size: 30px;
+    color:#fff;
+    font-family: 'Inter',sans-serif;
+    cursor: pointer;
+  }
+  .gallery-img{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: block;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .arrows{
+    display: block;
+    width:100%;
+    margin-top: 10px;
+  }
+  .gallery-img span{
+    font-size: 20px;
+    color:#fff;
+    font-family: 'Inter',sans-serif;
+    cursor: pointer;
+    font-weight: lighter;
+  }
+  .left{
+    position: absolute;
+    display: none;
+    left:0;
+    right:auto;
+    margin-left: 5px;
+
+  }
+  .right{
+    position: absolute;
+    display: inline;
+    left:auto;
+    right:0;
+    margin-right: 5px;
+  }
+  </style>
+  <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
+</head>
+<body class="fade">
+  <header class="top">
+    <a href="../work" class="back">*</a>
+    <div class="menu">
+      <div class="dropdown"><span class="dropd">&bull;&bull;&bull;</span>
+                            <ul class="dropcontent">
+                              <li><a href="../about" class="btn">about</a></li>
+                              <li><a href="../contact" class="btn">contact</a></li>
+                              <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="btn" target="_blank" rel="noopener noreferrer">social</a></li>
+                            </ul>
+      </div>
+      <div class="h-menu">
+        <a href="../about" class="btn">about</a>
+        <a href="../contact" class="btn">contact</a>
+        <a href="https://www.instagram.com/pedro.marques.pereira/" class="btn" target="_blank" rel="noopener noreferrer">social</a>
+      </div>
+    </div>
+    <div class="title">
+      <h1>Ebb</h1><span>2025</span>
+    </div>
+  </header>
+  <main>
+    <section class="proj">
+      <div class="img-cont">
+        <img id="rotating-image" src="./img/ebb/ebb_1.webp" alt="Ebb_still">
+        <span>click image for more</span>
+      </div>
+      <div class="info">
+        <p>three-channel video installation</p>
+        <p>11 min (looped), 2880  ×  2160 px</p>
+      </div>
+      <div class="description">
+        <p>Bodies intertwine in a fragmented landscape, where the image does not document, but transforms. The installation proposes a sensitive study on the idea of body-landscape. A fictional place constructed from scattered fragments, captured and recomposed in layers and currents. Each body, traversed by movements or saturations, loses its original identity to give way to a new image: an affective, imagined geography, where form is shaped by its own dissolution.</p>
+      </div>
+      <div class="bottom-gap"></div>
+    </section>
+    <section class="gallery">
+      <div class="gallery-back">
+        <span>*</span>
+      </div>
+      <div class="gallery-img">
+        <img class="one"src="./img/ebb/ebb_1.webp" alt="Ebb_still">
+        <div class="arrows">
+          <span class="left"><</span>
+          <span class="right">></span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bottom">
+      <div class="lang"><a href="./ebb/pt" lang="pt" class="btn">pt</a></div>
+      <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
+  </footer>
+  <script defer>
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- Dropdown Menu Hover and Click ---
+    const dropTrigger = document.querySelector(".dropd");
+    const dropContent = document.querySelector(".dropcontent");
+    let dropdownOpen = false;
+
+    if (dropTrigger && dropContent) {
+      const toggleDropdown = (show) => {
+        if (show) {
+          dropContent.classList.add("show");
+        } else {
+          dropContent.classList.remove("show");
+        }
+      };
+
+      dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
+      dropContent.addEventListener("mouseover", () => toggleDropdown(true));
+      dropTrigger.addEventListener("mouseout", () => {
+        setTimeout(() => {
+          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
+            toggleDropdown(false);
+          }
+        }, 100);
+      });
+      dropContent.addEventListener("mouseout", () => {
+        setTimeout(() => {
+          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
+            toggleDropdown(false);
+          }
+        }, 100);
+      });
+      dropTrigger.addEventListener("click", () => {
+        dropdownOpen = !dropdownOpen;
+        toggleDropdown(dropdownOpen);
+      });
+    }
+
+    // --- Rotating Image ---
+    const imageElement = document.getElementById("rotating-image");
+    const images = [
+      { src: './img/ebb/ebb_1.webp' },
+      { src: './img/ebb/ebb_2.webp' },
+      { src: './img/ebb/ebb_3.webp' }
+    ];
+    let index = 0;
+
+    if (imageElement) {
+      setInterval(() => {
+        index = (index + 1) % images.length;
+        imageElement.src = images[index].src;
+      }, 10000);
+    }
+
+    // --- Gallery Variables ---
+    const rotatingImage = document.querySelector("#rotating-image");
+    const gallery = document.querySelector(".gallery");
+    const galleryBack = document.querySelector(".gallery-back");
+    const galleryImgs = document.querySelectorAll(".gallery-img img");
+    const image = document.querySelector(".gallery-img img.one");
+    const leftArrow = document.querySelector(".gallery-img .arrows .left");
+    const rightArrow = document.querySelector(".gallery-img .arrows .right");
+
+    const imageSources = [
+      "./img/ebb/ebb_1.webp",
+      "./img/ebb/ebb_2.webp",
+      "./img/ebb/ebb_3.webp"
+    ];
+
+    let currentIndex = 0;
+    let galleryKeyboardEnabled = false;
+
+    // --- Gallery Functions ---
+    function updateImage() {
+      if (image) {
+        image.src = imageSources[currentIndex];
+
+        // Show/hide arrows based on current index
+        if (currentIndex === 0) {
+          leftArrow.style.display = "none";
+          rightArrow.style.display = "inline-block";
+        } else if (currentIndex === imageSources.length - 1) {
+          leftArrow.style.display = "inline-block";
+          rightArrow.style.display = "none";
+        } else {
+          leftArrow.style.display = "inline-block";
+          rightArrow.style.display = "inline-block";
+        }
+      }
+    }
+
+    function openGallery() {
+  gallery.style.display = "block";
+  gallery.classList.add("fade");
+
+  // Remove the class after the animation completes (300ms)
+  setTimeout(() => {
+    gallery.classList.remove("fade");
+  }, 300);
+
+  galleryImgs.forEach(img => img.style.display = "none");
+  const ebb1 = document.querySelector(".gallery-img img.one");
+  if (ebb1) ebb1.style.display = "block";
+  galleryKeyboardEnabled = true;
+  currentIndex = 0; // Reset to first image
+  updateImage();
+}
+
+    function closeGallery() {
+      gallery.style.display = "none";
+      galleryKeyboardEnabled = false;
+    }
+
+    // --- Gallery Event Listeners ---
+    if (rotatingImage && gallery) {
+      rotatingImage.addEventListener("click", openGallery);
+    }
+
+    if (galleryBack && gallery) {
+      galleryBack.addEventListener("click", closeGallery);
+    }
+
+    // Arrow click events
+    if (leftArrow) {
+      leftArrow.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateImage();
+        }
+      });
+    }
+
+    if (rightArrow) {
+      rightArrow.addEventListener("click", () => {
+        if (currentIndex < imageSources.length - 1) {
+          currentIndex++;
+          updateImage();
+        }
+      });
+    }
+
+    // --- Keyboard Navigation ---
+    function handleKeydown(event) {
+      // Only handle keys when gallery is open
+      if (!galleryKeyboardEnabled || gallery.style.display !== "block") {
+        return;
+      }
+
+      // Prevent default behavior for navigation keys
+      const navigationKeys = ['ArrowLeft', 'ArrowRight', 'Escape', ' ', 'Enter', 'Home', 'End'];
+      if (navigationKeys.includes(event.key)) {
+        event.preventDefault();
+      }
+
+      switch(event.key) {
+        case 'ArrowLeft':
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateImage();
+          }
+          break;
+
+        case 'ArrowRight':
+        case ' ': // Spacebar
+          if (currentIndex < imageSources.length - 1) {
+            currentIndex++;
+            updateImage();
+          }
+          break;
+
+        case 'Escape':
+        case 'Enter':
+          closeGallery();
+          break;
+
+        case 'Home':
+          currentIndex = 0;
+          updateImage();
+          break;
+
+        case 'End':
+          currentIndex = imageSources.length - 1;
+          updateImage();
+          break;
+
+        case '1':
+        case '2':
+        case '3':
+          const imageNumber = parseInt(event.key);
+          if (imageNumber >= 1 && imageNumber <= imageSources.length) {
+            currentIndex = imageNumber - 1;
+            updateImage();
+          }
+          break;
+      }
+    }
+
+    // Add keyboard event listener
+    document.addEventListener('keydown', handleKeydown);
+
+    // --- Image Resize Function ---
+    function adjustGalleryImage() {
+      const img = document.querySelector('.gallery-img img.one');
+      if (!img) return;
+
+      const maxW = window.innerWidth - 30;
+      const maxH = window.innerHeight - 160;
+
+      const temp = new Image();
+      temp.src = img.src;
+
+      temp.onload = () => {
+        const ratio = temp.naturalWidth / temp.naturalHeight;
+
+        if (maxW / ratio <= maxH) {
+          img.style.width = `${maxW}px`;
+          img.style.height = 'auto';
+        } else {
+          img.style.width = 'auto';
+          img.style.height = `${maxH}px`;
+        }
+      };
+    }
+
+    window.addEventListener('load', adjustGalleryImage);
+    window.addEventListener('resize', adjustGalleryImage);
+
+    // Initialize gallery
+    updateImage();
+  });
+  </script>
+</body>
+</html>
