@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Others">
+  <meta property="og:description" content="Others" />
+  <meta property="og:title" content="Pedro Marques Pereira - Others" />
+  <meta property="og:url" content="https://pedromarquespereira.github.io/work/others" />
+  <meta property="og:image" content="https://pedromarquespereira.github.io/work/img/others/darkday_10.webp"/>
+  <meta property="og:type" content="website"/>
+  <title>Pedro Marques Pereira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" as="style">
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+  <link rel="shortcut icon" type="image/png" href="../favicon.png">
+  <style>
+  /* === CSS RESET === */
+  html,
+  body,
+  div,
+  span,
+  h1,
+  h2,
+  h3,
+  p,
+  a,
+  img,
+  iframe,
+  ul,
+  li
+  {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+  body {
+    background-color: #000;
+    height: 100%;
+    line-height: 1;
+  }
+  /*FADE*/
+  .fade {
+    opacity: 0;
+    animation: fadein 0.3s ease-in forwards;
+  }
+  @keyframes fadein {
+    to {
+      opacity: 1;
+      }
+    }
+  /* === TYPOGRAPHY === */
+  .back,
+  .btn,
+  .dropd {
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    font-size: 23px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .dropd{
+    display: block;
+    margin-top: 9px;
+    font-size: 15px;
+    color: white;
+  }
+  .top,
+  .bottom {
+    position: fixed;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60px;
+    background-color: #000;
+    box-shadow: 0 0 1px #000, 0 0 3px #000, 0 0 7px #000, 0 0 10px #000;
+  }
+  .top {
+    top: 0;
+    max-width: 100dvw;
+  }
+  .bottom {
+    bottom: 0;
+    outline: #000 3px;
+  }
+  /* === COMPONENTS === */
+  .back,
+  .menu{
+    position: fixed;
+    display: flex;
+    top: 20px;
+    z-index: 1;
+  }
+  .back {
+    left: 15px;
+    right:auto;
+    font-size: 30px;
+  }
+  .menu {
+    right:15px;
+    left: auto;
+  }
+  .dropdown {
+  display: none;
+  text-align: right;
+  }
+  .dropd {
+  cursor: pointer;
+  }
+  /* DROPvsHORIZONTAL */
+  @media screen and (max-width: 500px) {
+  .dropdown {
+    display: block;
+  }
+  .h-menu {
+    display: none;
+  }
+  }
+  @media screen and (min-width: 501px) {
+  .dropdown {
+    display: none;
+  }
+  .h-menu {
+    display: flex;
+    gap: 15px;
+  }
+  }
+  .c,
+  .lang{
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    top:auto;
+  }
+  .c{
+    bottom:3px;
+    left: auto;
+    right: 5px;
+  }
+  .c span{
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 8px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .lang {
+    bottom: 30px;
+    left: 15px;
+  }
+  /*--------------Project---------------*/
+  .title{
+    display: flex;
+    position: fixed;
+    top:20px;
+    left:40px;
+    color:#fff;
+    align-items: baseline;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+  }
+  .title h1{
+    font-size: 23px;
+    font-weight: 300;
+  }
+  .others{
+    display: flex;
+    position: absolute;
+    z-index: -1;
+    width: calc(100dvw - 30px);
+    height:calc(100dvh - 150px);
+    margin:68px 15px;
+    align-items: start;
+    gap:10px;
+    box-sizing: border-box;
+  }
+  .arch{
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    width:100%;
+    height:100%;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    justify-content: flex-end;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .arch img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 5px;
+  }
+  .info{
+    display: flex;
+    margin: 15px;
+    flex-direction: column;
+    text-shadow: 0 0 1px #000, 0 0 3px #000, 0 0 5px #000;
+  }
+/*letters*/
+  .info h2,
+  .info span{
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+  }
+  .info h2{
+    font-size: 23px;
+    font-weight: normal;
+  }
+  .info span{
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  @media screen and (max-width: 1100px) {
+      .others {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        height: calc(100dvh - 136px);
+      }
+  }
+  @media screen and (max-width: 940px) and (max-height: 759px) {
+    .arch {
+      justify-content: center;
+    }
+    .info {
+      margin: 0 15px;
+    }
+  }
+  @media screen and (max-width: 940px) and (max-height: 615px) {
+    .info {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin: 0 15px;
+  }
+    .info h2 {
+      line-height: 0.75;
+    }
+    .info span {
+      line-height: 0.1; /* slightly bigger line-height to match visual height */
+    }
+  }
+  /*___________gallery---------*/
+  .gallery{
+    z-index: 1;
+    display: none;
+    position: fixed;
+    width:calc(100dvw - 30px);
+    height:calc(100dvh - 15px);
+    margin:0 15px;
+    background-color: #000;
+  }
+  .gallery-back{
+    display: flex;
+    top: 20px;
+    left: 15px;
+    right:auto;
+    position: fixed;
+    font-size: 30px;
+    color:#fff;
+    font-family: 'Inter',sans-serif;
+    cursor: pointer;
+  }
+  .title span{
+    font-size: 15px;
+    margin-left: 4px;
+  }
+  .gallery-img{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  iframe{
+    width:1440px;
+    height:1080px;
+    max-width: calc(100dvw - 30px);
+    max-height: calc(100dvh - 160px);
+  }
+  .gallery-img span{
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+  }
+  .arrows{
+    display: block;
+    width:100%;
+    margin-top: 8px;
+  }
+  .arrows span{
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 2px 0 auto;
+  }
+  .left{
+    position: absolute;
+    display: none;
+    left:0;
+    right:auto;
+    margin-left: 5px;
+
+  }
+  .right{
+    position: absolute;
+    display: inline;
+    left:auto;
+    right:0;
+    margin-right: 5px;
+  }
+  .infoclick{
+    display: flex;
+    font-size: 10px;
+    margin: 4px 18px 0 auto;
+  }
+  .descrip{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .descrip span {
+    font-size: 14px;
+    margin: 4px auto;
+  }
+
+  </style>
+  <link rel="stylesheet" href="../style.css" media="print" onload="this.media='all'">
+</head>
+<body class="fade">
+  <header class="top">
+    <a href="../work" class="back">*</a>
+    <nav class="menu">
+      <div class="dropdown"><span class="dropd">&bull;&bull;&bull;</span>
+                            <ul class="dropcontent">
+                              <li><a href="../about" class="btn">about</a></li>
+                              <li><a href="../contact" class="btn">contact</a></li>
+                              <li><a href="https://www.instagram.com/pedro.marques.pereira/" class="btn" target="_blank" rel="noopener noreferrer">social</a></li>
+                            </ul>
+      </div>
+      <div class="h-menu">
+        <a href="../about" class="btn">about</a>
+        <a href="../contact" class="btn">contact</a>
+        <a href="https://www.instagram.com/pedro.marques.pereira/" class="btn" target="_blank" rel="noopener noreferrer">social</a>
+      </div>
+    </nav>
+      <div class="title">
+        <h1>Others</h1>
+      </div>
+  </header>
+  <main>
+    <section class="others">
+      <section class="arch" data-id="1">
+          <img src="./img/others/darkday_cover.webp" alt="Dark Day">
+        <div class="info">
+          <h2>dark day</h2>
+          <span>2023...</span>
+        </div>
+      </section>
+      <section class="arch" data-id="2">
+          <img src="./img/others/obon_cover.webp" alt="Obon">
+        <div class="info">
+          <h2>obon</h2>
+          <span>2023</span>
+        </div>
+      </section>
+      <section class="arch" data-id="3">
+          <img src="./img/others/studies_cover.webp" alt="Video Studies">
+        <div class="info">
+          <h2>studies</h2>
+          <span>2022...</span>
+        </div>
+      </section>
+      <section class="arch" data-id="4">
+          <img src="./img/others/prints_cover.webp" alt="Prints">
+        <div class="info">
+          <h2>prints</h2>
+          <span>2019...</span>
+        </div>
+      </section>
+      <section class="arch" data-id="5">
+          <img src="./img/others/milano_1.webp" alt="Milano">
+        <div class="info">
+          <h2>untitled</h2>
+          <span>2019 - 2022</span>
+        </div>
+      </section>
+      <section class="arch" data-id="6">
+          <img src="./img/others/films_cover.webp" alt="Films">
+        <div class="info">
+          <h2>films</h2>
+          <span>2015 - 2021</span>
+        </div>
+      </section>
+    </section>
+    <section class="gallery" id="darkday" data-id="1">
+      <div class="gallery-back">
+        <span>*</span>
+        <div class="title">
+          <h1>Dark Day</h1>
+          <span>2023 - ongoing</span>
+        </div>
+      </div>
+      <div class="gallery-img">
+        <img class="one"src="./img/others/darkday/darkday_1.webp" alt="darkday">
+        <div class="arrows">
+          <span class="left"><</span>
+          <span class="right">></span>
+        </div>
+      </section>
+    </div>
+    <section class="gallery" id="obon" data-id="2">
+      <div class="gallery-back">
+        <span>*</span>
+        <div class="title">
+          <h1>Obon</h1>
+          <span>2023</span>
+        </div>
+      </div>
+      <div class="gallery-img">
+        <iframe class="pan" src="https://www.youtube.com/embed/Ukpb5HJr_4A?si=aJyf8KX6wqrt--nb&=rel" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+    <section class="gallery" id="studies" data-id="3">
+      <div class="gallery-back">
+        <span>*</span>
+        <div class="title">
+          <h1>Studies (video)</h1>
+          <span>2022 - ongoing</span>
+        </div>
+      </div>
+      <div class="gallery-img">
+        <iframe class="cine" src="https://www.youtube.com/embed/videoseries?si=y5fT_oT3okoNpu47&amp;list=PLibxdEk1cX3TTViXyuHOtQDl8owreKdgm&=rel" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <span class="infoclick">tap the playlist icon (top-right) or click next for more</span>
+      </div>
+    </section>
+    <section class="gallery" id="prints" data-id="4">
+      <div class="gallery-back">
+        <span>*</span>
+        <div class="title">
+          <h1>Prints</h1>
+          <span>2019 - ongoing</span>
+        </div>
+      </div>
+      <div class="gallery-img">
+        <img class="one"src="./img/others/prints/prints_1.webp" alt="prints">
+        <div class="arrows">
+          <span class="left"><</span>
+          <span class="right">></span>
+        </div>
+        <div class="descrip">
+          <span class="size">12.7 x 17.8cm</span>
+          <span class="type">silver gelatin print</span>
+        </div>
+      </div>
+    </section>
+    <section class="gallery" id="milano" data-id="5">
+      <div class="gallery-back">
+        <span>*</span>
+        <div class="title">
+          <h1>Untitled</h1>
+          <span>2019 - 2022</span>
+        </div>
+      </div>
+      <div class="gallery-img">
+        <img class="one"src="./img/others/milano/milano_1.webp" alt="milano">
+        <div class="arrows">
+          <span class="left"><</span>
+          <span class="right">></span>
+        </div>
+      </div>
+    </section>
+    <section class="gallery" id="films" data-id="6">
+      <div class="gallery-back">
+        <span>*</span>
+        <div class="title">
+          <h1>Films</h1>
+          <span>2015 - 2021</span>
+        </div>
+      </div>
+      <div class="gallery-img">
+        <iframe class="film" src="https://www.youtube.com/embed/videoseries?si=Vx_RBxrSCJ_5_egj&amp;list=PLibxdEk1cX3SnSuxdsxSMC4pzCw1a_vOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <span class="infoclick">tap the playlist icon (top-right) or click next for more</span>
+      </div>
+    </section>
+  </main>
+  <footer class="bottom">
+      <div class="lang"><a href="./about/pt" lang="pt" class="btn">pt</a></div>
+      <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
+  </footer>
+  <script defer> /*dropdown*/
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- Dropdown Menu Hover and Click ---
+    const dropTrigger = document.querySelector(".dropd");
+    const dropContent = document.querySelector(".dropcontent");
+    let dropdownOpen = false;
+
+    if (dropTrigger && dropContent) {
+      const toggleDropdown = (show) => {
+        if (show) {
+          dropContent.classList.add("show");
+        } else {
+          dropContent.classList.remove("show");
+        }
+      };
+
+      dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
+      dropContent.addEventListener("mouseover", () => toggleDropdown(true));
+      dropTrigger.addEventListener("mouseout", () => {
+        setTimeout(() => {
+          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
+            toggleDropdown(false);
+          }
+        }, 100);
+      });
+      dropContent.addEventListener("mouseout", () => {
+        setTimeout(() => {
+          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
+            toggleDropdown(false);
+          }
+        }, 100);
+      });
+      dropTrigger.addEventListener("click", () => {
+        dropdownOpen = !dropdownOpen;
+        toggleDropdown(dropdownOpen);
+      });
+    }
+  });
+  </script>
+  <script defer>/*gallery show*/
+    document.addEventListener("DOMContentLoaded", () => {
+    const arches = document.querySelectorAll(".arch");
+    const galleries = document.querySelectorAll(".gallery");
+    let currentGallery = null;
+
+    // Open matching gallery
+    arches.forEach(arch => {
+    arch.addEventListener("click", () => {
+      const id = arch.dataset.id;
+      const gal = document.querySelector(`.gallery[data-id="${id}"]`);
+      if (!gal) return;
+
+      // Hide previous
+      galleries.forEach(g => g.style.display = "none");
+
+      gal.classList.add("fade");
+      gal.style.display = "block";
+      currentGallery = gal;
+    });
+  });
+
+    // Close on back button
+    document.querySelectorAll(".gallery-back").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const gal = btn.closest(".gallery");
+      if (gal) {
+        gal.style.display = "none";
+        if (currentGallery === gal) currentGallery = null;
+      }
+    });
+  });
+
+    // ESC key closes
+    document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && currentGallery) {
+      currentGallery.style.display = "none";
+      currentGallery = null;
+    }
+  });
+  });
+  </script>
+
+  <script defer>
+  /*arrows and src for img*/
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleries = {
+      darkday: [
+        './img/others/darkday/darkday_1.webp',
+        './img/others/darkday/darkday_2.webp',
+        './img/others/darkday/darkday_3.webp',
+        './img/others/darkday/darkday_4.webp',
+        './img/others/darkday/darkday_5.webp',
+        './img/others/darkday/darkday_6.webp',
+        './img/others/darkday/darkday_7.webp',
+        './img/others/darkday/darkday_8.webp',
+        './img/others/darkday/darkday_9.webp',
+        './img/others/darkday/darkday_10.webp',
+        './img/others/darkday/darkday_11.webp',
+      ],
+      tokyo: [
+        './img/others/tokyo/tokyo_1.webp',
+        './img/others/tokyo/tokyo_2.webp',
+        './img/others/tokyo/tokyo_3.webp',
+      ],
+      seabed: [
+        './img/others/seabed/seabed_1.webp',
+        './img/others/seabed/seabed_2.webp',
+      ],
+      milano: [
+        './img/others/milano/milano_1.webp',
+        './img/others/milano/milano_2.webp',
+        './img/others/milano/milano_3.webp',
+        './img/others/milano/milano_4.webp',
+        './img/others/milano/milano_5.webp',
+        './img/others/milano/milano_6.webp',
+        './img/others/milano/milano_7.webp',
+        './img/others/milano/milano_8.webp',
+        './img/others/milano/milano_9.webp',
+        './img/others/milano/milano_10.webp',
+      ],
+      prints: [
+        {src: './img/others/prints/prints_1.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_2.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_3.webp', size: '10.2 x 12.7 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_4.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_5.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_6.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_7.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_8.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_9.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_10.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_11.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_12.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_13.webp', size: '23.3 x 24.1 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_14.webp', size: '23.8 x 30.4 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_15.webp', size: '23.8 x 30.4 cm', type: 'silver gelatin print'},
+        {src: './img/others/prints/prints_16.webp', size: '49.3 x 60.2 cm', type: 'inkjet print'},
+        {src: './img/others/prints/prints_17.webp', size: '65.7 x 83.7 cm', type: 'inkjet print'},
+      ],
+      archive: [
+        {src: './img/others/prints/prints_1.webp', size: '2019'},
+        {src: './img/others/prints/prints_2.webp', size: '2020'},
+        {src: './img/others/prints/prints_3.webp', size: '15cm'},
+      ],
+    };
+
+    const galleryStates = {};
+    let focusedGalleryId = null;
+
+    // Utility to set focus properly
+    function setFocus(container, id) {
+      requestAnimationFrame(() => {
+        container.focus();
+        focusedGalleryId = id;
+      });
+    }
+
+    Object.keys(galleries).forEach(id => {
+      const container = document.getElementById(id);
+      if (!container) return;
+
+      // Make container focusable
+      container.setAttribute('tabindex', '0');
+
+      const images = galleries[id];
+      if (!images || images.length === 0) return;
+
+      const imgElement = container.querySelector('.gallery-img img');
+      const leftArrow = container.querySelector('.arrows .left');
+      const rightArrow = container.querySelector('.arrows .right');
+      if (!imgElement || !leftArrow || !rightArrow) return;
+
+      galleryStates[id] = {
+        currentIndex: 0,
+        imgElement,
+        leftArrow,
+        rightArrow,
+        images,
+        container,
+        updateImage() {
+          const item = this.images[this.currentIndex];
+          const src = typeof item === 'string' ? item : item.src;
+          this.imgElement.src = src;
+
+          this.leftArrow.style.display = this.currentIndex === 0 ? 'none' : 'inline';
+          this.rightArrow.style.display = this.currentIndex === this.images.length - 1 ? 'none' : 'inline';
+
+          // CORRECTED selectors
+          const sizeSpan = this.container.querySelector('.descrip .size');
+          if (sizeSpan && typeof item === 'object' && item.size) {
+            sizeSpan.textContent = item.size;
+          }
+
+          const typeSpan = this.container.querySelector('.descrip .type');
+          if (typeSpan && typeof item === 'object' && item.type) {
+            typeSpan.textContent = item.type;
+          }
+
+          if (typeof resizeHandler === 'function') {
+            resizeHandler();
+          }
+         }
+        };
+
+      const state = galleryStates[id];
+      state.updateImage();
+
+      leftArrow.addEventListener('click', () => {
+        if (state.currentIndex > 0) {
+          state.currentIndex--;
+          state.updateImage();
+        }
+        setFocus(container, id);
+      });
+
+      rightArrow.addEventListener('click', () => {
+        if (state.currentIndex < state.images.length - 1) {
+          state.currentIndex++;
+          state.updateImage();
+        }
+        setFocus(container, id);
+      });
+
+      container.addEventListener('click', () => {
+        setFocus(container, id);
+      });
+
+      container.addEventListener('focus', () => {
+        focusedGalleryId = id;
+      });
+    });
+
+    const observer = new MutationObserver(() => {
+      Object.entries(galleryStates).forEach(([id, state]) => {
+        const isVisible = window.getComputedStyle(state.container).display !== 'none';
+        if (isVisible) {
+          setFocus(state.container, id);
+        }
+      });
+    });
+
+    observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+
+    window.addEventListener('keydown', (e) => {
+      if (!focusedGalleryId) return;
+      const state = galleryStates[focusedGalleryId];
+      if (!state) return;
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        if (state.currentIndex > 0) {
+          state.currentIndex--;
+          state.updateImage();
+        }
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        if (state.currentIndex < state.images.length - 1) {
+          state.currentIndex++;
+          state.updateImage();
+        }
+      }
+    });
+  });
+</script>
+
+
+<script defer>/*resize*/
+function resizeHandler() {
+  const maxWidth = window.innerWidth - 30;
+  const maxHeight = window.innerHeight - 160;
+
+  // Get all galleries
+  const galleries = document.querySelectorAll('.gallery');
+
+  galleries.forEach(gallery => {
+    // Resize .cine iframe inside this gallery (4:3)
+    const cine = gallery.querySelector('.cine');
+    if (cine) {
+      let width = maxWidth;
+      let height = (width * 3) / 4;
+      if (height > maxHeight) {
+        height = maxHeight;
+        width = (height * 4) / 3;
+      }
+      cine.style.width = width + 'px';
+      cine.style.height = height + 'px';
+    }
+
+    // Resize .pan iframe inside this gallery (8:3)
+    const pan = gallery.querySelector('.pan');
+    if (pan) {
+      let width = maxWidth;
+      let height = (width * 3) / 8;
+      if (height > maxHeight) {
+        height = maxHeight;
+        width = (height * 8) / 3;
+      }
+      pan.style.width = width + 'px';
+      pan.style.height = height + 'px';
+    }
+    // Resize .film iframe inside this gallery (5 : 4)
+    const film = gallery.querySelector('.film');
+    if (film) {
+      let width = maxWidth;
+      let height = (width * 4) / 5;
+      if (height > maxHeight) {
+        height = maxHeight;
+        width = (height * 5) / 4;
+      }
+      film.style.width = width + 'px';
+      film.style.height = height + 'px';
+    }
+
+    // Resize gallery images inside this gallery
+    const img = gallery.querySelector('.gallery-img img');
+    if (img) {
+      // Use a temp image to get natural dimensions
+      const temp = new Image();
+      temp.src = img.src;
+
+      temp.onload = () => {
+        const ratio = temp.naturalWidth / temp.naturalHeight;
+
+        if (maxWidth / ratio <= maxHeight) {
+          img.style.width = `${maxWidth}px`;
+          img.style.height = 'auto';
+        } else {
+          img.style.width = 'auto';
+          img.style.height = `${maxHeight}px`;
+        }
+      };
+    }
+  });
+}
+
+window.addEventListener('resize', resizeHandler);
+window.addEventListener('DOMContentLoaded', resizeHandler);
+</script>
+</body>
+</html>
