@@ -271,6 +271,8 @@
     font-size: 30px;
     color:#fff;
     font-family: 'Inter',sans-serif;
+  }
+  .gallery-close{
     cursor: pointer;
   }
   .title span{
@@ -409,7 +411,7 @@
     </section>
     <section class="gallery" id="darkday" data-id="1">
       <div class="gallery-back">
-        <span>*</span>
+        <span class="gallery-close">*</span>
         <div class="title">
           <h1>Dark Day</h1>
           <span>2023 - ongoing</span>
@@ -425,7 +427,7 @@
     </div>
     <section class="gallery" id="obon" data-id="2">
       <div class="gallery-back">
-        <span>*</span>
+        <span class="gallery-close">*</span>
         <div class="title">
           <h1>Obon</h1>
           <span>2023</span>
@@ -437,7 +439,7 @@
     </section>
     <section class="gallery" id="studies" data-id="3">
       <div class="gallery-back">
-        <span>*</span>
+        <span class="gallery-close">*</span>
         <div class="title">
           <h1>Studies (video)</h1>
           <span>2022 - ongoing</span>
@@ -450,7 +452,7 @@
     </section>
     <section class="gallery" id="prints" data-id="4">
       <div class="gallery-back">
-        <span>*</span>
+        <span class="gallery-close">*</span>
         <div class="title">
           <h1>Prints</h1>
           <span>2019 - ongoing</span>
@@ -470,7 +472,7 @@
     </section>
     <section class="gallery" id="untitled" data-id="5">
       <div class="gallery-back">
-        <span>*</span>
+        <span class="gallery-close">*</span>
         <div class="title">
           <h1>Untitled</h1>
           <span>2019 - 2022</span>
@@ -486,7 +488,7 @@
     </section>
     <section class="gallery" id="films" data-id="6">
       <div class="gallery-back">
-        <span>*</span>
+        <span class="gallery-close">*</span>
         <div class="title">
           <h1>Films</h1>
           <span>2015 - 2021</span>
@@ -564,15 +566,15 @@
   });
 
     // Close on back button
-    document.querySelectorAll(".gallery-back").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const gal = btn.closest(".gallery");
-      if (gal) {
-        gal.style.display = "none";
-        if (currentGallery === gal) currentGallery = null;
-      }
-    });
+    document.querySelectorAll(".gallery-back > span:first-child").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const gal = btn.closest(".gallery");
+    if (gal) {
+      gal.style.display = "none";
+      if (currentGallery === gal) currentGallery = null;
+    }
   });
+});
 
     // ESC key closes
     document.addEventListener("keydown", e => {
