@@ -1,1 +1,68 @@
-.dropcontent.show,.name{display:flex}.back a:hover,.back:hover,.btn:hover,.cinfo a:hover,.dropbtn:hover,.dropd:hover,.dropdw:hover,.dropwbtn:hover,a:hover{text-shadow:0 0 1px #fff,0 0 4px #fff;transition-duration:.5s}.dropcontent{display:none;position:absolute;right:0;width:100px;flex-direction:column;align-items:flex-end;margin-top:5px;line-height:28px;list-style:none}.dropbtn,.dropwbtn{font-family:inter,sans-serif;text-decoration:none;color:#fff;font-size:20px;margin-right:15px;width:75px;cursor:pointer}.dropbtn{text-shadow:0 0 1px #000,0 0 3px #000,0 0 5px #000}.dropcontentw.show{display:flex;flex-direction:column;align-items:flex-end}
+.dropcontent.show,
+.name {
+    display: flex;
+}
+.back a:hover,
+.back:hover,
+.btn:hover,
+.cinfo a:hover,
+.dropbtn:hover,
+.dropd:hover,
+.dropdw:hover,
+.dropwbtn:hover,
+a:hover,
+.gallery-back span:hover,
+.arrows span:hover,
+ .arch:hover .info{
+    text-shadow: 0 0 1px #fff, 0 0 4px #fff;
+    transition-duration: 0.5s;
+}
+.arch:hover {
+  box-shadow: inset 0 0 5px #000,inset 0 0 3px #000,inset 0 0 7px #000;
+  transition-duration: 0.5s;
+}
+
+.dropcontent {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 10px;
+    line-height: 30px;
+    list-style: none;
+}
+.dropbtn,
+.dropwbtn {
+    font-family: 'inter', sans-serif;
+    text-decoration: none;
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+.dropcontentw.show {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.back,
+.btn,
+.year,
+.cinfo a,
+.dropd,
+a,
+.gallery-back,
+.arrows,
+.c,
+img,
+.others h2,
+.others span{
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cv a:hover{
+  text-shadow: 0 0 1px #93ddff, 0 0 4px #93ddff;
+}
+.gallery:focus{
+outline: none;
+}
