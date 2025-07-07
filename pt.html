@@ -4,32 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Jexe25yZrqi_kKhEpiRcIGP85mnKzrqiQqF0oZaJYYA" />
-    <meta name="description" content="Pedro Marques Pereira - Fotografia, Video, e Cinema.">
+    <meta name="description" content="Imagem movimento e Fotografia">
+    <meta property="og:description" content="Imagem movimento e Fotografia" />
+    <meta property="og:title" content="Pedro Marques Pereira" />
+    <meta property="og:url" content="https://pedromarquespereira.github.io/pt" />
+    <meta property="og:image" content="https://pedromarquespereira.github.io/video.webp"/>
+    <meta property="og:type" content="website"/>
     <meta name="keywords" content="Pedro Marques Pereira, artista, fotografía, video, cinema, cineasta, imagem movimento, portfolio">
     <title>Pedro Marques Pereira</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" as="style">
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <style>
-    .lang,.menu{padding-left:15px}.imgcentral,.lang,.menu{grid-column-end:2}.c,.imgcentral,.lang,.menu{grid-column-start:2}.btn,.c h1{-webkit-tap-highlight-color: transparent;color:#fff}a,body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,hr,menu,nav,section{display:block}a,hr{padding:0}.imgcentral,.menu{grid-row-start:1;grid-row-end:8}.lang,.menu{-webkit-user-select:none;-ms-user-select:none;user-select:none}.c,.menu{display:flex}.c,.lang{cursor:default}.btn,.c span,ins{text-decoration:none}abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:0 0}ins,mark{background-color:#ff9;color:#000}body{line-height:1;background-color:#000;height:100%}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}a{font-size:100%;vertical-align:baseline;background:0 0}mark{font-style:italic;font-weight:700}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{height:1px;border:0;border-top:1px solid #ccc;margin:1em 0}input,select{vertical-align:middle}*{margin:.5vw;padding:1vw}.fade{animation:1s forwards fade}.fade2{animation:.5s forwards fade}@keyframes fade{0%{opacity:0}100%{opacity:100%}}nav{display:grid;height:100dvh;overflow:hidden}.imgcentral{z-index:-1;height:100dvh;min-height:-webkit-fill-available}.menu{z-index:1;flex-direction:column;justify-content:center;align-items:flex-start;line-height:31px;opacity:1;transition:opacity .4s}.lang{z-index:2;grid-row-end:7;padding-bottom:20px}.c{z-index:1;grid-column-end:3;grid-row-end:8;justify-content:flex-end;align-items:flex-end;font-size:8px;width:133dvh;max-width:100vw;text-align:right;-webkit-user-select:none;-ms-user-select:none;user-select:none}.c h1{font-family:sans-serif;font-weight:300;margin-right:3px}.btn{font-size:23px;font-family:inter,sans-serif;font-weight:400;cursor:pointer}
+    html,
+    body,
+    div,
+    a,
+    ul,
+    li,
+    h1
+    {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+      background: transparent;
+      overflow: hidden;
+    }
+    body {
+      background-color: #000;
+      height: 100%;
+      line-height: 1;
+    }
+    .fade {
+      opacity: 0;
+      animation: fadein 0.3s ease-in forwards;
+    }
+    .fade2{
+      opacity: 0;
+      animation: fadein 1s ease-in forwards;
+    }
+    @keyframes fadein {
+      to {
+        opacity: 1;
+        }
+      }
+    .vdo-cont{
+      z-index: -1;
+      position: relative;
+      height:100dvh;
+      width:100dvw;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .vdo {
+      position: relative;
+    }
+    .menu{
+      z-index: 1;
+      position: fixed;
+      top:50%;
+      transform: translateY(-50%);
+      left: 15px;
+      display: flex;
+    }
+    .menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .lang,
+    .c{
+      z-index: 1;
+      position: fixed;
+      top:auto;
+      display: flex;
+    }
+    .lang{
+      bottom:30px;
+      left: 15px;
+    }
+    .c{
+      bottom:3px;
+      left: auto;
+      right: 5px;
+    }
+    .c h1{
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 8px;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    }
+    .btn{
+      font-family: 'inter', sans-serif;
+      text-decoration: none;
+      font-size: 23px;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    }
     </style>
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
   </head>
   <body class="fade">
-    <nav>
-        <video class="imgcentral" height="100%" autoplay muted loop playsinline preload="metadata" poster="video.webp"><source src="video.mp4" type="video/mp4"></video>
-          <div class="menu fade2">
-            <a href="./about/pt" class="btn">sobre</a>
-            <a href="./work/pt" class="btn">trabalho</a>
-            <a href="./contact/pt" class="btn">contacto</a>
-            <a href="https://www.instagram.com/pedro.marques.pereira/" target="_blank" rel="noopener noreferrer" class="btn">social</a>
-          </div>
-          <div class="lang"><a href="./" lang="en" class="btn">en</a></div>
-          <div class="c"><h1>© Pedro Marques Pereira 2024</h1></div>
-    </nav>
+    <header>
+      <nav class="menu fade2">
+        <ul>
+          <li><a href="../about/pt" class="btn">sobre</a></li>
+          <li><a href="../work/pt" class="btn">trabalho</a></li>
+          <li><a href="../contact/pt" class="btn">contacto</a></li>
+          <li><a href="https://www.instagram.com/pedro.marques.pereira/" target="_blank" rel="noopener noreferrer" class="btn">social</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="vdo-cont">
+        <video class="vdo"autoplay muted loop playsinline preload="metadata" poster="video.webp"><source src="video.mp4" type="video/mp4"></video>
+      </div>
+    </main>
+    <footer>
+      <div class="lang fade2"><a href="./" lang="en" class="btn">en</a></div>
+      <div class="c fade2"><h1>© Pedro Marques Pereira 2025</h1></div>
+    </footer>
+    <script>
+  const video = document.querySelector('.vdo');
+
+  function resizeVideo() {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Use video metadata if loaded, or fallback to known aspect ratio
+    const aspect = video.videoWidth && video.videoHeight
+      ? video.videoWidth / video.videoHeight
+      : 4 / 3; // fallback (e.g. 4:3)
+
+    const heightIfFullWidth = vw / aspect;
+    const widthIfFullHeight = vh * aspect;
+
+    if (heightIfFullWidth >= vh) {
+      // Fill width, let height overflow (centered vertically)
+      video.style.width = '100vw';
+      video.style.height = 'auto';
+    } else {
+      // Fill height, narrower — left aligned
+      video.style.height = '100vh';
+      video.style.width = 'auto';
+    }
+  }
+
+  // Resize on metadata load and window resize
+  video.addEventListener('loadedmetadata', resizeVideo);
+  window.addEventListener('resize', resizeVideo);
+</script>
   </body>
 </html>
