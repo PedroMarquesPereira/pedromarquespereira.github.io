@@ -22,7 +22,6 @@ a:hover,
   transition-duration: 0.5s;
 }
 .dropcontent {
-    display: none;
     flex-direction: column;
     align-items: flex-end;
     margin-top: 14px;
