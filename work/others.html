@@ -29,6 +29,7 @@
   p,
   a,
   img,
+  picture,
   iframe,
   ul,
   li
@@ -194,12 +195,18 @@
     border-radius: 5px;
     cursor: pointer;
   }
-  .arch img {
+  .arch picture {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
     z-index: -1;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .arch picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 5px;
   }
   .info{
@@ -367,42 +374,72 @@
   <main>
     <section class="others">
       <section class="arch" data-id="1">
-          <img src="./img/others/darkday_cover.webp" alt="Dark Day">
+        <picture>
+          <source media="(max-width: 1080px)" srcset="./img/others/covers/darkday_cover1080.webp">
+          <source media="(max-width: 720px)" srcset="./img/others/covers/darkday_cover720.webp">
+          <source media="(max-width: 480px)" srcset="./img/others/covers/darkday_cover480.webp">
+          <img src="./img/others/covers/darkday_cover1440.webp" alt="Dark Day">
+        </picture>
         <div class="info">
           <h2>dark day</h2>
           <span>2023...</span>
         </div>
       </section>
       <section class="arch" data-id="2">
-          <img src="./img/others/obon_cover.webp" alt="Obon">
+        <picture>
+          <source media="(max-width: 1080px)" srcset="./img/others/covers/obon_cover1080.webp">
+          <source media="(max-width: 720px)" srcset="./img/others/covers/obon_cover720.webp">
+          <source media="(max-width: 480px)" srcset="./img/others/covers/obon_cover480.webp">
+          <img src="./img/others/covers/obon_cover1440.webp" alt="Obon">
+        </picture>
         <div class="info">
           <h2>obon</h2>
           <span>2023</span>
         </div>
       </section>
       <section class="arch" data-id="3">
-          <img src="./img/others/studies_cover.webp" alt="Video Studies">
+        <picture>
+          <source media="(max-width: 1080px)" srcset="./img/others/covers/studies_cover1080.webp">
+          <source media="(max-width: 720px)" srcset="./img/others/covers/studies_cover720.webp">
+          <source media="(max-width: 480px)" srcset="./img/others/covers/studies_cover480.webp">
+          <img src="./img/others/covers/studies_cover1440.webp" alt="Video Studies">
+        </picture>
         <div class="info">
           <h2>studies</h2>
           <span>2022...</span>
         </div>
       </section>
       <section class="arch" data-id="4">
-          <img src="./img/others/prints_cover.webp" alt="Prints">
+        <picture>
+          <source media="(max-width: 1080px)" srcset="./img/others/covers/prints_cover1080.webp">
+          <source media="(max-width: 720px)" srcset="./img/others/covers/prints_cover720.webp">
+          <source media="(max-width: 480px)" srcset="./img/others/covers/prints_cover480.webp">
+          <img src="./img/others/covers/prints_cover1440.webp" alt="Prints">
+        </picture>
         <div class="info">
           <h2>prints</h2>
           <span>2019...</span>
         </div>
       </section>
       <section class="arch" data-id="5">
-          <img src="./img/others/untitled_cover.webp" alt="Untitled">
+        <picture>
+          <source media="(max-width: 1080px)" srcset="./img/others/covers/untitled_cover1080.webp">
+          <source media="(max-width: 720px)" srcset="./img/others/covers/untitled_cover720.webp">
+          <source media="(max-width: 480px)" srcset="./img/others/covers/untitled_cover480.webp">
+          <img src="./img/others/covers/untitled_cover1440.webp" alt="Untitled">
+        </picture>
         <div class="info">
           <h2>untitled</h2>
           <span>2019 - 2022</span>
         </div>
       </section>
       <section class="arch" data-id="6">
-          <img src="./img/others/films_cover.webp" alt="Films">
+        <picture>
+          <source media="(max-width: 1080px)" srcset="./img/others/covers/films_cover1080.webp">
+          <source media="(max-width: 720px)" srcset="./img/others/covers/films_cover720.webp">
+          <source media="(max-width: 480px)" srcset="./img/others/covers/films_cover480.webp">
+          <img src="./img/others/covers/films_cover1440.webp" alt="Films">
+        </picture>
         <div class="info">
           <h2>films</h2>
           <span>2015 - 2021</span>
