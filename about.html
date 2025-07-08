@@ -31,6 +31,7 @@
   div,
   span,
   h1,
+  h2,
   p,
   a,
   img,
@@ -204,6 +205,7 @@
   }
   .img-cont img {
     width: 400px;
+    height: auto;
   }
   .img-cont span {
     display: flex;
@@ -255,6 +257,7 @@
   @media screen and (min-width: 900px){
     .img-cont img {
       width: 438px;
+      height: auto;
     }
   }
   </style>
@@ -280,20 +283,25 @@
   </header>
   <main class="bio">
       <section class="img-cont">
-        <img src="margarida.webp" alt="Margarida, 2024">
+        <img src="./img/about/margarida586.webp"
+        srcset="./img/about/margarida586.webp 586w,
+                ./img/about/margarida800.webp 800w"
+        sizes="(max-width: 480px) 100vw, 586px"
+        alt="Margarida, 2024"
+        width="586" height="753">
         <span><i>Margarida</i>&nbsp; 2024</span>
       </section>
       <section class="stat">
         <p>Pedro Marques Pereira (b. 1996, Portugal) is a lens-based artist, working with photography and video. With a degree in cinema and a postgraduate degree in visual studies, he has worked in film and audiovisual productions as a camera assistant and electrician. He has also completed an artist residency in Japan. His practice seeks a fixed and moving image as a central tool in the construction of our ideas of place, memory, and perspective. Supported by a sound dimension, his work proposes a sensitive approach to space and the experience that is constructed from it.</p>
       </section>
       <section class="cv">
-        <div><h3 class="btncv">Education</h3>
+        <div><h2 class="btncv">Education</h2>
                 <ul>
                   <li>2020&nbsp;-&nbsp;2021&nbsp; Postgraduate in Visual Studies: Photography and (Post) Cinema, NOVA FCSH, Lisbon PT</li>
                   <li>2014&nbsp;-&nbsp;2017&nbsp;&nbsp; BA Cinema, ESTC, Lisbon PT</li>
                 </ul>
         </div>
-        <div><h3 class="btncv">Exhibitions <small>(group and solo)</small></h3>
+        <div><h2 class="btncv">Exhibitions <small>(group and solo)</small></h2>
                 <ul>
                   <li>2025&nbsp; <a href="https://zedosbois.org/en/programa/ebb-segundas-na-z/" target="_blank"><i>Ebb</i> (segundas na z) at Galeria Zé dos Bois, Lisbon PT</a></li>
                   <li>2024&nbsp; <a href="https://www.culturehub.org/re-fest-2024" target="_blank"><i>Re-Fest 2024</i> by CultureHub, Virtual</a></li>
@@ -302,13 +310,13 @@
                   <li>2019&nbsp; <i>International Photography Exhibition</i> at Downtown Arts Collective, Orlando USA</li>
                 </ul>
         </div>
-        <div><h3 class="btncv">Publications</h3>
+        <div><h2 class="btncv">Publications</h2>
                 <ul>
                   <li>2024&nbsp; <a href="https://casino-luxembourg.lu/en/agenda/cahier-dimages-v2" target="_blank">CAHIER d’images - V2, Luxembourg LX</a></li>
                   <li>2022&nbsp; <a href="https://pedromarquespereira.github.io/work/zine" target="_blank"><i>Passagens VII</i>, Lisbon PT</a></li>
                 </ul>
         </div>
-        <div><h3 class="btncv">Residencies</h3>
+        <div><h2 class="btncv">Residencies</h2>
                 <ul>
                   <li>2022&nbsp; <a href="https://studiokura.info/en/pedro-marques-pereira/" target="_blank">Studio Kura, Itoshima JP</a></li>
                 </ul>
