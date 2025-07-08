@@ -92,6 +92,7 @@
     .dropd {
     cursor: pointer;
     }
+    .dropcontent {display:none;}
     /* Responsive visibility logic */
     @media screen and (max-width: 659px) {
     .dropdown {
@@ -278,6 +279,7 @@
   // Resize on metadata load and window resize
   video.addEventListener('loadedmetadata', resizeVideo);
   window.addEventListener('resize', resizeVideo);
+
   document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropd"),t=document.querySelector(".dropcontent");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));
 </script>
   </body>
