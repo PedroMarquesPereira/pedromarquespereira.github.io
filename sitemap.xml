@@ -1,142 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://pedromarquespereira.github.io/</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/about</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/contact</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/pt</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/zine</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/about/pt</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/ebb</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/cascata</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/shinjukyo</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/cabodaroca</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/dolago</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/montesclaros</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/nojardim</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/others</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/pt</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/contact/pt</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/zine/pt</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/ebb/pt</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/cascata/pt</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/shinjukyo/pt</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/cabodaroca/pt</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/dolago/pt</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/montesclaros/pt</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/nojardim/pt</loc>
-  <lastmod>2025-07-07T20:53:57+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://pedromarquespereira.github.io/work/others/pt</loc>
-  <lastmod>2025-07-07T20:53:56+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-
-
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://pedromarquespereira.github.io/</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/about</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/about/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/about" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/contact</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/contact/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/contact" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/ebb</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/ebb" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/ebb/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/ebb" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/cascata</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/cascata" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/cascata/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/cascata" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/shinjukyo</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/shinjukyo" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/shinjukyo/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/shinjukyo" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/cabodaroca</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/cabodaroca" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/cabodaroca/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/cabodaroca" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/zine</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/zine" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/zine/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/zine" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/dolago</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/dolago" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/dolago/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/dolago" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/montesclaros</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/montesclaros" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/montesclaros/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/montesclaros" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/nojardim</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/nojardim" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/nojardim/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/nojardim" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/others</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/others" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/others/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/others" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/about/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/about/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/about" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/contact/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/contact/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/contact" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/ebb/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/ebb" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/ebb/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/ebb" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/cascata/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/cascata" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/cascata/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/cascata" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/shinjukyo/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/shinjukyo" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/shinjukyo/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/shinjukyo" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/cabodaroca/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/cabodaroca" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/cabodaroca/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/cabodaroca" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/zine/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/zine" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/zine/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/zine" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/dolago/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/dolago" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/dolago/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/dolago" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/montesclaros/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/montesclaros" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/montesclaros/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/montesclaros" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/nojardim/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/nojardim" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/nojardim/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/nojardim" />
+  </url>
+  <url>
+    <loc>https://pedromarquespereira.github.io/work/others/pt</loc>
+    <lastmod>2025-07-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pedromarquespereira.github.io/work/others" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://pedromarquespereira.github.io/work/others/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.github.io/work/others" />
+  </url>
 </urlset>
