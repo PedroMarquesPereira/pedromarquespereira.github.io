@@ -205,6 +205,8 @@
   }
   .img-cont img {
     width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
     cursor: pointer;
   }
   .img-cont span{
@@ -320,12 +322,22 @@
   <main>
     <section class="proj">
       <div class="img-cont">
-        <img id="rotating-image" src="./img/montesclaros/montesclaros_1.webp" alt="MontesClaros_still">
+        <img id="rotating-image" src="./img/montesclaros/1080/montesclaros_1.webp"
+        srcset="./img/montesclaros/640/montesclaros_1.webp 640w,
+                ./img/montesclaros/1080/montesclaros_1.webp 1080w,
+                ./img/montesclaros/1440/montesclaros_1.webp 1440w"
+        sizes="(max-width: 680px) 640px,
+               (max-width: 1080px) 1080px,
+               1440px"
+        width="1440"
+        height="1080"
+        fetchpriority="high"
+        alt="MontesClaros_still">
         <span>click image to watch</span>
       </div>
       <div class="info">
-        <p>single-channel video</p>
-        <p>10 min 40 sec, 1440 x 1080 px</p>
+        <p>short film, 10 min 40 sec</p>
+        <p>HD (4:3 aspect ratio)</p>
       </div>
       <div class="description">
         <p>Looking drifts from clarity into shelter, and closing the eyes becomes another way through. As attention softens, wandering takes the shape of stillness. In this loosened state, the world begins to arrange differently. The forest emerges as a refuge, near the hum of roads, it absorbs without dividing. This space, neither hidden nor exposed, holds what is: A place not from truth, but shaped by it.</p>
@@ -363,96 +375,48 @@
 
       dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
       dropContent.addEventListener("mouseover", () => toggleDropdown(true));
-      dropTrigger.addEventListener("mouseout", () => {
+
+      const hideIfNotHovering = () => {
         setTimeout(() => {
           if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
             toggleDropdown(false);
           }
         }, 100);
-      });
-      dropContent.addEventListener("mouseout", () => {
-        setTimeout(() => {
-          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
-            toggleDropdown(false);
-          }
-        }, 100);
-      });
+      };
+
+      dropTrigger.addEventListener("mouseout", hideIfNotHovering);
+      dropContent.addEventListener("mouseout", hideIfNotHovering);
+
       dropTrigger.addEventListener("click", () => {
         dropdownOpen = !dropdownOpen;
         toggleDropdown(dropdownOpen);
       });
     }
 
-    // --- Rotating Image ---
-    const imageElement = document.getElementById("rotating-image");
-    const images = [
-      { src: './img/montesclaros/montesclaros_1.webp' },
-      { src: './img/montesclaros/montesclaros_3.webp' },
-      { src: './img/montesclaros/montesclaros_4.webp' }
-    ];
-    let index = 0;
-
-    if (imageElement) {
-      setInterval(() => {
-        index = (index + 1) % images.length;
-        imageElement.src = images[index].src;
-      }, 10000);
-    }
-
-    // --- Gallery Variables ---
+    // --- Gallery Logic ---
     const rotatingImage = document.querySelector("#rotating-image");
     const gallery = document.querySelector(".gallery");
     const galleryBack = document.querySelector(".gallery-back");
-    const galleryImgs = document.querySelectorAll(".gallery-img img");
-    const image = document.querySelector(".gallery-img img.one");
-    const leftArrow = document.querySelector(".gallery-img .arrows .left");
-    const rightArrow = document.querySelector(".gallery-img .arrows .right");
-
-    let currentIndex = 0;
     let galleryKeyboardEnabled = false;
 
-    // --- Gallery Functions ---
-    function updateImage() {
-      if (image) {
-        image.src = imageSources[currentIndex];
-
-        // Show/hide arrows based on current index
-        if (currentIndex === 0) {
-          leftArrow.style.display = "none";
-          rightArrow.style.display = "inline-block";
-        } else if (currentIndex === imageSources.length - 1) {
-          leftArrow.style.display = "inline-block";
-          rightArrow.style.display = "none";
-        } else {
-          leftArrow.style.display = "inline-block";
-          rightArrow.style.display = "inline-block";
-        }
-      }
-    }
-
     function openGallery() {
-  gallery.style.display = "block";
-  gallery.classList.add("fade");
+      gallery.style.display = "block";
+      gallery.classList.add("fade");
 
-  // Remove the class after the animation completes (300ms)
-  setTimeout(() => {
-    gallery.classList.remove("fade");
-  }, 300);
+      setTimeout(() => {
+        gallery.classList.remove("fade");
+      }, 300);
 
-  galleryImgs.forEach(img => img.style.display = "none");
-  const ebb1 = document.querySelector(".gallery-img img.one");
-  if (ebb1) ebb1.style.display = "block";
-  galleryKeyboardEnabled = true;
-  currentIndex = 0; // Reset to first image
-  updateImage();
-}
+      galleryKeyboardEnabled = true;
+      document.body.style.overflow = "hidden";
+    }
 
     function closeGallery() {
       gallery.style.display = "none";
       galleryKeyboardEnabled = false;
+      document.body.style.overflow = "auto";
     }
 
-    // --- Gallery Event Listeners ---
     if (rotatingImage && gallery) {
       rotatingImage.addEventListener("click", openGallery);
     }
@@ -461,84 +425,42 @@
       galleryBack.addEventListener("click", closeGallery);
     }
 
-    // Arrow click events
-    if (leftArrow) {
-      leftArrow.addEventListener("click", () => {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateImage();
-        }
-      });
-    }
-
-    if (rightArrow) {
-      rightArrow.addEventListener("click", () => {
-        if (currentIndex < imageSources.length - 1) {
-          currentIndex++;
-          updateImage();
-        }
-      });
-    }
-
-    // --- Keyboard Navigation ---
     function handleKeydown(event) {
-      // Only handle keys when gallery is open
-      if (!galleryKeyboardEnabled || gallery.style.display !== "block") {
-        return;
-      }
+      if (!galleryKeyboardEnabled || gallery.style.display !== "block") return;
 
-      // Prevent default behavior for navigation keys
-      const navigationKeys = ['ArrowLeft', 'ArrowRight', 'Escape', ' ', 'Enter', 'Home', 'End'];
-      if (navigationKeys.includes(event.key)) {
+      if (event.key === "Escape") {
         event.preventDefault();
-      }
-
-      switch(event.key) {
-        case 'Escape':
-          closeGallery();
-          break;
-
-
-          const imageNumber = parseInt(event.key);
-          if (imageNumber >= 1 && imageNumber <= imageSources.length) {
-            currentIndex = imageNumber - 1;
-            updateImage();
-          }
-          break;
+        closeGallery();
       }
     }
 
-    // Add keyboard event listener
-    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener("keydown", handleKeydown);
 
-    // --- Image Resize Function ---
+    // --- Maintain 7:6 Aspect Ratio on Iframe ---
     function maintainAspectRatio() {
-    const iframe = document.querySelector("iframe");
-    if (!iframe) return;
+      const iframe = document.querySelector("iframe");
+      if (!iframe) return;
 
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
 
-    const maxW = vw - 30;
-    const maxH = vh - 160;
+      const maxW = vw - 30;
+      const maxH = vh - 160;
 
-    let width = maxW;
-    let height = width * (3 / 4);
+      let width = maxW;
+      let height = width * (3 / 4);
 
-    if (height > maxH) {
-      height = maxH;
-      width = height * (4 / 3);
+      if (height > maxH) {
+        height = maxH;
+        width = height * (4 / 3);
+      }
+
+      iframe.style.width = width + "px";
+      iframe.style.height = height + "px";
     }
 
-    iframe.style.width = width + "px";
-    iframe.style.height = height + "px";
-  }
-
-  window.addEventListener("resize", maintainAspectRatio);
-  window.addEventListener("load", maintainAspectRatio);
-
-    // Initialize gallery
-    updateImage();
+    window.addEventListener("resize", maintainAspectRatio);
+    window.addEventListener("load", maintainAspectRatio);
   });
   </script>
 </body>
