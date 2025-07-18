@@ -344,12 +344,8 @@
     <div class="bottom-gap"></div>
   </section>
   <section class="gallery">
-    <div class="gallery-back">
-      <span>×</span>
-    </div>
-    <div class="gallery-img">
-      <iframe src="https://www.youtube.com/embed/vpnGxjfYm94?si=fhZT-75o3sX6kALq&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+    <div class="gallery-back"><span>×</span></div>
+    <div class="gallery-img" id="gallery-video-placeholder"></div>
   </section>
   <footer class="bottom">
       <div class="lang"><a href="../nojardim" lang="en" class="btn">en</a></div>
@@ -364,11 +360,7 @@
 
     if (dropTrigger && dropContent) {
       const toggleDropdown = (show) => {
-        if (show) {
-          dropContent.classList.add("show");
-        } else {
-          dropContent.classList.remove("show");
-        }
+        dropContent.classList.toggle("show", show);
       };
 
       dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
@@ -395,9 +387,47 @@
     const rotatingImage = document.querySelector("#rotating-image");
     const gallery = document.querySelector(".gallery");
     const galleryBack = document.querySelector(".gallery-back");
+    const galleryPlaceholder = document.getElementById("gallery-video-placeholder");
     let galleryKeyboardEnabled = false;
 
+    function maintainAspectRatio() {
+      const iframe = galleryPlaceholder.querySelector("iframe");
+      if (!iframe) return;
+
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      const maxW = vw - 30;
+      const maxH = vh - 160;
+
+      let width = maxW;
+      let height = width * (3 / 4); // 4:3 aspect ratio
+
+      if (height > maxH) {
+        height = maxH;
+        width = height * (4 / 3);
+      }
+
+      iframe.style.width = width + "px";
+      iframe.style.height = height + "px";
+    }
+
     function openGallery() {
+      if (galleryPlaceholder && !galleryPlaceholder.querySelector("iframe")) {
+        const iframe = document.createElement("iframe");
+        iframe.src = "https://www.youtube-nocookie.com/embed/vpnGxjfYm94?si=fhZT-75o3sX6kALq&rel=0";
+        iframe.title = "YouTube video player";
+        iframe.frameBorder = "0";
+        iframe.allow =
+          "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.style = "display: block; border: none;";
+
+        galleryPlaceholder.appendChild(iframe);
+        maintainAspectRatio(); // apply size immediately
+      }
+
       gallery.style.display = "block";
       gallery.classList.add("fade");
 
@@ -413,6 +443,10 @@
       gallery.style.display = "none";
       galleryKeyboardEnabled = false;
       document.body.style.overflow = "auto";
+
+      if (galleryPlaceholder) {
+        galleryPlaceholder.innerHTML = ""; // remove iframe to unload YouTube
+      }
     }
 
     if (rotatingImage && gallery) {
@@ -423,43 +457,17 @@
       galleryBack.addEventListener("click", closeGallery);
     }
 
-    function handleKeydown(event) {
+    document.addEventListener("keydown", (event) => {
       if (!galleryKeyboardEnabled || gallery.style.display !== "block") return;
-
       if (event.key === "Escape") {
         event.preventDefault();
         closeGallery();
       }
-    }
-
-    document.addEventListener("keydown", handleKeydown);
-
-    // --- Maintain 7:6 Aspect Ratio on Iframe ---
-    function maintainAspectRatio() {
-      const iframe = document.querySelector("iframe");
-      if (!iframe) return;
-
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-
-      const maxW = vw - 30;
-      const maxH = vh - 160;
-
-      let width = maxW;
-      let height = width * (3 / 4);
-
-      if (height > maxH) {
-        height = maxH;
-        width = height * (4 / 3);
-      }
-
-      iframe.style.width = width + "px";
-      iframe.style.height = height + "px";
-    }
+    });
 
     window.addEventListener("resize", maintainAspectRatio);
     window.addEventListener("load", maintainAspectRatio);
   });
-  </script>
+</script>
 </body>
 </html>
