@@ -205,6 +205,8 @@
   }
   .img-cont img {
     width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
     cursor: pointer;
   }
   .img-cont span{
@@ -228,7 +230,7 @@
       width:100%;
     }
   }
-  @media screen and (max-width: 1024px) and (max-height: 1050px){
+  @media screen and (min-width: 726px) and (max-width: 1024px) and (max-height: 1050px){
     .img-cont,
     .info,
     .description{
@@ -340,7 +342,17 @@
   <main>
     <section class="proj">
       <div class="img-cont">
-        <img id="rotating-image" src="./img/cascata/cascata_1.webp" alt="Cascata_still">
+        <img id="rotating-image"
+     src="./img/cascata/640/cascata_1.webp"
+     srcset="./img/cascata/640/cascata_1.webp 640w,
+             ./img/cascata/1080/cascata_1.webp 1080w"
+     sizes="(min-width: 1025px) and (min-height: 1201px) 1000px,
+            (min-width: 1025px) 725px,
+            100vw"
+     width="1080"
+     height="810"
+     fetchpriority="high"
+     alt="Cascata_still">
         <span>click image for more</span>
       </div>
       <div class="info">
@@ -357,7 +369,16 @@
         <span>×</span>
       </div>
       <div class="gallery-img">
-        <img class="one"src="./img/ebb/ebb_1.jpg" alt="Ebb_still">
+        <img class="one" loading="lazy" src="./img/cascata/1080/cascata_1.webp"
+        srcset="./img/cascata/640/cascata_1.webp 640w,
+                ./img/cascata/1080/cascata_1.webp 1080w,
+                ./img/cascata/1440/cascata_1.webp 1440w"
+        sizes="(max-width: 680px) 640px,
+               (max-width: 1080px) 1080px,
+               1440px"
+        width="1440"
+        height="1080"
+        alt="Cascata_still">
         <div class="arrows">
           <span class="left"><</span>
           <span class="right">></span>
@@ -406,94 +427,81 @@
         toggleDropdown(dropdownOpen);
       });
     }
+    // --- Responsive Gallery Image Paths Builder ---
+    function getResponsiveImagePaths() {
+      const width = window.innerWidth;
+      let folder = "1440";
+      if (width <= 640) folder = "640";
+      else if (width <= 1080) folder = "1080";
 
-    // --- Rotating Image ---
-    const imageElement = document.getElementById("rotating-image");
-    const images = [
-      { src: './img/cascata/cascata_1.webp' },
-      { src: './img/cascata/cascata_2.webp' },
-      { src: './img/cascata/cascata_3.webp' },
-      { src: './img/cascata/cascata_4.webp' }
-    ];
-    let index = 0;
-
-    if (imageElement) {
-      setInterval(() => {
-        index = (index + 1) % images.length;
-        imageElement.src = images[index].src;
-      }, 10000);
+      return [
+        `./img/cascata/${folder}/cascata_1.webp`,
+        `./img/cascata/${folder}/cascata_2.webp`,
+        `./img/cascata/${folder}/cascata_3.webp`,
+        `./img/cascata/${folder}/cascata_4.webp`
+      ];
     }
 
-    // --- Gallery Variables ---
-    const rotatingImage = document.querySelector("#rotating-image");
+    let imageSources = getResponsiveImagePaths();
+    window.addEventListener("resize", () => {
+      imageSources = getResponsiveImagePaths();
+      updateImage();
+    });
+
+    // --- Gallery Elements ---
     const gallery = document.querySelector(".gallery");
     const galleryBack = document.querySelector(".gallery-back");
-    const galleryImgs = document.querySelectorAll(".gallery-img img");
     const image = document.querySelector(".gallery-img img.one");
     const leftArrow = document.querySelector(".gallery-img .arrows .left");
     const rightArrow = document.querySelector(".gallery-img .arrows .right");
-
-    const imageSources = [
-      "./img/cascata/cascata_1.webp",
-      "./img/cascata/cascata_2.webp",
-      "./img/cascata/cascata_3.webp",
-      "./img/cascata/cascata_4.webp"
-    ];
+    const rotatingImage = document.querySelector("#rotating-image");
 
     let currentIndex = 0;
     let galleryKeyboardEnabled = false;
 
-    // --- Gallery Functions ---
     function updateImage() {
-      if (image) {
-        image.src = imageSources[currentIndex];
+      if (!image) return;
 
-        // Show/hide arrows based on current index
-        if (currentIndex === 0) {
-          leftArrow.style.display = "none";
-          rightArrow.style.display = "inline-block";
-        } else if (currentIndex === imageSources.length - 1) {
-          leftArrow.style.display = "inline-block";
-          rightArrow.style.display = "none";
-        } else {
-          leftArrow.style.display = "inline-block";
-          rightArrow.style.display = "inline-block";
-        }
-      }
+      const currentSrc = imageSources[currentIndex];
+
+      // Get filename only
+      const filename = currentSrc.split('/').pop();
+
+      // Build srcset for all sizes
+      const src640 = `./img/cascata/640/${filename}`;
+      const src1080 = `./img/cascata/1080/${filename}`;
+      const src1440 = `./img/cascata/1440/${filename}`;
+
+      image.src = currentSrc;
+      image.srcset = `${src640} 640w, ${src1080} 1080w, ${src1440} 1440w`;
+
+      // Arrow visibility
+      leftArrow.style.display = currentIndex === 0 ? "none" : "inline-block";
+      rightArrow.style.display = currentIndex === imageSources.length - 1 ? "none" : "inline-block";
+
+      adjustGalleryImage();
     }
 
     function openGallery() {
-  gallery.style.display = "block";
-  gallery.classList.add("fade");
-
-  // Remove the class after the animation completes (300ms)
-  setTimeout(() => {
-    gallery.classList.remove("fade");
-  }, 300);
-
-  galleryImgs.forEach(img => img.style.display = "none");
-  const ebb1 = document.querySelector(".gallery-img img.one");
-  if (ebb1) ebb1.style.display = "block";
-  galleryKeyboardEnabled = true;
-  currentIndex = 0; // Reset to first image
-  updateImage();
-}
+      if (!gallery) return;
+      gallery.style.display = "block";
+      gallery.classList.add("fade");
+      setTimeout(() => gallery.classList.remove("fade"), 300);
+      currentIndex = 0;
+      galleryKeyboardEnabled = true;
+      updateImage();
+    }
 
     function closeGallery() {
+      if (!gallery) return;
       gallery.style.display = "none";
       galleryKeyboardEnabled = false;
     }
 
-    // --- Gallery Event Listeners ---
-    if (rotatingImage && gallery) {
-      rotatingImage.addEventListener("click", openGallery);
-    }
+    // --- Gallery Click Events ---
+    if (rotatingImage) rotatingImage.addEventListener("click", openGallery);
+    if (galleryBack) galleryBack.addEventListener("click", closeGallery);
 
-    if (galleryBack && gallery) {
-      galleryBack.addEventListener("click", closeGallery);
-    }
-
-    // Arrow click events
     if (leftArrow) {
       leftArrow.addEventListener("click", () => {
         if (currentIndex > 0) {
@@ -513,94 +521,69 @@
     }
 
     // --- Keyboard Navigation ---
-    function handleKeydown(event) {
-      // Only handle keys when gallery is open
-      if (!galleryKeyboardEnabled || gallery.style.display !== "block") {
-        return;
-      }
+    document.addEventListener("keydown", (event) => {
+      if (!galleryKeyboardEnabled || !gallery || gallery.style.display !== "block") return;
 
-      // Prevent default behavior for navigation keys
-      const navigationKeys = ['ArrowLeft', 'ArrowRight', 'Escape', ' ', 'Enter', 'Home', 'End'];
-      if (navigationKeys.includes(event.key)) {
-        event.preventDefault();
-      }
+      const navKeys = ["ArrowLeft", "ArrowRight", "Escape", " ", "Enter", "Home", "End"];
+      if (navKeys.includes(event.key)) event.preventDefault();
 
-      switch(event.key) {
-        case 'ArrowLeft':
-          if (currentIndex > 0) {
-            currentIndex--;
-            updateImage();
-          }
+      switch (event.key) {
+        case "ArrowLeft":
+          if (currentIndex > 0) currentIndex--;
           break;
-
-        case 'ArrowRight':
-        case ' ': // Spacebar
-          if (currentIndex < imageSources.length - 1) {
-            currentIndex++;
-            updateImage();
-          }
+        case "ArrowRight":
+        case " ":
+          if (currentIndex < imageSources.length - 1) currentIndex++;
           break;
-
-        case 'Escape':
-        case 'Enter':
+        case "Escape":
+        case "Enter":
           closeGallery();
-          break;
-
-        case 'Home':
+          return;
+        case "Home":
           currentIndex = 0;
-          updateImage();
           break;
-
-        case 'End':
+        case "End":
           currentIndex = imageSources.length - 1;
-          updateImage();
           break;
-
-        case '1':
-        case '2':
-        case '3':
+        case "1":
+        case "2":
+        case "3":
+        case "4":
           const imageNumber = parseInt(event.key);
           if (imageNumber >= 1 && imageNumber <= imageSources.length) {
             currentIndex = imageNumber - 1;
-            updateImage();
           }
           break;
       }
-    }
+      updateImage();
+    });
 
-    // Add keyboard event listener
-    document.addEventListener('keydown', handleKeydown);
-
-    // --- Image Resize Function ---
+    // --- Resize Image to Fit Viewport ---
     function adjustGalleryImage() {
-      const img = document.querySelector('.gallery-img img.one');
-      if (!img) return;
+      if (!image) return;
 
       const maxW = window.innerWidth - 30;
       const maxH = window.innerHeight - 160;
 
       const temp = new Image();
-      temp.src = img.src;
+      temp.src = image.src;
 
       temp.onload = () => {
         const ratio = temp.naturalWidth / temp.naturalHeight;
 
         if (maxW / ratio <= maxH) {
-          img.style.width = `${maxW}px`;
-          img.style.height = 'auto';
+          image.style.width = `${maxW}px`;
+          image.style.height = "auto";
         } else {
-          img.style.width = 'auto';
-          img.style.height = `${maxH}px`;
+          image.style.width = "auto";
+          image.style.height = `${maxH}px`;
         }
       };
     }
 
-    window.addEventListener('load', adjustGalleryImage);
-    window.addEventListener('resize', adjustGalleryImage);
-
-    // Initialize gallery
-    updateImage();
+    window.addEventListener("load", adjustGalleryImage);
+    window.addEventListener("resize", adjustGalleryImage);
   });
-  </script>
+</script>
 </body>
 </html>
