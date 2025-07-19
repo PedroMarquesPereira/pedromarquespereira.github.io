@@ -311,16 +311,21 @@
   <main>
     <section class="proj">
       <div class="img-cont">
-        <img id="rotating-image" class="main"
-     src="./img/zine/640/zine_cover.webp"
-     srcset="./img/zine/480/zine_cover.webp 507w,
-             ./img/zine/640/zine_cover.webp 676w,
-             ./img/zine/1080/zine_cover.webp 1183w"
-             sizes="min(calc((100vh - 245px) * 169 / 240), calc(100vw - 30px))"
-     width="676"
-     height="960"
-     fetchpriority="high"
-     alt="Zine_Cover">
+        <img
+  src="./img/zine/640/zine_cover.webp"
+  srcset="
+    ./img/zine/480/zine_cover.webp 507w,
+    ./img/zine/640/zine_cover.webp 676w,
+    ./img/zine/1080/zine_cover.webp 1183w
+  "
+  sizes="
+    (max-width: 507px) 507px,
+    (max-width: 676px) 676px,
+    (min-width: 1183px) 1183px,
+    676px
+  "
+  width="676" height="960" alt="Zine_Cover"
+>
           <span>click image for more</span>
         <div class="info">
           <p>14,8 x 21 cm, 18 pages</p>
@@ -334,11 +339,11 @@
       </div>
       <div class="gallery-img">
         <img class="one" loading="lazy" src="./img/zine/640/zine_1.webp"
-        srcset="./img/zine/640/zine_1.webp 640w,
-                ./img/zine/1080/zine_1.webp 1080w,
-                ./img/zine/1440/zine_1.webp 1440w"
-        sizes="(max-width: 680px) 646px,
-               (max-width: 1080px) 1088px,
+        srcset="./img/zine/640/zine_1.webp 646w,
+                ./img/zine/1080/zine_1.webp 1086w,
+                ./img/zine/1440/zine_1.webp 1445w"
+        sizes="(max-width: 646px) 646px,
+               (max-width: 1088px) 1088px,
                1445px"
         width="646"
         height="456"
