@@ -411,14 +411,10 @@
         : { src: "../img/cabodaroca/640/farol.mp4", type: "video/mp4" };
     } else if (width <= 1080) {
       poster = "../img/cabodaroca/1080/farol.webp";
-      src = supportsWebM()
-        ? { src: "../img/cabodaroca/1080/farol.webm", type: "video/webm" }
-        : { src: "../img/cabodaroca/1080/farol.mp4", type: "video/mp4" };
+      src = { src: "../img/cabodaroca/1080/farol.mp4", type: "video/mp4" };
     } else {
       poster = "../img/cabodaroca/1440/farol.webp";
-      src = supportsWebM()
-        ? { src: "../img/cabodaroca/1440/farol.webm", type: "video/webm" }
-        : { src: "../img/cabodaroca/1440/farol.mp4", type: "video/mp4" };
+      src = { src: "../img/cabodaroca/1440/farol.mp4", type: "video/mp4" };
     }
 
     const source = document.createElement("source");
@@ -432,7 +428,6 @@
   setResponsiveVideo();
   window.addEventListener("resize", setResponsiveVideo);
   </script>
-
 
   <script defer>
   document.addEventListener("DOMContentLoaded", function () {
