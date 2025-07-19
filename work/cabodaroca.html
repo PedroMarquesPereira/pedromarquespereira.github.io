@@ -344,20 +344,9 @@
   <main>
     <section class="proj">
       <div class="img-cont">
-        <video id="rotating-image"
-          width="1440"
-          height="960"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          fetchpriority="high"
-          poster="./img/cabodaroca/1080/farol.webp">
-          <source src="./img/cabodaroca/640/farol.webm" type="video/webm" media="(max-width: 680px)">
-          <source src="./img/cabodaroca/640/farol.mp4" type="video/mp4" media="(max-width: 680px)">
-          <source src="./img/cabodaroca/1080/farol.mp4" type="video/mp4" media="(max-width: 1080px)">
-          <source src="./img/cabodaroca/1440/farol.mp4" type="video/mp4">
+        <video id="rotating-image" autoplay muted playsinline preload="auto" fetchpriority="high" poster="./img/cabodaroca/1080/farol.webp">
+          <source id="source-webm" type="video/webm">
+          <source id="source-mp4" type="video/mp4">
         </video>
         <span>click image for more</span>
       </div>
@@ -396,211 +385,226 @@
       <div class="lang"><a href="./cabodaroca/pt" lang="pt" class="btn">pt</a></div>
       <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
   </footer>
-  <script defer>
-document.addEventListener("DOMContentLoaded", function () {
-  // --- Dropdown Menu Hover and Click ---
-  const dropTrigger = document.querySelector(".dropd");
-  const dropContent = document.querySelector(".dropcontent");
-  let dropdownOpen = false;
+  <script>
+  const video = document.getElementById("rotating-image");
+  const sourceWebm = document.getElementById("source-webm");
+  const sourceMp4 = document.getElementById("source-mp4");
 
-  if (dropTrigger && dropContent) {
-    const toggleDropdown = (show) => {
-      dropContent.classList.toggle("show", show);
-    };
-
-    const handleMouseOut = () => {
-      setTimeout(() => {
-        if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
-          toggleDropdown(false);
-        }
-      }, 100);
-    };
-
-    dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
-    dropTrigger.addEventListener("mouseout", handleMouseOut);
-    dropContent.addEventListener("mouseover", () => toggleDropdown(true));
-    dropContent.addEventListener("mouseout", handleMouseOut);
-    dropTrigger.addEventListener("click", () => {
-      dropdownOpen = !dropdownOpen;
-      toggleDropdown(dropdownOpen);
-    });
-  }
-
-  // --- Responsive Video Poster ---
-  const rotatingImage = document.querySelector("#rotating-image");
-
-  function setResponsivePoster() {
-    if (!rotatingImage) return;
+  function setResponsiveVideo() {
+    if (!video) return;
     const width = window.innerWidth;
 
     if (width <= 640) {
-      rotatingImage.poster = "./img/cabodaroca/640/farol.webp";
+      sourceWebm.src = "./img/cabodaroca/640/farol.webm";
+      sourceMp4.src = "./img/cabodaroca/640/farol.mp4";
+      video.poster = "./img/cabodaroca/640/farol.webp";
     } else if (width <= 1080) {
-      rotatingImage.poster = "./img/cabodaroca/1080/farol.webp";
+      sourceWebm.src = "";
+      sourceMp4.src = "./img/cabodaroca/1080/farol.mp4";
+      video.poster = "./img/cabodaroca/1080/farol.webp";
     } else {
-      rotatingImage.poster = "./img/cabodaroca/1440/farol.webp";
+      sourceWebm.src = "";
+      sourceMp4.src = "./img/cabodaroca/1440/farol.mp4";
+      video.poster = "./img/cabodaroca/1440/farol.webp";
     }
+
+    video.load(); // Reload video sources with new srcs
   }
 
-  setResponsivePoster();
-  window.addEventListener("resize", setResponsivePoster);
+  setResponsiveVideo();
+  window.addEventListener("resize", setResponsiveVideo);
+  </script>
 
-  // --- Gallery Responsive Image Path Builder ---
-  function getResponsiveImagePaths() {
-    const width = window.innerWidth;
-    let folder = "1440";
-    if (width <= 640) folder = "640";
-    else if (width <= 1080) folder = "1080";
+  <script defer>
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- Dropdown Menu Hover and Click ---
+    const dropTrigger = document.querySelector(".dropd");
+    const dropContent = document.querySelector(".dropcontent");
+    let dropdownOpen = false;
 
-    return [
-      `./img/cabodaroca/${folder}/cr_1.webp`,
-      `./img/cabodaroca/${folder}/cr_2.webp`,
-      `./img/cabodaroca/${folder}/cr_3.webp`,
-      `./img/cabodaroca/${folder}/cr_4.webp`,
-      `./img/cabodaroca/${folder}/cr_5.webp`
-    ];
-  }
+    if (dropTrigger && dropContent) {
+      const toggleDropdown = (show) => {
+        dropContent.classList.toggle("show", show);
+      };
 
-  let imageSources = getResponsiveImagePaths();
-  window.addEventListener("resize", () => {
-    imageSources = getResponsiveImagePaths();
-    updateImage();
-  });
+      const handleMouseOut = () => {
+        setTimeout(() => {
+          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
+            toggleDropdown(false);
+          }
+        }, 100);
+      };
 
-  // --- Gallery Elements ---
-  const gallery = document.querySelector(".gallery");
-  const galleryBack = document.querySelector(".gallery-back");
-  const image = document.querySelector(".gallery-img img.one");
-  const leftArrow = document.querySelector(".gallery-img .arrows .left");
-  const rightArrow = document.querySelector(".gallery-img .arrows .right");
+      dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
+      dropTrigger.addEventListener("mouseout", handleMouseOut);
+      dropContent.addEventListener("mouseover", () => toggleDropdown(true));
+      dropContent.addEventListener("mouseout", handleMouseOut);
+      dropTrigger.addEventListener("click", () => {
+        dropdownOpen = !dropdownOpen;
+        toggleDropdown(dropdownOpen);
+      });
+    }
 
-  let currentIndex = 0;
-  let galleryKeyboardEnabled = false;
+    // --- Responsive Gallery Image Paths Builder ---
+    function getResponsiveImagePaths() {
+      const width = window.innerWidth;
+      let folder = "1440";
+      if (width <= 640) folder = "640";
+      else if (width <= 1080) folder = "1080";
 
-  function updateImage() {
-    if (!image) return;
+      return [
+        `./img/cabodaroca/${folder}/cr_1.webp`,
+        `./img/cabodaroca/${folder}/cr_2.webp`,
+        `./img/cabodaroca/${folder}/cr_3.webp`,
+        `./img/cabodaroca/${folder}/cr_4.webp`,
+        `./img/cabodaroca/${folder}/cr_5.webp`
+      ];
+    }
 
-    const currentSrc = imageSources[currentIndex];
-
-    // Get the filename only (e.g., cr_1.webp)
-    const filename = currentSrc.split('/').pop();
-
-    // Build srcset for all sizes
-    const src640 = `./img/cabodaroca/640/${filename}`;
-    const src1080 = `./img/cabodaroca/1080/${filename}`;
-    const src1440 = `./img/cabodaroca/1440/${filename}`;
-
-    image.src = currentSrc;
-    image.srcset = `${src640} 640w, ${src1080} 1080w, ${src1440} 1440w`;
-
-    // Update arrow visibility
-    leftArrow.style.display = currentIndex === 0 ? "none" : "inline-block";
-    rightArrow.style.display = currentIndex === imageSources.length - 1 ? "none" : "inline-block";
-
-    adjustGalleryImage();
-  }
-
-  function openGallery() {
-    gallery.style.display = "block";
-    gallery.classList.add("fade");
-    setTimeout(() => gallery.classList.remove("fade"), 300);
-    currentIndex = 0;
-    galleryKeyboardEnabled = true;
-    updateImage();
-  }
-
-  function closeGallery() {
-    gallery.style.display = "none";
-    galleryKeyboardEnabled = false;
-  }
-
-  // --- Gallery Click Events ---
-  if (rotatingImage) rotatingImage.addEventListener("click", openGallery);
-  if (galleryBack) galleryBack.addEventListener("click", closeGallery);
-
-  if (leftArrow) {
-    leftArrow.addEventListener("click", () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateImage();
-      }
+    let imageSources = getResponsiveImagePaths();
+    window.addEventListener("resize", () => {
+      imageSources = getResponsiveImagePaths();
+      updateImage();
     });
-  }
 
-  if (rightArrow) {
-    rightArrow.addEventListener("click", () => {
-      if (currentIndex < imageSources.length - 1) {
-        currentIndex++;
-        updateImage();
-      }
-    });
-  }
+    // --- Gallery Elements ---
+    const gallery = document.querySelector(".gallery");
+    const galleryBack = document.querySelector(".gallery-back");
+    const image = document.querySelector(".gallery-img img.one");
+    const leftArrow = document.querySelector(".gallery-img .arrows .left");
+    const rightArrow = document.querySelector(".gallery-img .arrows .right");
+    const rotatingImage = document.querySelector("#rotating-image");
 
-  // --- Keyboard Navigation ---
-  document.addEventListener("keydown", (event) => {
-    if (!galleryKeyboardEnabled || gallery.style.display !== "block") return;
+    let currentIndex = 0;
+    let galleryKeyboardEnabled = false;
 
-    const navKeys = ["ArrowLeft", "ArrowRight", "Escape", " ", "Enter", "Home", "End"];
-    if (navKeys.includes(event.key)) event.preventDefault();
+    function updateImage() {
+      if (!image) return;
 
-    switch (event.key) {
-      case "ArrowLeft":
-        if (currentIndex > 0) currentIndex--;
-        break;
-      case "ArrowRight":
-      case " ":
-        if (currentIndex < imageSources.length - 1) currentIndex++;
-        break;
-      case "Escape":
-      case "Enter":
-        closeGallery();
-        return;
-      case "Home":
-        currentIndex = 0;
-        break;
-      case "End":
-        currentIndex = imageSources.length - 1;
-        break;
-      case "1":
-      case "2":
-      case "3":
-      case "4":
-      case "5":
-        const imageNumber = parseInt(event.key);
-        if (imageNumber >= 1 && imageNumber <= imageSources.length) {
-          currentIndex = imageNumber - 1;
+      const currentSrc = imageSources[currentIndex];
+
+      // Get filename only
+      const filename = currentSrc.split('/').pop();
+
+      // Build srcset for all sizes
+      const src640 = `./img/cabodaroca/640/${filename}`;
+      const src1080 = `./img/cabodaroca/1080/${filename}`;
+      const src1440 = `./img/cabodaroca/1440/${filename}`;
+
+      image.src = currentSrc;
+      image.srcset = `${src640} 640w, ${src1080} 1080w, ${src1440} 1440w`;
+
+      // Arrow visibility
+      leftArrow.style.display = currentIndex === 0 ? "none" : "inline-block";
+      rightArrow.style.display = currentIndex === imageSources.length - 1 ? "none" : "inline-block";
+
+      adjustGalleryImage();
+    }
+
+    function openGallery() {
+      if (!gallery) return;
+      gallery.style.display = "block";
+      gallery.classList.add("fade");
+      setTimeout(() => gallery.classList.remove("fade"), 300);
+      currentIndex = 0;
+      galleryKeyboardEnabled = true;
+      updateImage();
+    }
+
+    function closeGallery() {
+      if (!gallery) return;
+      gallery.style.display = "none";
+      galleryKeyboardEnabled = false;
+    }
+
+    // --- Gallery Click Events ---
+    if (rotatingImage) rotatingImage.addEventListener("click", openGallery);
+    if (galleryBack) galleryBack.addEventListener("click", closeGallery);
+
+    if (leftArrow) {
+      leftArrow.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateImage();
         }
-        break;
+      });
     }
-    updateImage();
-  });
 
-  // --- Resize Image to Fit Viewport ---
-  function adjustGalleryImage() {
-    if (!image) return;
+    if (rightArrow) {
+      rightArrow.addEventListener("click", () => {
+        if (currentIndex < imageSources.length - 1) {
+          currentIndex++;
+          updateImage();
+        }
+      });
+    }
 
-    const maxW = window.innerWidth - 30;
-    const maxH = window.innerHeight - 160;
+    // --- Keyboard Navigation ---
+    document.addEventListener("keydown", (event) => {
+      if (!galleryKeyboardEnabled || !gallery || gallery.style.display !== "block") return;
 
-    const temp = new Image();
-    temp.src = image.src;
+      const navKeys = ["ArrowLeft", "ArrowRight", "Escape", " ", "Enter", "Home", "End"];
+      if (navKeys.includes(event.key)) event.preventDefault();
 
-    temp.onload = () => {
-      const ratio = temp.naturalWidth / temp.naturalHeight;
-
-      if (maxW / ratio <= maxH) {
-        image.style.width = `${maxW}px`;
-        image.style.height = "auto";
-      } else {
-        image.style.width = "auto";
-        image.style.height = `${maxH}px`;
+      switch (event.key) {
+        case "ArrowLeft":
+          if (currentIndex > 0) currentIndex--;
+          break;
+        case "ArrowRight":
+        case " ":
+          if (currentIndex < imageSources.length - 1) currentIndex++;
+          break;
+        case "Escape":
+        case "Enter":
+          closeGallery();
+          return;
+        case "Home":
+          currentIndex = 0;
+          break;
+        case "End":
+          currentIndex = imageSources.length - 1;
+          break;
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+          const imageNumber = parseInt(event.key);
+          if (imageNumber >= 1 && imageNumber <= imageSources.length) {
+            currentIndex = imageNumber - 1;
+          }
+          break;
       }
-    };
-  }
+      updateImage();
+    });
 
-  window.addEventListener("load", adjustGalleryImage);
-  window.addEventListener("resize", adjustGalleryImage);
-});
+    // --- Resize Image to Fit Viewport ---
+    function adjustGalleryImage() {
+      if (!image) return;
+
+      const maxW = window.innerWidth - 30;
+      const maxH = window.innerHeight - 160;
+
+      const temp = new Image();
+      temp.src = image.src;
+
+      temp.onload = () => {
+        const ratio = temp.naturalWidth / temp.naturalHeight;
+
+        if (maxW / ratio <= maxH) {
+          image.style.width = `${maxW}px`;
+          image.style.height = "auto";
+        } else {
+          image.style.width = "auto";
+          image.style.height = `${maxH}px`;
+        }
+      };
+    }
+
+    window.addEventListener("load", adjustGalleryImage);
+    window.addEventListener("resize", adjustGalleryImage);
+  });
 </script>
+
 </body>
 </html>
