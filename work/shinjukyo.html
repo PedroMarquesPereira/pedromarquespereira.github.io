@@ -341,11 +341,12 @@
   <main>
     <section class="proj">
       <div class="img-cont">
-        <img id="rotating-image" src="./img/shinjukyo/1080/shinjukyo_1.webp"
+        <img id="rotating-image" src="./img/shinjukyo/640/shinjukyo_1.webp"
         srcset="./img/shinjukyo/640/shinjukyo_1.webp 640w,
                 ./img/shinjukyo/1080/shinjukyo_1.webp 1080w"
-        sizes="(max-width: 640px) 640px,
-              1080px"
+        sizes="(min-width: 1025px) and (min-height: 1201px) 1000px,
+               (max-width: 725px) 100vw,
+               725px"
         width="1080"
         height="810"
         fetchpriority="high"
