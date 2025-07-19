@@ -344,9 +344,8 @@
   <main>
     <section class="proj">
       <div class="img-cont">
-        <video id="rotating-image" autoplay muted playsinline preload="auto" fetchpriority="high" loop poster="../img/cabodaroca/1080/farol.webp">
+        <video id="rotating-image" autoplay muted playsinline preload="auto" fetchpriority="high" loop poster="../img/cabodaroca/640/farol.webp">
           <source id="source-webm" src="../img/cabodaroca/640/farol.webm" type="video/webm">
-          <source id="source-mp4" type="video/mp4">
         </video>
         <span>clique imagem para mais</span>
       </div>
@@ -387,33 +386,53 @@
   </footer>
   <script>
   const video = document.getElementById("rotating-image");
-  const sourceWebm = document.getElementById("source-webm");
-  const sourceMp4 = document.getElementById("source-mp4");
+
+  function supportsWebM() {
+    const v = document.createElement("video");
+    return v.canPlayType('video/webm; codecs="vp8, vorbis"') !== "";
+  }
 
   function setResponsiveVideo() {
     if (!video) return;
     const width = window.innerWidth;
 
-    if (width <= 640) {
-      sourceWebm.src = "../img/cabodaroca/640/farol.webm";
-      sourceMp4.src = "../img/cabodaroca/640/farol.mp4";
-      video.poster = "../img/cabodaroca/640/farol.webp";
-    } else if (width <= 1080) {
-      sourceWebm.src = "";
-      sourceMp4.src = "../img/cabodaroca/1080/farol.mp4";
-      video.poster = "../img/cabodaroca/1080/farol.webp";
-    } else {
-      sourceWebm.src = "";
-      sourceMp4.src = "../img/cabodaroca/1440/farol.mp4";
-      video.poster = "../img/cabodaroca/1440/farol.webp";
+    // Remove all existing <source> elements
+    while (video.firstChild) {
+      video.removeChild(video.firstChild);
     }
 
-    video.load(); // Reload video sources with new srcs
+    let src = "";
+    let poster = "";
+
+    if (width <= 640) {
+      poster = "../img/cabodaroca/640/farol.webp";
+      src = supportsWebM()
+        ? { src: "../img/cabodaroca/640/farol.webm", type: "video/webm" }
+        : { src: "../img/cabodaroca/640/farol.mp4", type: "video/mp4" };
+    } else if (width <= 1080) {
+      poster = "../img/cabodaroca/1080/farol.webp";
+      src = supportsWebM()
+        ? { src: "../img/cabodaroca/1080/farol.webm", type: "video/webm" }
+        : { src: "../img/cabodaroca/1080/farol.mp4", type: "video/mp4" };
+    } else {
+      poster = "../img/cabodaroca/1440/farol.webp";
+      src = supportsWebM()
+        ? { src: "../img/cabodaroca/1440/farol.webm", type: "video/webm" }
+        : { src: "../img/cabodaroca/1440/farol.mp4", type: "video/mp4" };
+    }
+
+    const source = document.createElement("source");
+    source.src = src.src;
+    source.type = src.type;
+    video.poster = poster;
+    video.appendChild(source);
+    video.load();
   }
 
   setResponsiveVideo();
   window.addEventListener("resize", setResponsiveVideo);
   </script>
+
 
   <script defer>
   document.addEventListener("DOMContentLoaded", function () {
