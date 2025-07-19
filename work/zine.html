@@ -197,6 +197,8 @@
     flex-direction: column;
   }
   .img-cont img {
+    width: 100%;
+    height: auto;
     cursor: pointer;
   }
   .img-cont span{
@@ -309,7 +311,16 @@
   <main>
     <section class="proj">
       <div class="img-cont">
-          <img id="rotating-image" class="main" src="./img/zine/zine_cover.webp" alt="Zine Cover">
+        <img id="rotating-image" class="main"
+     src="./img/zine/640/zine_cover.webp"
+     srcset="./img/zine/480/zine_cover.webp 507w,
+             ./img/zine/640/zine_cover.webp 676w,
+             ./img/zine/1080/zine_cover.webp 1183w"
+             sizes="min(calc((100vh - 245px) * 169 / 240), calc(100vw - 30px))"
+     width="676"
+     height="960"
+     fetchpriority="high"
+     alt="Zine_Cover">
           <span>click image for more</span>
         <div class="info">
           <p>14,8 x 21 cm, 18 pages</p>
@@ -322,7 +333,16 @@
         <span>×</span>
       </div>
       <div class="gallery-img">
-          <img class="one"src="./img/zine/zine_cover.jpg" alt="zine scan">
+        <img class="one" loading="lazy" src="./img/zine/640/zine_1.webp"
+        srcset="./img/zine/640/zine_1.webp 640w,
+                ./img/zine/1080/zine_1.webp 1080w,
+                ./img/zine/1440/zine_1.webp 1440w"
+        sizes="(max-width: 680px) 646px,
+               (max-width: 1080px) 1088px,
+               1445px"
+        width="646"
+        height="456"
+        alt="Zine_Spread">
         <div class="arrows">
             <span class="left"><</span>
             <span class="right">></span>
@@ -334,258 +354,237 @@
       <div class="lang"><a href="./zine/pt" lang="pt" class="btn">pt</a></div>
       <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
   </footer>
-  <script defer>
-  document.addEventListener("DOMContentLoaded", function () {
-    // --- Dropdown Menu Hover and Click ---
-    const dropTrigger = document.querySelector(".dropd");
-    const dropContent = document.querySelector(".dropcontent");
-    let dropdownOpen = false;
+  <script>
+  function adjustGalleryImage() {
+    const img = document.querySelector('.img-cont img');
+    if (!img) return;
 
-    if (dropTrigger && dropContent) {
-      const toggleDropdown = (show) => {
-        if (show) {
-          dropContent.classList.add("show");
-        } else {
-          dropContent.classList.remove("show");
+    const maxW = window.innerWidth - 30;
+    const maxH = window.innerHeight - 245;
+
+    const ratio = img.naturalWidth / img.naturalHeight;
+
+    if (maxW / ratio <= maxH) {
+      img.style.width = `${maxW}px`;
+      img.style.height = '';
+    } else {
+      img.style.height = `${maxH}px`;
+      img.style.width = '';
+    }
+
+    img.style.maxWidth = `${maxW}px`;
+    img.style.maxHeight = `${maxH}px`;
+    img.style.objectFit = 'contain';
+  }
+
+  window.addEventListener('load', adjustGalleryImage);
+  window.addEventListener('resize', adjustGalleryImage);
+</script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  // --- Dropdown Menu Hover and Click ---
+  const dropTrigger = document.querySelector(".dropd");
+  const dropContent = document.querySelector(".dropcontent");
+  let dropdownOpen = false;
+
+  if (dropTrigger && dropContent) {
+    const toggleDropdown = (show) => {
+      if (show) {
+        dropContent.classList.add("show");
+      } else {
+        dropContent.classList.remove("show");
+      }
+    };
+
+    dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
+    dropContent.addEventListener("mouseover", () => toggleDropdown(true));
+    dropTrigger.addEventListener("mouseout", () => {
+      setTimeout(() => {
+        if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
+          toggleDropdown(false);
         }
-      };
+      }, 100);
+    });
+    dropContent.addEventListener("mouseout", () => {
+      setTimeout(() => {
+        if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
+          toggleDropdown(false);
+        }
+      }, 100);
+    });
+    dropTrigger.addEventListener("click", () => {
+      dropdownOpen = !dropdownOpen;
+      toggleDropdown(dropdownOpen);
+    });
+  }
+  // --- Responsive Gallery Image Paths Builder ---
+  function getResponsiveImagePaths() {
+    const width = window.innerWidth;
+    let folder = "1440";
+    if (width <= 640) folder = "640";
+    else if (width <= 1080) folder = "1080";
 
-      dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
-      dropContent.addEventListener("mouseover", () => toggleDropdown(true));
-      dropTrigger.addEventListener("mouseout", () => {
-        setTimeout(() => {
-          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
-            toggleDropdown(false);
-          }
-        }, 100);
-      });
-      dropContent.addEventListener("mouseout", () => {
-        setTimeout(() => {
-          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
-            toggleDropdown(false);
-          }
-        }, 100);
-      });
-      dropTrigger.addEventListener("click", () => {
-        dropdownOpen = !dropdownOpen;
-        toggleDropdown(dropdownOpen);
-      });
-    }
-    // --- Main Image Resize Function ---
-    function adjustGalleryImages() {
-      const images = document.querySelectorAll('.img-cont img');
-      if (!images.length) return;
-
-      const maxW = window.innerWidth - 30;
-      const maxH = window.innerHeight - 245;
-
-      images.forEach(img => {
-        const temp = new Image();
-        temp.src = img.src;
-
-        temp.onload = () => {
-          const ratio = temp.naturalWidth / temp.naturalHeight;
-
-          if (maxW / ratio <= maxH) {
-            img.style.width = `${maxW}px`;
-            img.style.height = ''; // clear fixed height
-          } else {
-            img.style.height = `${maxH}px`;
-            img.style.width = ''; // clear fixed width
-          }
-
-          img.style.maxWidth = `${maxW}px`;
-          img.style.maxHeight = `${maxH}px`;
-          img.style.objectFit = 'contain';
-        };
-      });
-    }
-
-    window.addEventListener('load', adjustGalleryImages);
-    window.addEventListener('resize', adjustGalleryImages);
-
-    // --- Gallery Variables ---
-    const rotatingImage = document.querySelector("#rotating-image");
-    const gallery = document.querySelector(".gallery");
-    const galleryBack = document.querySelector(".gallery-back");
-    const galleryImgs = document.querySelectorAll(".gallery-img img");
-    const image = document.querySelector(".gallery-img img.one");
-    const leftArrow = document.querySelector(".gallery-img .arrows .left");
-    const rightArrow = document.querySelector(".gallery-img .arrows .right");
-
-    const imageSources = [
-      "./img/zine/zine_1.webp",
-      "./img/zine/zine_2.webp",
-      "./img/zine/zine_3.webp",
-      "./img/zine/zine_4.webp",
-      "./img/zine/zine_5.webp",
-      "./img/zine/zine_6.webp",
-      "./img/zine/zine_7.webp",
-      "./img/zine/zine_8.webp",
-      "./img/zine/zine_9.webp"
+    return [
+      `./img/zine/${folder}/zine_1.webp`,
+      `./img/zine/${folder}/zine_2.webp`,
+      `./img/zine/${folder}/zine_3.webp`,
+      `./img/zine/${folder}/zine_4.webp`,
+      `./img/zine/${folder}/zine_5.webp`,
+      `./img/zine/${folder}/zine_6.webp`,
+      `./img/zine/${folder}/zine_7.webp`,
+      `./img/zine/${folder}/zine_8.webp`,
+      `./img/zine/${folder}/zine_9.webp`
     ];
+  }
 
-    let currentIndex = 0;
-    let galleryKeyboardEnabled = false;
-
-    // --- Gallery Functions ---
-    function updateImage() {
-      if (image) {
-        image.src = imageSources[currentIndex];
-
-        // Show/hide arrows based on current index
-        if (currentIndex === 0) {
-          leftArrow.style.display = "none";
-          rightArrow.style.display = "inline-block";
-        } else if (currentIndex === imageSources.length - 1) {
-          leftArrow.style.display = "inline-block";
-          rightArrow.style.display = "none";
-        } else {
-          leftArrow.style.display = "inline-block";
-          rightArrow.style.display = "inline-block";
-        }
-      }
-    }
-
-    function openGallery() {
-  gallery.style.display = "block";
-  gallery.classList.add("fade");
-
-  // Remove the class after the animation completes (300ms)
-  setTimeout(() => {
-    gallery.classList.remove("fade");
-  }, 300);
-
-  galleryImgs.forEach(img => img.style.display = "none");
-  const ebb1 = document.querySelector(".gallery-img img.one");
-  if (ebb1) ebb1.style.display = "block";
-  galleryKeyboardEnabled = true;
-  currentIndex = 0; // Reset to first image
-  updateImage();
-}
-
-    function closeGallery() {
-      gallery.style.display = "none";
-      galleryKeyboardEnabled = false;
-    }
-
-    // --- Gallery Event Listeners ---
-    if (rotatingImage && gallery) {
-      rotatingImage.addEventListener("click", openGallery);
-    }
-
-    if (galleryBack && gallery) {
-      galleryBack.addEventListener("click", closeGallery);
-    }
-
-    // Arrow click events
-    if (leftArrow) {
-      leftArrow.addEventListener("click", () => {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateImage();
-        }
-      });
-    }
-
-    if (rightArrow) {
-      rightArrow.addEventListener("click", () => {
-        if (currentIndex < imageSources.length - 1) {
-          currentIndex++;
-          updateImage();
-        }
-      });
-    }
-
-    // --- Keyboard Navigation ---
-    function handleKeydown(event) {
-      // Only handle keys when gallery is open
-      if (!galleryKeyboardEnabled || gallery.style.display !== "block") {
-        return;
-      }
-
-      // Prevent default behavior for navigation keys
-      const navigationKeys = ['ArrowLeft', 'ArrowRight', 'Escape', ' ', 'Enter', 'Home', 'End'];
-      if (navigationKeys.includes(event.key)) {
-        event.preventDefault();
-      }
-
-      switch(event.key) {
-        case 'ArrowLeft':
-          if (currentIndex > 0) {
-            currentIndex--;
-            updateImage();
-          }
-          break;
-
-        case 'ArrowRight':
-        case ' ': // Spacebar
-          if (currentIndex < imageSources.length - 1) {
-            currentIndex++;
-            updateImage();
-          }
-          break;
-
-        case 'Escape':
-        case 'Enter':
-          closeGallery();
-          break;
-
-        case 'Home':
-          currentIndex = 0;
-          updateImage();
-          break;
-
-        case 'End':
-          currentIndex = imageSources.length - 1;
-          updateImage();
-          break;
-
-        case '1':
-        case '2':
-        case '3':
-          const imageNumber = parseInt(event.key);
-          if (imageNumber >= 1 && imageNumber <= imageSources.length) {
-            currentIndex = imageNumber - 1;
-            updateImage();
-          }
-          break;
-      }
-    }
-
-    // Add keyboard event listener
-    document.addEventListener('keydown', handleKeydown);
-
-    // --- Image Resize Function ---
-    function adjustGalleryImage() {
-      const img = document.querySelector('.gallery-img img.one');
-      if (!img) return;
-
-      const maxW = window.innerWidth - 30;
-      const maxH = window.innerHeight - 160;
-
-      const temp = new Image();
-      temp.src = img.src;
-
-      temp.onload = () => {
-        const ratio = temp.naturalWidth / temp.naturalHeight;
-
-        if (maxW / ratio <= maxH) {
-          img.style.width = `${maxW}px`;
-          img.style.height = 'auto';
-        } else {
-          img.style.width = 'auto';
-          img.style.height = `${maxH}px`;
-        }
-      };
-    }
-
-    window.addEventListener('load', adjustGalleryImage);
-    window.addEventListener('resize', adjustGalleryImage);
-
-    // Initialize gallery
+  let imageSources = getResponsiveImagePaths();
+  window.addEventListener("resize", () => {
+    imageSources = getResponsiveImagePaths();
     updateImage();
   });
-  </script>
+
+  // --- Gallery Elements ---
+  const gallery = document.querySelector(".gallery");
+  const galleryBack = document.querySelector(".gallery-back");
+  const image = document.querySelector(".gallery-img img.one");
+  const leftArrow = document.querySelector(".gallery-img .arrows .left");
+  const rightArrow = document.querySelector(".gallery-img .arrows .right");
+  const rotatingImage = document.querySelector("#rotating-image");
+
+  let currentIndex = 0;
+  let galleryKeyboardEnabled = false;
+
+  function updateImage() {
+    if (!image) return;
+
+    const currentSrc = imageSources[currentIndex];
+
+    // Get filename only
+    const filename = currentSrc.split('/').pop();
+
+    // Build srcset for all sizes
+    const src640 = `./img/zine/640/${filename}`;
+    const src1080 = `./img/zine/1080/${filename}`;
+    const src1440 = `./img/zine/1440/${filename}`;
+
+    image.src = currentSrc;
+    image.srcset = `${src640} 646w, ${src1080} 1088w, ${src1440} 1445w`;
+
+    // Arrow visibility
+    leftArrow.style.display = currentIndex === 0 ? "none" : "inline-block";
+    rightArrow.style.display = currentIndex === imageSources.length - 1 ? "none" : "inline-block";
+
+    adjustGalleryImage();
+  }
+
+  function openGallery() {
+    if (!gallery) return;
+    gallery.style.display = "block";
+    gallery.classList.add("fade");
+    setTimeout(() => gallery.classList.remove("fade"), 300);
+    currentIndex = 0;
+    galleryKeyboardEnabled = true;
+    updateImage();
+  }
+
+  function closeGallery() {
+    if (!gallery) return;
+    gallery.style.display = "none";
+    galleryKeyboardEnabled = false;
+  }
+
+  // --- Gallery Click Events ---
+  if (rotatingImage) rotatingImage.addEventListener("click", openGallery);
+  if (galleryBack) galleryBack.addEventListener("click", closeGallery);
+
+  if (leftArrow) {
+    leftArrow.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateImage();
+      }
+    });
+  }
+
+  if (rightArrow) {
+    rightArrow.addEventListener("click", () => {
+      if (currentIndex < imageSources.length - 1) {
+        currentIndex++;
+        updateImage();
+      }
+    });
+  }
+
+  // --- Keyboard Navigation ---
+  document.addEventListener("keydown", (event) => {
+    if (!galleryKeyboardEnabled || !gallery || gallery.style.display !== "block") return;
+
+    const navKeys = ["ArrowLeft", "ArrowRight", "Escape", " ", "Enter", "Home", "End"];
+    if (navKeys.includes(event.key)) event.preventDefault();
+
+    switch (event.key) {
+      case "ArrowLeft":
+        if (currentIndex > 0) currentIndex--;
+        break;
+      case "ArrowRight":
+      case " ":
+        if (currentIndex < imageSources.length - 1) currentIndex++;
+        break;
+      case "Escape":
+      case "Enter":
+        closeGallery();
+        return;
+      case "Home":
+        currentIndex = 0;
+        break;
+      case "End":
+        currentIndex = imageSources.length - 1;
+        break;
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
+        const imageNumber = parseInt(event.key);
+        if (imageNumber >= 1 && imageNumber <= imageSources.length) {
+          currentIndex = imageNumber - 1;
+        }
+        break;
+    }
+    updateImage();
+  });
+
+  // --- Resize Image to Fit Viewport ---
+  function adjustGalleryImage() {
+    if (!image) return;
+
+    const maxW = window.innerWidth - 30;
+    const maxH = window.innerHeight - 160;
+
+    const temp = new Image();
+    temp.src = image.src;
+
+    temp.onload = () => {
+      const ratio = temp.naturalWidth / temp.naturalHeight;
+
+      if (maxW / ratio <= maxH) {
+        image.style.width = `${maxW}px`;
+        image.style.height = "auto";
+      } else {
+        image.style.width = "auto";
+        image.style.height = `${maxH}px`;
+      }
+    };
+  }
+
+  window.addEventListener("load", adjustGalleryImage);
+  window.addEventListener("resize", adjustGalleryImage);
+});
+</script>
+
 </body>
 </html>
