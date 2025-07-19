@@ -199,6 +199,10 @@
   .img-cont img {
     width: 100%;
     height: auto;
+    max-width: calc(100vw - 30px);
+    max-height: calc(100vh - 220px);
+    object-fit: contain;
+    aspect-ratio: 169 / 240;
     cursor: pointer;
   }
   .img-cont span{
@@ -312,19 +316,18 @@
     <section class="proj">
       <div class="img-cont">
         <img id="rotating-image" class="main"
-  src="./img/zine/640/zine_cover.webp"
-  srcset="
-    ./img/zine/480/zine_cover.webp 507w,
-    ./img/zine/640/zine_cover.webp 676w,
-    ./img/zine/1080/zine_cover.webp 1183w
-  "
-  sizes="
-    (max-width: 507px) 507px,
-    (max-width: 676px) 676px,
-    (min-width: 1183px) 1183px,
-    676px
-  "
-  width="676" height="960" alt="Zine_Cover">
+          src="./img/zine/640/zine_cover.webp"
+          srcset="./img/zine/480/zine_cover.webp 507w,
+                  ./img/zine/640/zine_cover.webp 676w,
+                  ./img/zine/1080/zine_cover.webp 1183w"
+          sizes="(max-width: 507px) 507px,
+                 (max-width: 676px) 676px,
+                 (min-width: 1183px) 1183px,
+                 676px"
+          width="676"
+          height="960"
+          fetchpriority="high"
+          alt="Zine_Cover">
           <span>click image for more</span>
         <div class="info">
           <p>14,8 x 21 cm, 18 pages</p>
@@ -358,32 +361,6 @@
       <div class="lang"><a href="./zine/pt" lang="pt" class="btn">pt</a></div>
       <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
   </footer>
-  <script>
-  function adjustGalleryImage() {
-    const img = document.querySelector('.img-cont img');
-    if (!img) return;
-
-    const maxW = window.innerWidth - 30;
-    const maxH = window.innerHeight - 220;
-
-    const ratio = img.naturalWidth / img.naturalHeight;
-
-    if (maxW / ratio <= maxH) {
-      img.style.width = `${maxW}px`;
-      img.style.height = '';
-    } else {
-      img.style.height = `${maxH}px`;
-      img.style.width = '';
-    }
-
-    img.style.maxWidth = `${maxW}px`;
-    img.style.maxHeight = `${maxH}px`;
-    img.style.objectFit = 'contain';
-  }
-
-  window.addEventListener('load', adjustGalleryImage);
-  window.addEventListener('resize', adjustGalleryImage);
-</script>
 <script defer>
 document.addEventListener("DOMContentLoaded", function () {
   // --- Dropdown Menu Hover and Click ---
