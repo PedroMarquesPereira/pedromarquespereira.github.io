@@ -411,15 +411,19 @@
         : { src: "./img/cabodaroca/640/farol.mp4", type: "video/mp4" };
     } else if (width <= 1080) {
       poster = "./img/cabodaroca/1080/farol.webp";
+      // Only mp4 for 1080
       src = { src: "./img/cabodaroca/1080/farol.mp4", type: "video/mp4" };
     } else {
       poster = "./img/cabodaroca/1440/farol.webp";
+      // Only mp4 for 1440
       src = { src: "./img/cabodaroca/1440/farol.mp4", type: "video/mp4" };
     }
 
     const source = document.createElement("source");
     source.src = src.src;
     source.type = src.type;
+    source.setAttribute("fetchpriority", "high"); // Add fetchpriority here!
+
     video.poster = poster;
     video.appendChild(source);
     video.load();
@@ -427,7 +431,8 @@
 
   setResponsiveVideo();
   window.addEventListener("resize", setResponsiveVideo);
-  </script>
+</script>
+
 
   <script defer>
   document.addEventListener("DOMContentLoaded", function () {
