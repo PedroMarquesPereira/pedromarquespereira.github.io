@@ -547,9 +547,9 @@
       <div class="lang"><a href="../others" lang="en" class="btn">en</a></div>
       <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
   </footer>
-  <script defer> /*dropdown*/
-  document.addEventListener("DOMContentLoaded", function () {
-    // --- Dropdown Menu Hover and Click ---
+  <script defer>
+  document.addEventListener("DOMContentLoaded", () => {
+    // --- Dropdown Menu ---
     const dropTrigger = document.querySelector(".dropd");
     const dropContent = document.querySelector(".dropcontent");
     let dropdownOpen = false;
@@ -584,54 +584,44 @@
         toggleDropdown(dropdownOpen);
       });
     }
-  });
-  </script>
-  <script defer>/*gallery show*/
-    document.addEventListener("DOMContentLoaded", () => {
+
+    // --- Gallery Show ---
     const arches = document.querySelectorAll(".arch");
     const galleries = document.querySelectorAll(".gallery");
     let currentGallery = null;
 
-    // Open matching gallery
     arches.forEach(arch => {
-    arch.addEventListener("click", () => {
-      const id = arch.dataset.id;
-      const gal = document.querySelector(`.gallery[data-id="${id}"]`);
-      if (!gal) return;
-
-      // Hide previous
-      galleries.forEach(g => g.style.display = "none");
-
-      gal.classList.add("fade");
-      gal.style.display = "block";
-      currentGallery = gal;
+      arch.addEventListener("click", () => {
+        const id = arch.dataset.id;
+        const gal = document.querySelector(`.gallery[data-id="${id}"]`);
+        if (!gal) return;
+        galleries.forEach(g => g.style.display = "none");
+        gal.classList.add("fade");
+        gal.style.display = "block";
+        currentGallery = gal;
+        resizeHandler();
+      });
     });
-  });
 
-    // Close on back button
     document.querySelectorAll(".gallery-back > span:first-child").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const gal = btn.closest(".gallery");
-    if (gal) {
-      gal.style.display = "none";
-      if (currentGallery === gal) currentGallery = null;
-    }
-  });
-});
-    // ESC key closes
-    document.addEventListener("keydown", e => {
-    if (e.key === "Escape" && currentGallery) {
-      currentGallery.style.display = "none";
-      currentGallery = null;
-    }
-  });
-  });
-  </script>
+      btn.addEventListener("click", () => {
+        const gal = btn.closest(".gallery");
+        if (gal) {
+          gal.style.display = "none";
+          if (currentGallery === gal) currentGallery = null;
+        }
+      });
+    });
 
-  <script defer>
-  /*arrows and src for img*/
-  document.addEventListener('DOMContentLoaded', () => {
-    const galleries = {
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && currentGallery) {
+        currentGallery.style.display = "none";
+        currentGallery = null;
+      }
+    });
+
+    // --- Gallery Arrows & Img Source ---
+    const galleriesData = {
       darkday: [
         '../img/others/darkday/darkday_1.webp',
         '../img/others/darkday/darkday_2.webp',
@@ -646,23 +636,23 @@
         '../img/others/darkday/darkday_11.webp',
       ],
       prints: [
-        {src: '../img/others/prints/prints_1.webp', size: '12.7 x 17.8 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_2.webp', size: '12.7 x 17.8 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_3.webp', size: '10.2 x 12.7 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_4.webp', size: '17.8 x 24 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_5.webp', size: '12.7 x 17.8 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_6.webp', size: '17.8 x 24 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_7.webp', size: '12.7 x 17.8 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_8.webp', size: '12.7 x 17.8 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_9.webp', size: '12.7 x 17.8 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_10.webp', size: '12.7 x 17.8 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_11.webp', size: '17.8 x 24 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_12.webp', size: '12.7 x 17.8 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_13.webp', size: '23.3 x 24.1 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_14.webp', size: '23.8 x 30.4 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_15.webp', size: '23.8 x 30.4 cm', type: 'impressão em gelatina de prata'},
-        {src: '../img/others/prints/prints_16.webp', size: '49.3 x 60.2 cm', type: 'Impressão a jacto de tinta'},
-        {src: '../img/others/prints/prints_17.webp', size: '65.7 x 83.7 cm', type: 'Impressão a jacto de tinta'},
+        {src: '../img/others/prints/prints_1.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_2.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_3.webp', size: '10.2 x 12.7 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_4.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_5.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_6.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_7.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_8.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_9.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_10.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_11.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_12.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_13.webp', size: '23.3 x 24.1 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_14.webp', size: '23.8 x 30.4 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_15.webp', size: '23.8 x 30.4 cm', type: 'silver gelatin print'},
+        {src: '../img/others/prints/prints_16.webp', size: '49.3 x 60.2 cm', type: 'inkjet print'},
+        {src: '../img/others/prints/prints_17.webp', size: '65.7 x 83.7 cm', type: 'inkjet print'},
       ],
       untitled: [
         '../img/others/untitled/milano_1.webp',
@@ -675,13 +665,12 @@
         '../img/others/untitled/milano_8.webp',
         '../img/others/untitled/milano_9.webp',
         '../img/others/untitled/milano_10.webp',
-      ],
+      ]
     };
 
     const galleryStates = {};
     let focusedGalleryId = null;
 
-    // Utility to set focus properly
     function setFocus(container, id) {
       requestAnimationFrame(() => {
         container.focus();
@@ -689,16 +678,12 @@
       });
     }
 
-    Object.keys(galleries).forEach(id => {
+    Object.keys(galleriesData).forEach(id => {
       const container = document.getElementById(id);
       if (!container) return;
-
-      // Make container focusable
       container.setAttribute('tabindex', '0');
 
-      const images = galleries[id];
-      if (!images || images.length === 0) return;
-
+      const images = galleriesData[id];
       const imgElement = container.querySelector('.gallery-img img');
       const leftArrow = container.querySelector('.arrows .left');
       const rightArrow = container.querySelector('.arrows .right');
@@ -719,22 +704,14 @@
           this.leftArrow.style.display = this.currentIndex === 0 ? 'none' : 'inline';
           this.rightArrow.style.display = this.currentIndex === this.images.length - 1 ? 'none' : 'inline';
 
-          // CORRECTED selectors
           const sizeSpan = this.container.querySelector('.descrip .size');
-          if (sizeSpan && typeof item === 'object' && item.size) {
-            sizeSpan.textContent = item.size;
-          }
-
+          if (sizeSpan) sizeSpan.textContent = item.size || '';
           const typeSpan = this.container.querySelector('.descrip .type');
-          if (typeSpan && typeof item === 'object' && item.type) {
-            typeSpan.textContent = item.type;
-          }
+          if (typeSpan) typeSpan.textContent = item.type || '';
 
-          if (typeof resizeHandler === 'function') {
-            resizeHandler();
-          }
-         }
-        };
+          if (typeof resizeHandler === 'function') resizeHandler();
+        }
+      };
 
       const state = galleryStates[id];
       state.updateImage();
@@ -755,120 +732,79 @@
         setFocus(container, id);
       });
 
-      container.addEventListener('click', () => {
-        setFocus(container, id);
-      });
-
-      container.addEventListener('focus', () => {
-        focusedGalleryId = id;
-      });
+      container.addEventListener('click', () => setFocus(container, id));
+      container.addEventListener('focus', () => { focusedGalleryId = id; });
     });
 
-    const observer = new MutationObserver(() => {
+    new MutationObserver(() => {
       Object.entries(galleryStates).forEach(([id, state]) => {
         const isVisible = window.getComputedStyle(state.container).display !== 'none';
-        if (isVisible) {
-          setFocus(state.container, id);
-        }
+        if (isVisible) setFocus(state.container, id);
       });
-    });
-
-    observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+    }).observe(document.body, { attributes: true, childList: true, subtree: true });
 
     window.addEventListener('keydown', (e) => {
       if (!focusedGalleryId) return;
       const state = galleryStates[focusedGalleryId];
       if (!state) return;
-
-      if (e.key === 'ArrowLeft') {
+      if (e.key === 'ArrowLeft' && state.currentIndex > 0) {
         e.preventDefault();
-        if (state.currentIndex > 0) {
-          state.currentIndex--;
-          state.updateImage();
-        }
-      } else if (e.key === 'ArrowRight') {
+        state.currentIndex--;
+        state.updateImage();
+      } else if (e.key === 'ArrowRight' && state.currentIndex < state.images.length - 1) {
         e.preventDefault();
-        if (state.currentIndex < state.images.length - 1) {
-          state.currentIndex++;
-          state.updateImage();
-        }
+        state.currentIndex++;
+        state.updateImage();
       }
     });
+
+    resizeHandler(); // Initial resize
   });
-</script>
 
+  // --- Resize Handler ---
+  function resizeHandler() {
+    const maxWidth = window.innerWidth - 30;
+    const maxHeight = window.innerHeight - 160;
+    const galleries = document.querySelectorAll('.gallery');
 
-<script defer>/*resize*/
-function resizeHandler() {
-  const maxWidth = window.innerWidth - 30;
-  const maxHeight = window.innerHeight - 160;
-
-  // Get all galleries
-  const galleries = document.querySelectorAll('.gallery');
-
-  galleries.forEach(gallery => {
-    // Resize .cine iframe inside this gallery (4:3)
-    const cine = gallery.querySelector('.cine');
-    if (cine) {
-      let width = maxWidth;
-      let height = (width * 3) / 4;
-      if (height > maxHeight) {
-        height = maxHeight;
-        width = (height * 4) / 3;
-      }
-      cine.style.width = width + 'px';
-      cine.style.height = height + 'px';
-    }
-
-    // Resize .pan iframe inside this gallery (8:3)
-    const pan = gallery.querySelector('.pan');
-    if (pan) {
-      let width = maxWidth;
-      let height = (width * 3) / 8;
-      if (height > maxHeight) {
-        height = maxHeight;
-        width = (height * 8) / 3;
-      }
-      pan.style.width = width + 'px';
-      pan.style.height = height + 'px';
-    }
-    // Resize .film iframe inside this gallery (5 : 4)
-    const film = gallery.querySelector('.film');
-    if (film) {
-      let width = maxWidth;
-      let height = (width * 4) / 5;
-      if (height > maxHeight) {
-        height = maxHeight;
-        width = (height * 5) / 4;
-      }
-      film.style.width = width + 'px';
-      film.style.height = height + 'px';
-    }
-
-    // Resize gallery images inside this gallery
-    const img = gallery.querySelector('.gallery-img img');
-    if (img) {
-      // Use a temp image to get natural dimensions
-      const temp = new Image();
-      temp.src = img.src;
-
-      temp.onload = () => {
-        const ratio = temp.naturalWidth / temp.naturalHeight;
-
-        if (maxWidth / ratio <= maxHeight) {
-          img.style.width = `${maxWidth}px`;
-          img.style.height = 'auto';
-        } else {
-          img.style.width = 'auto';
-          img.style.height = `${maxHeight}px`;
+    galleries.forEach(gallery => {
+      const resizeFrame = (selector, aspectW, aspectH) => {
+        const el = gallery.querySelector(selector);
+        if (!el) return;
+        let width = maxWidth;
+        let height = (width * aspectH) / aspectW;
+        if (height > maxHeight) {
+          height = maxHeight;
+          width = (height * aspectW) / aspectH;
         }
+        el.style.width = width + 'px';
+        el.style.height = height + 'px';
       };
-    }
-  });
-}
 
-window.addEventListener('resize', resizeHandler);
-window.addEventListener('DOMContentLoaded', resizeHandler);
+      resizeFrame('.cine', 4, 3);
+      resizeFrame('.pan', 8, 3);
+      resizeFrame('.film', 5, 4);
+
+      const img = gallery.querySelector('.gallery-img img');
+      if (img && img.src) {
+        const temp = new Image();
+        temp.src = img.src;
+        temp.onload = () => {
+          const ratio = temp.naturalWidth / temp.naturalHeight;
+          if (maxWidth / ratio <= maxHeight) {
+            img.style.width = `${maxWidth}px`;
+            img.style.height = 'auto';
+          } else {
+            img.style.width = 'auto';
+            img.style.height = `${maxHeight}px`;
+          }
+        };
+      }
+    });
+  }
+
+  window.addEventListener('resize', resizeHandler);
 </script>
+
 </body>
 </html>
