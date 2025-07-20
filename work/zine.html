@@ -189,13 +189,12 @@
     align-items: center;
   }
   .img-cont{
+    width: 100%;
+    max-width: 1183px; 
+    margin: 10px auto;
     display: flex;
-    position: relative;
-    margin: 10px 0px;
     flex-direction: column;
-    align-items: flex-start;
-    width: auto;
-    max-width: calc(100vw - 30px);
+    align-items: center;
     gap: 10px;
   }
   .img-cont img {
@@ -314,14 +313,19 @@
   <main>
     <section class="proj">
       <div class="img-cont">
-        <img
-  src="./img/zine/640/zine_cover.webp"
-  width="1183"
-  height="1680"
-  style="width: 100%; height: auto; aspect-ratio: 169 / 240; display: block;"
-  fetchpriority="high"
-  alt="Zine Cover"
-/>
+        <img id="rotating-image" class="main"
+          src="./img/zine/640/zine_cover.webp"
+          srcset="./img/zine/480/zine_cover.webp 507w,
+                  ./img/zine/640/zine_cover.webp 676w,
+                  ./img/zine/1080/zine_cover.webp 1183w"
+                  sizes="(max-width: 500px) 100vw,
+                  (max-width: 800px) 676px,
+                  1183px"
+          width="1183"
+          height="1680"
+          style="width: 100%; height: auto; display: block;"
+          fetchpriority="high"
+          alt="Zine_Cover">
           <span>click image for more</span>
         <div class="info">
           <p>14,8 x 21 cm, 18 pages</p>
