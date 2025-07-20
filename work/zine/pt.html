@@ -252,6 +252,12 @@
     color: #fff;
     line-height: 28px;
   }
+  .bottom-gap{
+    position: relative;
+    display: block;
+    width:100%;
+    height: 65px;
+  }
   /*___________gallery---------*/
   .gallery{
     z-index: 1;
@@ -338,22 +344,26 @@
     <section class="proj">
       <div class="img-cont">
         <img id="rotating-image"
-     src="../img/zine/640/zine_cover.webp"
-     srcset="../img/zine/640/zine_cover.webp 640w,
-             ../img/zine/1080/zine_cover.webp 1080w"
-     sizes="(min-width: 1025px) and (min-height: 1201px) 1000px,
-            (min-width: 1025px) 725px,
-            100vw"
-     width="1080"
-     height="810"
-     fetchpriority="high"
-     alt="Capa da Zine">
+             src="../img/zine/640/zine_cover.webp"
+             srcset="../img/zine/640/zine_cover.webp 640w,
+                     ../img/zine/1080/zine_cover.webp 1080w"
+             sizes="(min-width: 1025px) and (min-height: 1201px) 1000px,
+                    (min-width: 1025px) 725px,
+                    100vw"
+             width="1080"
+             height="810"
+             fetchpriority="high"
+             alt="Capa Zine">
           <span>clique imagem para mais</span>
-        <div class="info">
-          <p>14,8 x 21 cm, 18 páginas</p>
-          <p>56 cópias (esgotado)</p>
-        </div>
       </div>
+      <div class="info">
+        <p>14,8 x 21 cm, 18 páginas</p>
+        <p>56 cópias (esgotado)</p>
+      </div>
+      <div class="description">
+        <p>Editado e publicado para a sétima edição do <i>Passagens</i> no Cosmos Campolide, em Fevereiro de 2022. Composto por fotografias tiradas em passeios nocturnos, à procura e escondido de algo. Sem costura, é um livro modular capaz de ser rearranjado pelo leitor.</p>
+      </div>
+      <div class="bottom-gap"></div>
     </section>
     <section class="gallery">
       <div class="gallery-back">
@@ -426,15 +436,15 @@
       else if (width <= 1080) folder = "1080";
 
       return [
-        `./img/zine/${folder}/zine_1.webp`,
-        `./img/zine/${folder}/zine_2.webp`,
-        `./img/zine/${folder}/zine_3.webp`,
-        `./img/zine/${folder}/zine_4.webp`,
-        `./img/zine/${folder}/zine_5.webp`,
-        `./img/zine/${folder}/zine_6.webp`,
-        `./img/zine/${folder}/zine_7.webp`,
-        `./img/zine/${folder}/zine_8.webp`,
-        `./img/zine/${folder}/zine_9.webp`
+        `../img/zine/${folder}/zine_1.webp`,
+        `../img/zine/${folder}/zine_2.webp`,
+        `../img/zine/${folder}/zine_3.webp`,
+        `../img/zine/${folder}/zine_4.webp`,
+        `../img/zine/${folder}/zine_5.webp`,
+        `../img/zine/${folder}/zine_6.webp`,
+        `../img/zine/${folder}/zine_7.webp`,
+        `../img/zine/${folder}/zine_8.webp`,
+        `../img/zine/${folder}/zine_9.webp`
       ];
     }
 
@@ -464,9 +474,9 @@
       const filename = currentSrc.split('/').pop();
 
       // Build srcset for all sizes
-      const src640 = `./img/zine/640/${filename}`;
-      const src1080 = `./img/zine/1080/${filename}`;
-      const src1440 = `./img/zine/1440/${filename}`;
+      const src640 = `../img/zine/640/${filename}`;
+      const src1080 = `../img/zine/1080/${filename}`;
+      const src1440 = `../img/zine/1440/${filename}`;
 
       image.src = currentSrc;
       image.srcset = `${src640} 646w, ${src1080} 1088w, ${src1440} 1445w`;
