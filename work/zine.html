@@ -192,15 +192,16 @@
     display: flex;
     position: relative;
     margin: 10px 0px;
+    max-width: calc(100vw - 30px);
+    max-height: calc(100vh - 220px);
     width: fit-content;
     gap: 10px;
+    aspect-ratio: 169 / 240;
     flex-direction: column;
   }
   .img-cont img {
     width: 100%;
     height: auto;
-    max-width: calc(100vw - 30px);
-    max-height: calc(100vh - 220px);
     object-fit: contain;
     aspect-ratio: 169 / 240;
     cursor: pointer;
