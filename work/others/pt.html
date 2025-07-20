@@ -352,7 +352,6 @@
     font-size: 14px;
     margin: 4px auto;
   }
-
   </style>
   <link rel="stylesheet" href="../../style.css" media="print" onload="this.media='all'">
 </head>
@@ -477,7 +476,7 @@
         </div>
       </div>
       <div class="gallery-img">
-        <iframe class="pan" src="https://www.youtube.com/embed/Ukpb5HJr_4A?si=aJyf8KX6wqrt--nb&=rel" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="gallery-video-placeholder" data-video="https://www.youtube-nocookie.com/embed/Ukpb5HJr_4A?si=aJyf8KX6wqrt--nb&rel=0" data-aspect="8:3"></div>
       </div>
     </section>
     <section class="gallery" id="studies" data-id="3">
@@ -489,7 +488,7 @@
         </div>
       </div>
       <div class="gallery-img">
-        <iframe class="cine" src="https://www.youtube.com/embed/videoseries?si=y5fT_oT3okoNpu47&amp;list=PLibxdEk1cX3TTViXyuHOtQDl8owreKdgm&=rel" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="gallery-video-placeholder" data-video="https://www.youtube-nocookie.com/embed/videoseries?si=y5fT_oT3okoNpu47&amp;list=PLibxdEk1cX3TTViXyuHOtQDl8owreKdgm&rel=0"></div>
         <span class="infoclick">clique next para ver mais</span>
       </div>
     </section>
@@ -538,7 +537,7 @@
         </div>
       </div>
       <div class="gallery-img">
-        <iframe class="film" src="https://www.youtube.com/embed/videoseries?si=Vx_RBxrSCJ_5_egj&amp;list=PLibxdEk1cX3SnSuxdsxSMC4pzCw1a_vOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="gallery-video-placeholder" data-video="https://www.youtube-nocookie.com/embed/videoseries?si=Vx_RBxrSCJ_5_egj&amp;list=PLibxdEk1cX3SnSuxdsxSMC4pzCw1a_vOa&rel=0"></div>
         <span class="infoclick">clique next para ver mais</span>
       </div>
     </section>
@@ -556,11 +555,7 @@
 
     if (dropTrigger && dropContent) {
       const toggleDropdown = (show) => {
-        if (show) {
-          dropContent.classList.add("show");
-        } else {
-          dropContent.classList.remove("show");
-        }
+        dropContent.classList.toggle("show", show);
       };
 
       dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
@@ -585,20 +580,51 @@
       });
     }
 
-    // --- Gallery Show ---
+    // --- Gallery System ---
     const arches = document.querySelectorAll(".arch");
     const galleries = document.querySelectorAll(".gallery");
     let currentGallery = null;
+
+    function openGalleryIframe(placeholder) {
+      if (placeholder && !placeholder.querySelector("iframe")) {
+        const aspectAttr = placeholder.dataset.aspect || "4:3";
+        const [w, h] = aspectAttr.split(":").map(Number);
+        const src = placeholder.dataset.video;
+
+        const iframe = document.createElement("iframe");
+        iframe.src = src;
+        iframe.title = "YouTube video player";
+        iframe.frameBorder = "0";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.style.display = "block";
+        iframe.style.border = "none";
+        iframe.dataset.aspect = `${w}:${h}`;
+        iframe.className = aspectAttr === "8:3" ? "pan" : aspectAttr === "5:4" ? "film" : "cine";
+
+        placeholder.appendChild(iframe);
+        resizeHandler();
+      }
+    }
 
     arches.forEach(arch => {
       arch.addEventListener("click", () => {
         const id = arch.dataset.id;
         const gal = document.querySelector(`.gallery[data-id="${id}"]`);
         if (!gal) return;
+
         galleries.forEach(g => g.style.display = "none");
+
         gal.classList.add("fade");
         gal.style.display = "block";
         currentGallery = gal;
+
+        const iframePlaceholder = gal.querySelector('.gallery-video-placeholder');
+        if (iframePlaceholder) {
+          openGalleryIframe(iframePlaceholder);
+        }
+
         resizeHandler();
       });
     });
@@ -620,7 +646,7 @@
       }
     });
 
-    // --- Gallery Arrows & Img Source ---
+    // --- Arrow Navigation ---
     const galleriesData = {
       darkday: [
         '../img/others/darkday/darkday_1.webp',
@@ -681,8 +707,8 @@
     Object.keys(galleriesData).forEach(id => {
       const container = document.getElementById(id);
       if (!container) return;
-      container.setAttribute('tabindex', '0');
 
+      container.setAttribute('tabindex', '0');
       const images = galleriesData[id];
       const imgElement = container.querySelector('.gallery-img img');
       const leftArrow = container.querySelector('.arrows .left');
@@ -709,7 +735,7 @@
           const typeSpan = this.container.querySelector('.descrip .type');
           if (typeSpan) typeSpan.textContent = item.type || '';
 
-          if (typeof resizeHandler === 'function') resizeHandler();
+          resizeHandler();
         }
       };
 
@@ -758,13 +784,14 @@
       }
     });
 
-    resizeHandler(); // Initial resize
+    resizeHandler();
   });
 
   // --- Resize Handler ---
   function resizeHandler() {
     const maxWidth = window.innerWidth - 30;
     const maxHeight = window.innerHeight - 160;
+
     const galleries = document.querySelectorAll('.gallery');
 
     galleries.forEach(gallery => {
@@ -804,7 +831,6 @@
   }
 
   window.addEventListener('resize', resizeHandler);
-</script>
-
+  </script>
 </body>
 </html>
