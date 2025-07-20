@@ -192,18 +192,17 @@
     display: flex;
     position: relative;
     margin: 10px 0px;
-    max-width: calc(100vw - 30px);
-    max-height: calc(100vh - 220px);
-    width: fit-content;
-    gap: 10px;
-    aspect-ratio: 169 / 240;
     flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    max-width: calc(100vw - 30px);
+    gap: 10px;
   }
   .img-cont img {
     width: 100%;
     height: auto;
+    max-height: calc(100vh - 220px);
     object-fit: contain;
-    aspect-ratio: 169 / 240;
     cursor: pointer;
   }
   .img-cont span{
@@ -220,10 +219,8 @@
   .info{
     display: flex;
     flex-direction: column;
-    width: fit-content;
     align-self: start;
-    width:100%;
-
+    width: fit-content;
   }
   .info p{
     font-family: 'Inter', sans-serif;
@@ -324,8 +321,8 @@
                   sizes="(max-width: 500px) 100vw,
                   (max-width: 800px) 676px,
                   1183px"
-          width="676"
-          height="960"
+          width="1183"
+          height="1680"
           fetchpriority="high"
           alt="Zine_Cover">
           <span>click image for more</span>
