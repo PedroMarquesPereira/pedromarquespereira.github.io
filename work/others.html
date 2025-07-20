@@ -454,7 +454,7 @@
         </div>
       </div>
       <div class="gallery-img">
-        <img class="one" loading="lazy" src="./img/others/darkday/darkday_1.webp"  alt="darkday">
+        <img class="one" loading="lazy" data-src="./img/others/darkday/darkday_1.webp"  alt="darkday">
         <div class="arrows">
           <span class="left"><</span>
           <span class="right">></span>
@@ -495,7 +495,7 @@
         </div>
       </div>
       <div class="gallery-img">
-        <img class="one" loading="lazy" src="./img/others/prints/prints_1.webp" alt="prints">
+        <img class="one" loading="lazy" data-src="./img/others/prints/prints_1.webp" alt="prints">
         <div class="arrows">
           <span class="left"><</span>
           <span class="right">></span>
@@ -515,7 +515,7 @@
         </div>
       </div>
       <div class="gallery-img">
-        <img class="one" loading="lazy" src="./img/others/untitled/milano_1.webp" alt="untitled">
+        <img class="one" loading="lazy" data-src="./img/others/untitled/milano_1.webp" alt="untitled">
         <div class="arrows">
           <span class="left"><</span>
           <span class="right">></span>
@@ -719,7 +719,9 @@
         updateImage() {
           const item = this.images[this.currentIndex];
           const src = typeof item === 'string' ? item : item.src;
-          this.imgElement.src = src;
+          this.imgElement.src = ''; // clear current src first
+          this.imgElement.setAttribute('data-src', src); // set data-src to new image URL
+          this.imgElement.src = src; // now set src dynamically to trigger loading
 
           this.leftArrow.style.display = this.currentIndex === 0 ? 'none' : 'inline';
           this.rightArrow.style.display = this.currentIndex === this.images.length - 1 ? 'none' : 'inline';
