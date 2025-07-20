@@ -188,40 +188,44 @@
     position: absolute;
     align-items: center;
   }
-  .img-cont{
-    width: 100%;
-    max-width: 1183px; 
-    margin: 10px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .img-cont img {
-    width: 100%;
-    height: auto;
-    max-height: calc(100vh - 220px);
-    object-fit: contain;
-    aspect-ratio: 169 / 240;
-    cursor: pointer;
-  }
-  .img-cont span{
-    display: flex;
-    font-size: 10px;
-    font-family: 'Inter', sans-serif;
-    color: #fff;
-    margin-left: auto;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  .img-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
+  width: 100%;
+  max-width: calc(100vw - 30px);
+}
 
-  }
-  .info{
-    display: flex;
-    flex-direction: column;
-    align-self: start;
-    width: fit-content;
-  }
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: calc(100vw - 30px);
+  max-height: calc(100vh - 220px);
+  aspect-ratio: 1183 / 1680; /* your image's exact aspect ratio */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.image-wrapper span,
+.image-wrapper .info {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  user-select: none;
+}
+
   .info p{
     font-family: 'Inter', sans-serif;
     font-size: 14px;
@@ -312,27 +316,30 @@
   </header>
   <main>
     <section class="proj">
-      <div class="img-cont">
-        <img id="rotating-image" class="main"
-          src="./img/zine/640/zine_cover.webp"
-          srcset="./img/zine/480/zine_cover.webp 507w,
-                  ./img/zine/640/zine_cover.webp 676w,
-                  ./img/zine/1080/zine_cover.webp 1183w"
-                  sizes="(max-width: 500px) 100vw,
-                  (max-width: 800px) 676px,
-                  1183px"
-          width="1183"
-          height="1680"
-          style="width: 100%; height: auto; display: block;"
-          fetchpriority="high"
-          alt="Zine_Cover">
-          <span>click image for more</span>
-        <div class="info">
-          <p>14,8 x 21 cm, 18 pages</p>
-          <p>56 copies (sold out)</p>
-        </div>
+  <div class="img-cont">
+    <div class="image-wrapper">
+      <img
+        src="./img/zine/640/zine_cover.webp"
+        srcset="./img/zine/480/zine_cover.webp 507w,
+                ./img/zine/640/zine_cover.webp 676w,
+                ./img/zine/1080/zine_cover.webp 1183w"
+        sizes="(max-width: 500px) 100vw,
+               (max-width: 800px) 676px,
+               1183px"
+        width="1183"
+        height="1680"
+        alt="Zine Cover"
+        fetchpriority="high"
+      />
+      <span>click image for more</span>
+      <div class="info">
+        <p>14,8 x 21 cm, 18 pages</p>
+        <p>56 copies (sold out)</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
     <section class="gallery">
       <div class="gallery-back">
         <span>×</span>
