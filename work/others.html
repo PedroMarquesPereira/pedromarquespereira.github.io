@@ -303,6 +303,10 @@
     -ms-user-select: none;
     user-select: none;
   }
+  .gallery-img img{
+    max-width: calc(100dvw - 30px);
+    max-height: calc(100dvh - 160px);
+  }
   iframe{
     width:1440px;
     height:1080px;
@@ -454,7 +458,19 @@
         </div>
       </div>
       <div class="gallery-img">
-        <img class="one" loading="lazy" data-src="./img/others/darkday/darkday_1.webp"  alt="darkday">
+        <img class="one" loading="lazy"
+             data-src="./img/others/darkday/1080/darkday_1.webp"
+             data-srcset="./img/others/darkday/480/darkday_1.webp 480w,
+                          ./img/others/darkday/640/darkday_1.webp 640w,
+                          ./img/others/darkday/1080/darkday_1.webp 1080w,
+                          ./img/others/darkday/1440/darkday_1.webp 1440w"
+             sizes="(max-width: 480px) 480px,
+                    (max-width: 640px) 640px,
+                    (max-width: 1080px) 1080px,
+                    1440px"
+             width="1080"
+             height="1350"
+             alt="Dark Day">
         <div class="arrows">
           <span class="left"><</span>
           <span class="right">></span>
@@ -495,7 +511,19 @@
         </div>
       </div>
       <div class="gallery-img">
-        <img class="one" loading="lazy" data-src="./img/others/prints/prints_1.webp" alt="prints">
+        <img class="one" loading="lazy"
+             data-src="./img/others/prints/1080/prints_1.webp"
+             data-srcset="./img/others/prints/480/prints_1.webp 480w,
+                          ./img/others/prints/640/prints_1.webp 640w,
+                          ./img/others/prints/1080/prints_1.webp 1080w,
+                          ./img/others/prints/1440/prints_1.webp 1440w"
+             sizes="(max-width: 480px) 480px,
+                    (max-width: 640px) 640px,
+                    (max-width: 1080px) 1080px,
+                    1440px"
+             width="1080"
+             height="1512"
+             alt="Prints">
         <div class="arrows">
           <span class="left"><</span>
           <span class="right">></span>
@@ -515,7 +543,19 @@
         </div>
       </div>
       <div class="gallery-img">
-        <img class="one" loading="lazy" data-src="./img/others/untitled/milano_1.webp" alt="untitled">
+        <img class="one" loading="lazy"
+             data-src="./img/others/untitled/1080/untitled_1.webp"
+             data-srcset="./img/others/untitled/480/untitled_1.webp 480w,
+                          ./img/others/untitled/640/untitled_1.webp 640w,
+                          ./img/others/untitled/1080/untitled_1.webp 1080w,
+                          ./img/others/untitled/1440/untitled_1.webp 1440w"
+             sizes="(max-width: 480px) 480px,
+                    (max-width: 640px) 640px,
+                    (max-width: 1080px) 1080px,
+                    1440px"
+             width="1080"
+             height="1260"
+             alt="Untitled">
         <div class="arrows">
           <span class="left"><</span>
           <span class="right">></span>
@@ -541,292 +581,371 @@
       <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
   </footer>
   <script defer>
-  document.addEventListener("DOMContentLoaded", () => {
-    // --- Dropdown Menu ---
-    const dropTrigger = document.querySelector(".dropd");
-    const dropContent = document.querySelector(".dropcontent");
-    let dropdownOpen = false;
+    document.addEventListener("DOMContentLoaded", () => {
+      // --- Dropdown Menu ---
+      const dropTrigger = document.querySelector(".dropd");
+      const dropContent = document.querySelector(".dropcontent");
+      let dropdownOpen = false;
 
-    if (dropTrigger && dropContent) {
-      const toggleDropdown = (show) => {
-        dropContent.classList.toggle("show", show);
-      };
+      if (dropTrigger && dropContent) {
+        const toggleDropdown = (show) => {
+          dropContent.classList.toggle("show", show);
+        };
 
-      dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
-      dropContent.addEventListener("mouseover", () => toggleDropdown(true));
-      dropTrigger.addEventListener("mouseout", () => {
-        setTimeout(() => {
-          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
-            toggleDropdown(false);
-          }
-        }, 100);
-      });
-      dropContent.addEventListener("mouseout", () => {
-        setTimeout(() => {
-          if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
-            toggleDropdown(false);
-          }
-        }, 100);
-      });
-      dropTrigger.addEventListener("click", () => {
-        dropdownOpen = !dropdownOpen;
-        toggleDropdown(dropdownOpen);
-      });
-    }
+        const handleMouseOut = () => {
+          setTimeout(() => {
+            if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
+              toggleDropdown(false);
+            }
+          }, 100);
+        };
 
-    // --- Gallery System ---
-    const arches = document.querySelectorAll(".arch");
-    const galleries = document.querySelectorAll(".gallery");
-    let currentGallery = null;
-
-    function openGalleryIframe(placeholder) {
-      if (placeholder && !placeholder.querySelector("iframe")) {
-        const aspectAttr = placeholder.dataset.aspect || "4:3";
-        const [w, h] = aspectAttr.split(":").map(Number);
-        const src = placeholder.dataset.video;
-
-        const iframe = document.createElement("iframe");
-        iframe.src = src;
-        iframe.title = "YouTube video player";
-        iframe.frameBorder = "0";
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-        iframe.allowFullscreen = true;
-        iframe.referrerPolicy = "strict-origin-when-cross-origin";
-        iframe.style.display = "block";
-        iframe.style.border = "none";
-        iframe.dataset.aspect = `${w}:${h}`;
-        iframe.className = aspectAttr === "8:3" ? "pan" : aspectAttr === "5:4" ? "film" : "cine";
-
-        placeholder.appendChild(iframe);
-        resizeHandler();
+        dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
+        dropContent.addEventListener("mouseover", () => toggleDropdown(true));
+        dropTrigger.addEventListener("mouseout", handleMouseOut);
+        dropContent.addEventListener("mouseout", handleMouseOut);
+        dropTrigger.addEventListener("click", () => {
+          dropdownOpen = !dropdownOpen;
+          toggleDropdown(dropdownOpen);
+        });
       }
-    }
 
-    arches.forEach(arch => {
-      arch.addEventListener("click", () => {
-        const id = arch.dataset.id;
-        const gal = document.querySelector(`.gallery[data-id="${id}"]`);
-        if (!gal) return;
+      // --- Gallery System ---
+      const arches = document.querySelectorAll(".arch");
+      const galleries = document.querySelectorAll(".gallery");
+      let currentGallery = null;
 
-        galleries.forEach(g => g.style.display = "none");
+      function openGalleryIframe(placeholder) {
+        if (placeholder && !placeholder.querySelector("iframe")) {
+          const aspectAttr = placeholder.dataset.aspect || "4:3";
+          const [w, h] = aspectAttr.split(":" ).map(Number);
+          const src = placeholder.dataset.video;
 
-        gal.classList.add("fade");
-        gal.style.display = "block";
-        currentGallery = gal;
+          const iframe = document.createElement("iframe");
+          iframe.src = src;
+          iframe.title = "YouTube video player";
+          iframe.frameBorder = "0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+          iframe.style.display = "block";
+          iframe.style.border = "none";
+          iframe.dataset.aspect = `${w}:${h}`;
+          iframe.className = aspectAttr === "8:3" ? "pan" : aspectAttr === "5:4" ? "film" : "cine";
 
-        const iframePlaceholder = gal.querySelector('.gallery-video-placeholder');
-        if (iframePlaceholder) {
-          openGalleryIframe(iframePlaceholder);
-        }
-
-        resizeHandler();
-      });
-    });
-
-    document.querySelectorAll(".gallery-back > span:first-child").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const gal = btn.closest(".gallery");
-        if (gal) {
-          gal.style.display = "none";
-          if (currentGallery === gal) currentGallery = null;
-        }
-      });
-    });
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape" && currentGallery) {
-        currentGallery.style.display = "none";
-        currentGallery = null;
-      }
-    });
-
-    // --- Arrow Navigation ---
-    const galleriesData = {
-      darkday: [
-        './img/others/darkday/darkday_1.webp',
-        './img/others/darkday/darkday_2.webp',
-        './img/others/darkday/darkday_3.webp',
-        './img/others/darkday/darkday_4.webp',
-        './img/others/darkday/darkday_5.webp',
-        './img/others/darkday/darkday_6.webp',
-        './img/others/darkday/darkday_7.webp',
-        './img/others/darkday/darkday_8.webp',
-        './img/others/darkday/darkday_9.webp',
-        './img/others/darkday/darkday_10.webp',
-        './img/others/darkday/darkday_11.webp',
-      ],
-      prints: [
-        {src: './img/others/prints/prints_1.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_2.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_3.webp', size: '10.2 x 12.7 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_4.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_5.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_6.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_7.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_8.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_9.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_10.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_11.webp', size: '17.8 x 24 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_12.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_13.webp', size: '23.3 x 24.1 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_14.webp', size: '24 x 30 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_15.webp', size: '24 x 30 cm', type: 'silver gelatin print'},
-        {src: './img/others/prints/prints_16.webp', size: '49.3 x 60.2 cm', type: 'inkjet print'},
-        {src: './img/others/prints/prints_17.webp', size: '65.7 x 83.7 cm', type: 'inkjet print'},
-      ],
-      untitled: [
-        './img/others/untitled/milano_1.webp',
-        './img/others/untitled/milano_2.webp',
-        './img/others/untitled/milano_3.webp',
-        './img/others/untitled/milano_4.webp',
-        './img/others/untitled/milano_5.webp',
-        './img/others/untitled/milano_6.webp',
-        './img/others/untitled/milano_7.webp',
-        './img/others/untitled/milano_8.webp',
-        './img/others/untitled/milano_9.webp',
-        './img/others/untitled/milano_10.webp',
-      ]
-    };
-
-    const galleryStates = {};
-    let focusedGalleryId = null;
-
-    function setFocus(container, id) {
-      requestAnimationFrame(() => {
-        container.focus();
-        focusedGalleryId = id;
-      });
-    }
-
-    Object.keys(galleriesData).forEach(id => {
-      const container = document.getElementById(id);
-      if (!container) return;
-
-      container.setAttribute('tabindex', '0');
-      const images = galleriesData[id];
-      const imgElement = container.querySelector('.gallery-img img');
-      const leftArrow = container.querySelector('.arrows .left');
-      const rightArrow = container.querySelector('.arrows .right');
-      if (!imgElement || !leftArrow || !rightArrow) return;
-
-      galleryStates[id] = {
-        currentIndex: 0,
-        imgElement,
-        leftArrow,
-        rightArrow,
-        images,
-        container,
-        updateImage() {
-          const item = this.images[this.currentIndex];
-          const src = typeof item === 'string' ? item : item.src;
-          this.imgElement.src = ''; // clear current src first
-          this.imgElement.setAttribute('data-src', src); // set data-src to new image URL
-          this.imgElement.src = src; // now set src dynamically to trigger loading
-
-          this.leftArrow.style.display = this.currentIndex === 0 ? 'none' : 'inline';
-          this.rightArrow.style.display = this.currentIndex === this.images.length - 1 ? 'none' : 'inline';
-
-          const sizeSpan = this.container.querySelector('.descrip .size');
-          if (sizeSpan) sizeSpan.textContent = item.size || '';
-          const typeSpan = this.container.querySelector('.descrip .type');
-          if (typeSpan) typeSpan.textContent = item.type || '';
-
+          placeholder.appendChild(iframe);
           resizeHandler();
         }
-      };
+      }
 
-      const state = galleryStates[id];
-      state.updateImage();
+      arches.forEach(arch => {
+        arch.addEventListener("click", () => {
+          const id = arch.dataset.id;
+          const gal = document.querySelector(`.gallery[data-id="${id}"]`);
+          if (!gal) return;
 
-      leftArrow.addEventListener('click', () => {
-        if (state.currentIndex > 0) {
-          state.currentIndex--;
-          state.updateImage();
-        }
-        setFocus(container, id);
+          galleries.forEach(g => g.style.display = "none");
+
+          gal.classList.add("fade");
+          gal.style.display = "block";
+          currentGallery = gal;
+
+          const iframePlaceholder = gal.querySelector('.gallery-video-placeholder');
+          if (iframePlaceholder) openGalleryIframe(iframePlaceholder);
+
+          gal.querySelectorAll('img[data-src]').forEach(img => {
+            if (!img.src) {
+              img.removeAttribute('loading');
+              img.src = img.dataset.src;
+              if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+                img.sizes = img.getAttribute('sizes') || '';
+              }
+            }
+          });
+
+          const state = galleryStates[gal.id];
+          if (state) {
+            state.currentIndex = 0;
+            state.updateImage();
+            setFocus(state.container, gal.id);
+          }
+
+          resizeHandler();
+        });
       });
 
-      rightArrow.addEventListener('click', () => {
-        if (state.currentIndex < state.images.length - 1) {
+      document.querySelectorAll(".gallery-back > span:first-child").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const gal = btn.closest(".gallery");
+          if (gal) {
+            gal.style.display = "none";
+            if (currentGallery === gal) currentGallery = null;
+          }
+        });
+      });
+
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && currentGallery) {
+          currentGallery.style.display = "none";
+          currentGallery = null;
+        }
+      });
+
+      const galleriesData = {
+        darkday: [
+        'darkday_1.webp', 'darkday_2.webp', 'darkday_3.webp', 'darkday_4.webp',
+        'darkday_5.webp', 'darkday_6.webp', 'darkday_7.webp', 'darkday_8.webp',
+        'darkday_9.webp', 'darkday_10.webp', 'darkday_11.webp'
+      ],
+      prints: [
+        { filename: 'prints_1.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+        { filename: 'prints_2.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+        { filename: 'prints_3.webp', size: '10.2 x 12.7 cm', type: 'silver gelatin print' },
+        { filename: 'prints_4.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
+        { filename: 'prints_5.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+        { filename: 'prints_6.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
+        { filename: 'prints_7.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+        { filename: 'prints_8.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+        { filename: 'prints_9.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+        { filename: 'prints_10.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+        { filename: 'prints_11.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
+        { filename: 'prints_12.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+        { filename: 'prints_13.webp', size: '23.3 x 24.1 cm', type: 'silver gelatin print' },
+        { filename: 'prints_14.webp', size: '24 x 30 cm', type: 'silver gelatin print' },
+        { filename: 'prints_15.webp', size: '24 x 30 cm', type: 'silver gelatin print' },
+        { filename: 'prints_16.webp', size: '49.3 x 60.2 cm', type: 'inkjet print' },
+        { filename: 'prints_17.webp', size: '65.7 x 83.7 cm', type: 'inkjet print' }
+      ],
+      untitled: [
+        'untitled_1.webp', 'untitled_2.webp', 'untitled_3.webp',
+        'untitled_4.webp', 'untitled_5.webp', 'untitled_6.webp', 'untitled_7.webp',
+        'untitled_8.webp', 'untitled_9.webp', 'untitled_10.webp'
+      ]
+      };
+
+      const galleryStates = {};
+      let focusedGalleryId = null;
+
+      function setFocus(container, id) {
+        requestAnimationFrame(() => {
+          container.focus();
+          focusedGalleryId = id;
+        });
+      }
+
+      function buildSrcset(baseFolder, filename) {
+        const sizes = [480, 640, 1080, 1440];
+        return sizes.map(size => `./img/others/${baseFolder}/${size}/${filename} ${size}w`).join(', ');
+      }
+
+      function buildDataSrc(baseFolder, filename, defaultSize = 1080) {
+        return `./img/others/${baseFolder}/${defaultSize}/${filename}`;
+      }
+
+      function setupGalleryImages(galleryId, baseFolder) {
+        const galleryImages = galleriesData[galleryId];
+        const galleryElement = document.getElementById(galleryId);
+        if (!galleryElement) return;
+
+        const container = galleryElement.querySelector('.gallery-img');
+        if (!container) return;
+
+        const existingImages = container.querySelectorAll('img');
+        if (existingImages.length === 0) {
+          container.innerHTML = '';
+
+          galleryImages.forEach((imgData) => {
+            let filename, size, type;
+            if (typeof imgData === 'string') {
+              filename = imgData;
+            } else {
+              filename = imgData.filename;
+              size = imgData.size;
+              type = imgData.type;
+            }
+
+            const img = document.createElement('img');
+            img.classList.add('one');
+            img.loading = 'lazy';
+            img.setAttribute('data-src', buildDataSrc(baseFolder, filename));
+            img.setAttribute('data-srcset', buildSrcset(baseFolder, filename));
+            img.setAttribute('sizes', '(max-width: 480px) 480px, (max-width: 640px) 640px, (max-width: 1080px) 1080px, 1440px');
+            img.setAttribute('width', '1080');
+            img.setAttribute('alt', galleryId);
+            container.appendChild(img);
+
+            if (size || type) {
+              const descrip = document.createElement('div');
+              descrip.classList.add('descrip');
+              if (size) {
+                const spanSize = document.createElement('span');
+                spanSize.classList.add('size');
+                spanSize.textContent = size;
+                descrip.appendChild(spanSize);
+              }
+              if (type) {
+                const spanType = document.createElement('span');
+                spanType.classList.add('type');
+                spanType.textContent = type;
+                descrip.appendChild(spanType);
+              }
+              container.appendChild(descrip);
+            }
+          });
+
+          if (!container.querySelector('.arrows')) {
+            const arrows = document.createElement('div');
+            arrows.classList.add('arrows');
+            arrows.innerHTML = '<span class="left"><</span><span class="right">></span>';
+            container.appendChild(arrows);
+          }
+        }
+      }
+
+      Object.keys(galleriesData).forEach(id => {
+        setupGalleryImages(id, id);
+        const container = document.getElementById(id);
+        const images = galleriesData[id];
+        let imgElement = container?.querySelector('.gallery-img img');
+        let leftArrow = container?.querySelector('.arrows .left');
+        let rightArrow = container?.querySelector('.arrows .right');
+
+        if (!imgElement || !leftArrow || !rightArrow) return;
+
+        galleryStates[id] = {
+          currentIndex: 0,
+          imgElement,
+          leftArrow,
+          rightArrow,
+          images,
+          container,
+          baseFolder: id,
+
+          updateImage() {
+            let item = this.images[this.currentIndex];
+            let filename, size, type;
+            if (typeof item === 'string') {
+              filename = item;
+            } else {
+              filename = item.filename;
+              size = item.size;
+              type = item.type;
+            }
+
+            const src = buildDataSrc(this.baseFolder, filename);
+            const srcset = buildSrcset(this.baseFolder, filename);
+
+            this.imgElement.removeAttribute('loading');
+            this.imgElement.src = src;
+            this.imgElement.srcset = srcset;
+            this.imgElement.sizes = '(max-width: 480px) 480px, (max-width: 640px) 640px, (max-width: 1080px) 1080px, 1440px';
+
+            this.leftArrow.style.display = this.currentIndex === 0 ? 'none' : 'inline';
+            this.rightArrow.style.display = this.currentIndex === this.images.length - 1 ? 'none' : 'inline';
+
+            const sizeSpan = this.container.querySelector('.descrip .size');
+            if (sizeSpan) sizeSpan.textContent = size || '';
+            const typeSpan = this.container.querySelector('.descrip .type');
+            if (typeSpan) typeSpan.textContent = type || '';
+
+            resizeHandler();
+          }
+        };
+
+        const state = galleryStates[id];
+        state.updateImage();
+
+        leftArrow.addEventListener('click', () => {
+          if (state.currentIndex > 0) {
+            state.currentIndex--;
+            state.updateImage();
+          }
+          setFocus(container, id);
+        });
+
+        rightArrow.addEventListener('click', () => {
+          if (state.currentIndex < state.images.length - 1) {
+            state.currentIndex++;
+            state.updateImage();
+          }
+          setFocus(container, id);
+        });
+
+        container.addEventListener('click', () => setFocus(container, id));
+        container.addEventListener('focus', () => { focusedGalleryId = id; });
+      });
+
+      const observer = new MutationObserver(() => {
+        Object.entries(galleryStates).forEach(([id, state]) => {
+          const isVisible = window.getComputedStyle(state.container).display !== 'none';
+          if (isVisible) setFocus(state.container, id);
+        });
+      });
+      observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+
+      window.addEventListener('keydown', (e) => {
+        if (!focusedGalleryId) return;
+        const state = galleryStates[focusedGalleryId];
+        if (!state) return;
+
+        if (e.key === 'ArrowLeft' && state.currentIndex > 0) {
+          e.preventDefault();
+          state.currentIndex--;
+          state.updateImage();
+        } else if (e.key === 'ArrowRight' && state.currentIndex < state.images.length - 1) {
+          e.preventDefault();
           state.currentIndex++;
           state.updateImage();
         }
-        setFocus(container, id);
       });
 
-      container.addEventListener('click', () => setFocus(container, id));
-      container.addEventListener('focus', () => { focusedGalleryId = id; });
+      resizeHandler();
     });
 
-    new MutationObserver(() => {
-      Object.entries(galleryStates).forEach(([id, state]) => {
-        const isVisible = window.getComputedStyle(state.container).display !== 'none';
-        if (isVisible) setFocus(state.container, id);
-      });
-    }).observe(document.body, { attributes: true, childList: true, subtree: true });
+    // --- Resize Handler ---
+    function resizeHandler() {
+      const maxWidth = window.innerWidth - 30;
+      const maxHeight = window.innerHeight - 160;
+      const galleries = document.querySelectorAll('.gallery');
 
-    window.addEventListener('keydown', (e) => {
-      if (!focusedGalleryId) return;
-      const state = galleryStates[focusedGalleryId];
-      if (!state) return;
-      if (e.key === 'ArrowLeft' && state.currentIndex > 0) {
-        e.preventDefault();
-        state.currentIndex--;
-        state.updateImage();
-      } else if (e.key === 'ArrowRight' && state.currentIndex < state.images.length - 1) {
-        e.preventDefault();
-        state.currentIndex++;
-        state.updateImage();
-      }
-    });
-
-    resizeHandler();
-  });
-
-  // --- Resize Handler ---
-  function resizeHandler() {
-    const maxWidth = window.innerWidth - 30;
-    const maxHeight = window.innerHeight - 160;
-
-    const galleries = document.querySelectorAll('.gallery');
-
-    galleries.forEach(gallery => {
-      const resizeFrame = (selector, aspectW, aspectH) => {
-        const el = gallery.querySelector(selector);
-        if (!el) return;
-        let width = maxWidth;
-        let height = (width * aspectH) / aspectW;
-        if (height > maxHeight) {
-          height = maxHeight;
-          width = (height * aspectW) / aspectH;
-        }
-        el.style.width = width + 'px';
-        el.style.height = height + 'px';
-      };
-
-      resizeFrame('.cine', 4, 3);
-      resizeFrame('.pan', 8, 3);
-      resizeFrame('.film', 5, 4);
-
-      const img = gallery.querySelector('.gallery-img img');
-      if (img && img.src) {
-        const temp = new Image();
-        temp.src = img.src;
-        temp.onload = () => {
-          const ratio = temp.naturalWidth / temp.naturalHeight;
-          if (maxWidth / ratio <= maxHeight) {
-            img.style.width = `${maxWidth}px`;
-            img.style.height = 'auto';
-          } else {
-            img.style.width = 'auto';
-            img.style.height = `${maxHeight}px`;
+      galleries.forEach(gallery => {
+        const resizeFrame = (selector, aspectW, aspectH) => {
+          const el = gallery.querySelector(selector);
+          if (!el) return;
+          let width = maxWidth;
+          let height = (width * aspectH) / aspectW;
+          if (height > maxHeight) {
+            height = maxHeight;
+            width = (height * aspectW) / aspectH;
           }
+          el.style.width = width + 'px';
+          el.style.height = height + 'px';
         };
-      }
-    });
-  }
 
-  window.addEventListener('resize', resizeHandler);
+        resizeFrame('.cine', 4, 3);
+        resizeFrame('.pan', 8, 3);
+        resizeFrame('.film', 5, 4);
+
+        const img = gallery.querySelector('.gallery-img img');
+        if (img && img.src) {
+          const temp = new Image();
+          temp.src = img.src;
+          temp.onload = () => {
+            const ratio = temp.naturalWidth / temp.naturalHeight;
+            if (maxWidth / ratio <= maxHeight) {
+              img.style.width = `${maxWidth}px`;
+              img.style.height = 'auto';
+            } else {
+              img.style.width = 'auto';
+              img.style.height = `${maxHeight}px`;
+            }
+          };
+        }
+      });
+    }
+
+    window.addEventListener('resize', resizeHandler);
   </script>
 </body>
 </html>
