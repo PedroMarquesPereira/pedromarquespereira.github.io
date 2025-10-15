@@ -79,6 +79,7 @@
     }
     .back,
     .menu{
+      z-index: 1;
       position: fixed;
       display: flex;
       top: 20px;
@@ -120,6 +121,7 @@
     }
     .c,
     .lang{
+      z-index: 1;
       position: fixed;
       display: flex;
       top:auto;
@@ -142,7 +144,7 @@
     }
   /*___VIDEO__*/
     .vdo-cont{
-      z-index: -1;
+      z-index: 0;
       position: relative;
       height:100dvh;
       width:100dvw;
@@ -169,6 +171,7 @@
       color:#93ddff;
     }
     .contact{
+      z-index: 1;
       position: absolute;
       top:50%;
       left:50%;
@@ -203,7 +206,7 @@
     </header>
     <main>
       <div class="vdo-cont">
-        <video class="vdo"autoplay muted loop playsinline preload="metadata" poster="./img/contact/cover_contact.webp" fetchpriority=high><source src="https://pedromarquespereira.com/img/contact/contact.mp4" type="video/mp4"></video>
+        <video class="vdo"autoplay muted loop playsinline preload="auto" poster="./img/contact/cover_contact.webp"><source src="https://pedromarquespereira.com/img/contact/contact.mp4" type="video/mp4"></video>
       </div>
       <section class="contact">
         <div class="cnote">
@@ -221,34 +224,73 @@
     </footer>
     <script>
   const video = document.querySelector('.vdo');
+  let videoAspect = 4 / 3; // fallback aspect ratio
 
   function resizeVideo() {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
-    // Use video metadata if loaded, or fallback to known aspect ratio
-    const aspect = video.videoWidth && video.videoHeight
-      ? video.videoWidth / video.videoHeight
-      : 4 / 3; // fallback (e.g. 4:3)
-
-    const heightIfFullWidth = vw / aspect;
-    const widthIfFullHeight = vh * aspect;
+    const heightIfFullWidth = vw / videoAspect;
+    const widthIfFullHeight = vh * videoAspect;
 
     if (heightIfFullWidth >= vh) {
-      // Fill width, let height overflow (centered vertically)
+      // Fill width
       video.style.width = '100vw';
       video.style.height = 'auto';
     } else {
-      // Fill height, narrower — left aligned
+      // Fill height
       video.style.height = '100vh';
       video.style.width = 'auto';
     }
   }
 
-  // Resize on metadata load and window resize
-  video.addEventListener('loadedmetadata', resizeVideo);
-  window.addEventListener('resize', resizeVideo);
-  document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dropd"),t=document.querySelector(".dropcontent");let o=!1;e.addEventListener("mouseover",(function(){t.classList.add("show")})),t.addEventListener("mouseover",(function(){t.classList.add("show")})),e.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),t.addEventListener("mouseout",(function(){setTimeout((function(){t.matches(":hover")||e.matches(":hover")||t.classList.remove("show")}),100)})),e.addEventListener("click",(function(){o=!o,o?t.classList.add("show"):t.classList.remove("show")}))}));
-</script>
+  // Throttle resize calls for performance
+  let resizePending = false;
+  function onResize() {
+    if (!resizePending) {
+      resizePending = true;
+      requestAnimationFrame(() => {
+        resizeVideo();
+        resizePending = false;
+      });
+    }
+  }
+
+  // Update aspect ratio once video metadata is ready
+  video.addEventListener('loadedmetadata', () => {
+    videoAspect = video.videoWidth / video.videoHeight || 4 / 3;
+    resizeVideo();
+  });
+
+  // Initial resize when page is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    resizeVideo();
+
+    // Dropdown menu logic
+    const trigger = document.querySelector('.dropd');
+    const menu = document.querySelector('.dropcontent');
+    let open = false;
+
+    trigger.addEventListener('click', () => {
+      open = !open;
+      menu.classList.toggle('show', open);
+    });
+
+    // Hover show/hide for desktop
+    ["mouseover", "mouseout"].forEach(evt => {
+      [trigger, menu].forEach(el =>
+        el.addEventListener(evt, () => {
+          if (evt === "mouseover") menu.classList.add("show");
+          else setTimeout(() => {
+            if (!menu.matches(":hover") && !trigger.matches(":hover"))
+              menu.classList.remove("show");
+          }, 100);
+        })
+      );
+    });
+  });
+
+  window.addEventListener('resize', onResize);
+  </script>
   </body>
 </html>
