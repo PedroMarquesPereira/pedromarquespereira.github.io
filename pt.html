@@ -58,7 +58,7 @@
         }
       }
     .vdo-cont{
-      z-index: -1;
+      z-index: 0;
       position: relative;
       height:100dvh;
       width:100dvw;
@@ -140,34 +140,46 @@
       <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
     </footer>
     <script>
-  const video = document.querySelector('.vdo');
+const video = document.querySelector('.vdo');
+let videoAspect = 4 / 3; // default fallback aspect ratio
 
-  function resizeVideo() {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+function resizeVideo() {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
 
-    // Use video metadata if loaded, or fallback to known aspect ratio
-    const aspect = video.videoWidth && video.videoHeight
-      ? video.videoWidth / video.videoHeight
-      : 4 / 3; // fallback (e.g. 4:3)
+  const heightIfFullWidth = vw / videoAspect;
+  const widthIfFullHeight = vh * videoAspect;
 
-    const heightIfFullWidth = vw / aspect;
-    const widthIfFullHeight = vh * aspect;
-
-    if (heightIfFullWidth >= vh) {
-      // Fill width, let height overflow (centered vertically)
-      video.style.width = '100vw';
-      video.style.height = 'auto';
-    } else {
-      // Fill height, narrower — left aligned
-      video.style.height = '100vh';
-      video.style.width = 'auto';
-    }
+  if (heightIfFullWidth >= vh) {
+    // Fill width
+    video.style.width = '100vw';
+    video.style.height = 'auto';
+  } else {
+    // Fill height
+    video.style.height = '100vh';
+    video.style.width = 'auto';
   }
+}
 
-  // Resize on metadata load and window resize
-  video.addEventListener('loadedmetadata', resizeVideo);
-  window.addEventListener('resize', resizeVideo);
+// Throttle resize using requestAnimationFrame
+let resizePending = false;
+function onResize() {
+  if (!resizePending) {
+    resizePending = true;
+    requestAnimationFrame(() => {
+      resizeVideo();
+      resizePending = false;
+    });
+  }
+}
+
+// Update aspect ratio when metadata is loaded
+video.addEventListener('loadedmetadata', () => {
+  videoAspect = video.videoWidth / video.videoHeight || 4 / 3;
+  resizeVideo();
+});
+
+window.addEventListener('resize', onResize);
 </script>
   </body>
 </html>
