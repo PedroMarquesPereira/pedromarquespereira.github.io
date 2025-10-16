@@ -581,371 +581,505 @@
       <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
   </footer>
   <script defer>
-    document.addEventListener("DOMContentLoaded", () => {
-      // --- Dropdown Menu ---
-      const dropTrigger = document.querySelector(".dropd");
-      const dropContent = document.querySelector(".dropcontent");
-      let dropdownOpen = false;
+document.addEventListener('DOMContentLoaded', () => {
+  // ---------- Helpers ----------
+  const qs = sel => document.querySelector(sel);
+  const qsa = sel => Array.from(document.querySelectorAll(sel));
+  const attr = (el, name) => el ? el.getAttribute(name) : null;
 
-      if (dropTrigger && dropContent) {
-        const toggleDropdown = (show) => {
-          dropContent.classList.toggle("show", show);
-        };
+  // ---------- Cached elements ----------
+  const dropTrigger = qs('.dropd');
+  const dropContent = qs('.dropcontent');
+  const arches = qsa('.arch');       // clickable tiles
+  const galleries = qsa('.gallery'); // gallery sections
 
-        const handleMouseOut = () => {
-          setTimeout(() => {
-            if (!dropTrigger.matches(":hover") && !dropContent.matches(":hover")) {
-              toggleDropdown(false);
-            }
-          }, 100);
-        };
+  // ---------- Dropdown  ----------
+  if (dropTrigger && dropContent) {
+    let dropdownOpen = false;
 
-        dropTrigger.addEventListener("mouseover", () => toggleDropdown(true));
-        dropContent.addEventListener("mouseover", () => toggleDropdown(true));
-        dropTrigger.addEventListener("mouseout", handleMouseOut);
-        dropContent.addEventListener("mouseout", handleMouseOut);
-        dropTrigger.addEventListener("click", () => {
-          dropdownOpen = !dropdownOpen;
-          toggleDropdown(dropdownOpen);
-        });
-      }
+    const toggleDropdown = (show) => dropContent.classList.toggle('show', !!show);
 
-      // --- Gallery System ---
-      const arches = document.querySelectorAll(".arch");
-      const galleries = document.querySelectorAll(".gallery");
-      let currentGallery = null;
+    // Click on trigger toggles
+    dropTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownOpen = !dropdownOpen;
+      toggleDropdown(dropdownOpen);
+    });
 
-      function openGalleryIframe(placeholder) {
-        if (placeholder && !placeholder.querySelector("iframe")) {
-          const aspectAttr = placeholder.dataset.aspect || "4:3";
-          const [w, h] = aspectAttr.split(":" ).map(Number);
-          const src = placeholder.dataset.video;
+    // Hover behavior
+    let hoverTimeout = null;
+    const clearHoverTimeout = () => { if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; } };
 
-          const iframe = document.createElement("iframe");
-          iframe.src = src;
-          iframe.title = "YouTube video player";
-          iframe.frameBorder = "0";
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-          iframe.allowFullscreen = true;
-          iframe.referrerPolicy = "strict-origin-when-cross-origin";
-          iframe.style.display = "block";
-          iframe.style.border = "none";
-          iframe.dataset.aspect = `${w}:${h}`;
-          iframe.className = aspectAttr === "8:3" ? "pan" : aspectAttr === "5:4" ? "film" : "cine";
+    dropTrigger.addEventListener('mouseover', () => { clearHoverTimeout(); toggleDropdown(true); dropdownOpen = true; });
+    dropContent.addEventListener('mouseover', () => { clearHoverTimeout(); toggleDropdown(true); dropdownOpen = true; });
 
-          placeholder.appendChild(iframe);
-          resizeHandler();
+    const handleMouseOut = () => {
+      clearHoverTimeout();
+      hoverTimeout = setTimeout(() => {
+        // if neither hovered, close
+        if (!dropTrigger.matches(':hover') && !dropContent.matches(':hover')) {
+          dropdownOpen = false;
+          toggleDropdown(false);
         }
+      }, 100);
+    };
+
+    dropTrigger.addEventListener('mouseout', handleMouseOut);
+    dropContent.addEventListener('mouseout', handleMouseOut);
+
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      if (!dropContent.contains(e.target) && !dropTrigger.contains(e.target)) {
+        dropdownOpen = false;
+        toggleDropdown(false);
       }
+    });
+  }
 
-      arches.forEach(arch => {
-        arch.addEventListener("click", () => {
-          const id = arch.dataset.id;
-          const gal = document.querySelector(`.gallery[data-id="${id}"]`);
-          if (!gal) return;
+  // ---------- IFrame lazy-insert (video placeholders) ----------
+  function openGalleryIframe(placeholder) {
+    if (!placeholder || placeholder.querySelector('iframe')) return;
 
-          galleries.forEach(g => g.style.display = "none");
+    const aspectAttr = placeholder.dataset.aspect || '4:3';
+    const [w, h] = aspectAttr.split(':').map(Number);
+    const src = placeholder.dataset.video;
+    if (!src) return;
 
-          gal.classList.add("fade");
-          gal.style.display = "block";
-          currentGallery = gal;
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.title = 'YouTube video player';
+    iframe.frameBorder = '0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.style.display = 'block';
+    iframe.style.border = 'none';
+    iframe.dataset.aspect = `${w}:${h}`;
+    // apply classes so resizeHandler can find them
+    iframe.className = aspectAttr === '8:3' ? 'pan' : aspectAttr === '5:4' ? 'film' : 'cine';
 
-          const iframePlaceholder = gal.querySelector('.gallery-video-placeholder');
-          if (iframePlaceholder) openGalleryIframe(iframePlaceholder);
+    placeholder.appendChild(iframe);
+    resizeHandler();
+  }
 
-          gal.querySelectorAll('img[data-src]').forEach(img => {
-            if (!img.src) {
-              img.removeAttribute('loading');
-              img.src = img.dataset.src;
-              if (img.dataset.srcset) {
-                img.srcset = img.dataset.srcset;
-                img.sizes = img.getAttribute('sizes') || '';
-              }
-            }
-          });
+  // ---------- Gallery data  ----------
+  const galleriesData = {
+    darkday: [
+      'darkday_1.webp','darkday_2.webp','darkday_3.webp','darkday_4.webp',
+      'darkday_5.webp','darkday_6.webp','darkday_7.webp','darkday_8.webp',
+      'darkday_9.webp','darkday_10.webp','darkday_11.webp'
+    ],
+    prints: [
+      { filename: 'prints_1.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+      { filename: 'prints_2.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+      { filename: 'prints_3.webp', size: '10.2 x 12.7 cm', type: 'silver gelatin print' },
+      { filename: 'prints_4.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
+      { filename: 'prints_5.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+      { filename: 'prints_6.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
+      { filename: 'prints_7.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+      { filename: 'prints_8.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+      { filename: 'prints_9.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+      { filename: 'prints_10.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+      { filename: 'prints_11.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
+      { filename: 'prints_12.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
+      { filename: 'prints_13.webp', size: '23.3 x 24.1 cm', type: 'silver gelatin print' },
+      { filename: 'prints_14.webp', size: '24 x 30 cm', type: 'silver gelatin print' },
+      { filename: 'prints_15.webp', size: '24 x 30 cm', type: 'silver gelatin print' },
+      { filename: 'prints_16.webp', size: '49.3 x 60.2 cm', type: 'inkjet print' },
+      { filename: 'prints_17.webp', size: '65.7 x 83.7 cm', type: 'inkjet print' }
+    ],
+    untitled: [
+      'untitled_1.webp','untitled_2.webp','untitled_3.webp','untitled_4.webp',
+      'untitled_5.webp','untitled_6.webp','untitled_7.webp','untitled_8.webp',
+      'untitled_9.webp','untitled_10.webp'
+    ]
+  };
 
-          const state = galleryStates[gal.id];
-          if (state) {
-            state.currentIndex = 0;
-            state.updateImage();
-            setFocus(state.container, gal.id);
+  // ---------- Utility functions for building src/srcset ----------
+  function buildSrcset(baseFolder, filename) {
+    const sizes = [480, 640, 1080, 1440];
+    return sizes.map(size => `./img/others/${baseFolder}/${size}/${filename} ${size}w`).join(', ');
+  }
+  function buildDataSrc(baseFolder, filename, defaultSize = 1080) {
+    return `./img/others/${baseFolder}/${defaultSize}/${filename}`;
+  }
+
+  // ---------- Focus helper ----------
+  const galleryStates = {}; // will hold state per gallery (by id)
+  let focusedGalleryId = null;
+
+  function setFocus(container, id) {
+    // schedule focus to avoid interrupting click sequences
+    requestAnimationFrame(() => {
+      try { container.focus(); } catch (err) {}
+      focusedGalleryId = id;
+    });
+  }
+
+  // ---------- Setup gallery images (create DOM only if container empty) ----------
+  function setupGalleryImages(galleryId, baseFolder) {
+    const galleryElement = document.getElementById(galleryId);
+    if (!galleryElement) return;
+
+    const container = galleryElement.querySelector('.gallery-img');
+    if (!container) return;
+
+    const existingImages = container.querySelectorAll('img');
+    // Only populate if container is empty or contains no <img>
+    if (existingImages.length === 0) {
+      // Clear placeholder content but keep other non-image elements (like title/back)
+      container.innerHTML = '';
+
+      const galleryImages = galleriesData[galleryId] || [];
+
+      galleryImages.forEach((imgData, idx) => {
+        let filename, size, type;
+        if (typeof imgData === 'string') {
+          filename = imgData;
+        } else {
+          filename = imgData.filename;
+          size = imgData.size;
+          type = imgData.type;
+        }
+
+        const img = document.createElement('img');
+        img.className = 'one';
+        img.loading = 'lazy';
+        // set data attributes to load later when gallery opens
+        img.setAttribute('data-src', buildDataSrc(baseFolder, filename));
+        img.setAttribute('data-srcset', buildSrcset(baseFolder, filename));
+        img.setAttribute('sizes', '(max-width: 480px) 480px, (max-width: 640px) 640px, (max-width: 1080px) 1080px, 1440px');
+        img.setAttribute('width', '1080');
+        img.setAttribute('alt', galleryId);
+        container.appendChild(img);
+
+        // If item contains size/type, append descriptive div
+        if (size || type) {
+          const descrip = document.createElement('div');
+          descrip.className = 'descrip';
+          if (size) {
+            const spanSize = document.createElement('span');
+            spanSize.className = 'size';
+            spanSize.textContent = size;
+            descrip.appendChild(spanSize);
           }
-
-          resizeHandler();
-        });
+          if (type) {
+            const spanType = document.createElement('span');
+            spanType.className = 'type';
+            spanType.textContent = type;
+            descrip.appendChild(spanType);
+          }
+          container.appendChild(descrip);
+        }
       });
 
-      document.querySelectorAll(".gallery-back > span:first-child").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const gal = btn.closest(".gallery");
-          if (gal) {
-            gal.style.display = "none";
-            if (currentGallery === gal) currentGallery = null;
-          }
-        });
-      });
-
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape" && currentGallery) {
-          currentGallery.style.display = "none";
-          currentGallery = null;
-        }
-      });
-
-      const galleriesData = {
-        darkday: [
-        'darkday_1.webp', 'darkday_2.webp', 'darkday_3.webp', 'darkday_4.webp',
-        'darkday_5.webp', 'darkday_6.webp', 'darkday_7.webp', 'darkday_8.webp',
-        'darkday_9.webp', 'darkday_10.webp', 'darkday_11.webp'
-      ],
-      prints: [
-        { filename: 'prints_1.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
-        { filename: 'prints_2.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
-        { filename: 'prints_3.webp', size: '10.2 x 12.7 cm', type: 'silver gelatin print' },
-        { filename: 'prints_4.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
-        { filename: 'prints_5.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
-        { filename: 'prints_6.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
-        { filename: 'prints_7.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
-        { filename: 'prints_8.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
-        { filename: 'prints_9.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
-        { filename: 'prints_10.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
-        { filename: 'prints_11.webp', size: '17.8 x 24 cm', type: 'silver gelatin print' },
-        { filename: 'prints_12.webp', size: '12.7 x 17.8 cm', type: 'silver gelatin print' },
-        { filename: 'prints_13.webp', size: '23.3 x 24.1 cm', type: 'silver gelatin print' },
-        { filename: 'prints_14.webp', size: '24 x 30 cm', type: 'silver gelatin print' },
-        { filename: 'prints_15.webp', size: '24 x 30 cm', type: 'silver gelatin print' },
-        { filename: 'prints_16.webp', size: '49.3 x 60.2 cm', type: 'inkjet print' },
-        { filename: 'prints_17.webp', size: '65.7 x 83.7 cm', type: 'inkjet print' }
-      ],
-      untitled: [
-        'untitled_1.webp', 'untitled_2.webp', 'untitled_3.webp',
-        'untitled_4.webp', 'untitled_5.webp', 'untitled_6.webp', 'untitled_7.webp',
-        'untitled_8.webp', 'untitled_9.webp', 'untitled_10.webp'
-      ]
-      };
-
-      const galleryStates = {};
-      let focusedGalleryId = null;
-
-      function setFocus(container, id) {
-        requestAnimationFrame(() => {
-          container.focus();
-          focusedGalleryId = id;
-        });
+      // Append arrows block if not present
+      if (!container.querySelector('.arrows')) {
+        const arrows = document.createElement('div');
+        arrows.className = 'arrows';
+        arrows.innerHTML = '<span class="left">&lt;</span><span class="right">&gt;</span>';
+        container.appendChild(arrows);
       }
+    }
+  }
 
-      function buildSrcset(baseFolder, filename) {
-        const sizes = [480, 640, 1080, 1440];
-        return sizes.map(size => `./img/others/${baseFolder}/${size}/${filename} ${size}w`).join(', ');
-      }
+  // ---------- Open gallery  ----------
+  let currentGallery = null; // element reference
 
-      function buildDataSrc(baseFolder, filename, defaultSize = 1080) {
-        return `./img/others/${baseFolder}/${defaultSize}/${filename}`;
-      }
+  function openGalleryElement(gal) {
+    if (!gal) return;
+    // Hide all galleries first
+    galleries.forEach(g => { g.style.display = 'none'; });
 
-      function setupGalleryImages(galleryId, baseFolder) {
-        const galleryImages = galleriesData[galleryId];
-        const galleryElement = document.getElementById(galleryId);
-        if (!galleryElement) return;
+    // Show selected gallery
+    gal.classList.add('fade');
+    gal.style.display = 'block';
+    currentGallery = gal;
 
-        const container = galleryElement.querySelector('.gallery-img');
-        if (!container) return;
+    // Insert iframe if needed
+    const iframePlaceholder = gal.querySelector('.gallery-video-placeholder');
+    if (iframePlaceholder) openGalleryIframe(iframePlaceholder);
 
-        const existingImages = container.querySelectorAll('img');
-        if (existingImages.length === 0) {
-          container.innerHTML = '';
-
-          galleryImages.forEach((imgData) => {
-            let filename, size, type;
-            if (typeof imgData === 'string') {
-              filename = imgData;
-            } else {
-              filename = imgData.filename;
-              size = imgData.size;
-              type = imgData.type;
-            }
-
-            const img = document.createElement('img');
-            img.classList.add('one');
-            img.loading = 'lazy';
-            img.setAttribute('data-src', buildDataSrc(baseFolder, filename));
-            img.setAttribute('data-srcset', buildSrcset(baseFolder, filename));
-            img.setAttribute('sizes', '(max-width: 480px) 480px, (max-width: 640px) 640px, (max-width: 1080px) 1080px, 1440px');
-            img.setAttribute('width', '1080');
-            img.setAttribute('alt', galleryId);
-            container.appendChild(img);
-
-            if (size || type) {
-              const descrip = document.createElement('div');
-              descrip.classList.add('descrip');
-              if (size) {
-                const spanSize = document.createElement('span');
-                spanSize.classList.add('size');
-                spanSize.textContent = size;
-                descrip.appendChild(spanSize);
-              }
-              if (type) {
-                const spanType = document.createElement('span');
-                spanType.classList.add('type');
-                spanType.textContent = type;
-                descrip.appendChild(spanType);
-              }
-              container.appendChild(descrip);
-            }
-          });
-
-          if (!container.querySelector('.arrows')) {
-            const arrows = document.createElement('div');
-            arrows.classList.add('arrows');
-            arrows.innerHTML = '<span class="left"><</span><span class="right">></span>';
-            container.appendChild(arrows);
-          }
+    // Lazy-load any images with data-src
+    gal.querySelectorAll('img[data-src]').forEach(img => {
+      if (!img.src) {
+        img.removeAttribute('loading'); // allow browser to load immediately
+        img.src = img.dataset.src;
+        if (img.dataset.srcset) {
+          img.srcset = img.dataset.srcset;
+          img.sizes = img.getAttribute('sizes') || '';
         }
       }
+    });
 
-      Object.keys(galleriesData).forEach(id => {
-        setupGalleryImages(id, id);
-        const container = document.getElementById(id);
-        const images = galleriesData[id];
-        let imgElement = container?.querySelector('.gallery-img img');
-        let leftArrow = container?.querySelector('.arrows .left');
-        let rightArrow = container?.querySelector('.arrows .right');
+    // Reset gallery state index & update
+    const state = galleryStates[gal.id];
+    if (state) {
+      state.currentIndex = 0;
+      state.updateImage();
+      setFocus(state.container, gal.id);
+    }
 
-        if (!imgElement || !leftArrow || !rightArrow) return;
+    resizeHandler();
+  }
 
-        galleryStates[id] = {
-          currentIndex: 0,
-          imgElement,
-          leftArrow,
-          rightArrow,
-          images,
-          container,
-          baseFolder: id,
+  // Arch click handlers (use cached arches)
+  arches.forEach(arch => {
+    arch.addEventListener('click', () => {
+      const id = arch.dataset.id; // numeric in HTML (1..)
+      // find the gallery with matching data-id attr
+      const gal = document.querySelector(`.gallery[data-id="${id}"]`);
+      if (!gal) return;
+      openGalleryElement(gal);
+    });
 
-          updateImage() {
-            let item = this.images[this.currentIndex];
-            let filename, size, type;
-            if (typeof item === 'string') {
-              filename = item;
-            } else {
-              filename = item.filename;
-              size = item.size;
-              type = item.type;
-            }
+    // keyboard accessibility
+    arch.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') arch.click();
+    });
+  });
 
-            const src = buildDataSrc(this.baseFolder, filename);
-            const srcset = buildSrcset(this.baseFolder, filename);
+  // ---------- Close gallery (close button / Escape) ----------
+  qsa('.gallery-back > span:first-child').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const gal = btn.closest('.gallery');
+      if (gal) {
+        gal.style.display = 'none';
+        if (currentGallery === gal) currentGallery = null;
+      }
+    });
+  });
 
-            this.imgElement.removeAttribute('loading');
-            this.imgElement.src = src;
-            this.imgElement.srcset = srcset;
-            this.imgElement.sizes = '(max-width: 480px) 480px, (max-width: 640px) 640px, (max-width: 1080px) 1080px, 1440px';
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && currentGallery) {
+      currentGallery.style.display = 'none';
+      currentGallery = null;
+    }
+  });
 
-            this.leftArrow.style.display = this.currentIndex === 0 ? 'none' : 'inline';
-            this.rightArrow.style.display = this.currentIndex === this.images.length - 1 ? 'none' : 'inline';
+  // ---------- Build galleryStates and attach arrows/keyboard navigation ----------
+  Object.keys(galleriesData).forEach(key => {
+    // ensure gallery DOM is populated if necessary
+    setupGalleryImages(key, key);
 
-            const sizeSpan = this.container.querySelector('.descrip .size');
-            if (sizeSpan) sizeSpan.textContent = size || '';
-            const typeSpan = this.container.querySelector('.descrip .type');
-            if (typeSpan) typeSpan.textContent = type || '';
+    const container = document.getElementById(key);
+    const imagesArray = galleriesData[key];
+    if (!container) return;
 
-            resizeHandler();
-          }
-        };
+    const imgElement = container.querySelector('.gallery-img img'); // first image element
+    const leftArrow = container.querySelector('.arrows .left');
+    const rightArrow = container.querySelector('.arrows .right');
 
-        const state = galleryStates[id];
+    if (!imgElement || !leftArrow || !rightArrow) return;
+
+    galleryStates[key] = {
+      currentIndex: 0,
+      imgElement,
+      leftArrow,
+      rightArrow,
+      images: imagesArray,
+      container,
+      baseFolder: key,
+
+      updateImage() {
+        const item = this.images[this.currentIndex];
+        let filename, size, type;
+        if (typeof item === 'string') {
+          filename = item;
+        } else {
+          filename = item.filename;
+          size = item.size;
+          type = item.type;
+        }
+
+        const src = buildDataSrc(this.baseFolder, filename);
+        const srcset = buildSrcset(this.baseFolder, filename);
+
+        // Apply attributes to the displayed <img> (lazy -> loaded)
+        this.imgElement.removeAttribute('loading');
+        this.imgElement.src = src;
+        this.imgElement.srcset = srcset;
+        this.imgElement.sizes = '(max-width: 480px) 480px, (max-width: 640px) 640px, (max-width: 1080px) 1080px, 1440px';
+
+        // arrows visibility
+        this.leftArrow.style.display = this.currentIndex === 0 ? 'none' : 'inline';
+        this.rightArrow.style.display = this.currentIndex === this.images.length - 1 ? 'none' : 'inline';
+
+        // update description fields if present in DOM
+        const sizeSpan = this.container.querySelector('.descrip .size');
+        if (sizeSpan) sizeSpan.textContent = size || '';
+        const typeSpan = this.container.querySelector('.descrip .type');
+        if (typeSpan) typeSpan.textContent = type || '';
+
+        // ensure sizing recalculation
+        resizeHandler();
+      }
+    };
+
+    const state = galleryStates[key];
+    // initialize
+    state.updateImage();
+
+    // click handlers for arrows
+    leftArrow.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (state.currentIndex > 0) {
+        state.currentIndex--;
         state.updateImage();
+      }
+      setFocus(state.container, key);
+    });
 
-        leftArrow.addEventListener('click', () => {
+    rightArrow.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (state.currentIndex < state.images.length - 1) {
+        state.currentIndex++;
+        state.updateImage();
+      }
+      setFocus(state.container, key);
+    });
+
+    // focus tracking
+    container.addEventListener('click', () => setFocus(container, key));
+    container.addEventListener('focus', () => { focusedGalleryId = key; });
+  });
+
+  // ---------- Global click delegation for image click navigation inside visible gallery ----------
+  document.body.addEventListener('click', (e) => {
+    // if clicked inside a visible gallery image area
+    const gal = e.target.closest('.gallery');
+    if (!gal) return;
+    // only handle if gallery is currently displayed
+    if (getComputedStyle(gal).display === 'none') return;
+
+    const state = galleryStates[gal.id];
+    if (!state) return;
+
+    // image click navigation: if clicked on an <img> inside gallery-img
+    if (e.target.tagName === 'IMG' && e.target.closest('.gallery-img')) {
+      const img = e.target;
+      const imgs = Array.from(gal.querySelectorAll('.gallery-img img'));
+      const index = imgs.indexOf(img);
+      if (index === -1) return;
+
+      const rect = img.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const halfway = rect.width / 2;
+
+      if (index === 0) {
+        // first image: clicking advances
+        if (state.currentIndex < state.images.length - 1) {
+          state.currentIndex++;
+          state.updateImage();
+        }
+      } else if (index === state.images.length - 1) {
+        // last image: clicking goes back
+        if (state.currentIndex > 0) {
+          state.currentIndex--;
+          state.updateImage();
+        }
+      } else {
+        // middle images: left half -> previous, right half -> next
+        if (clickX < halfway) {
           if (state.currentIndex > 0) {
             state.currentIndex--;
             state.updateImage();
           }
-          setFocus(container, id);
-        });
-
-        rightArrow.addEventListener('click', () => {
+        } else {
           if (state.currentIndex < state.images.length - 1) {
             state.currentIndex++;
             state.updateImage();
           }
-          setFocus(container, id);
-        });
-
-        container.addEventListener('click', () => setFocus(container, id));
-        container.addEventListener('focus', () => { focusedGalleryId = id; });
-      });
-
-      const observer = new MutationObserver(() => {
-        Object.entries(galleryStates).forEach(([id, state]) => {
-          const isVisible = window.getComputedStyle(state.container).display !== 'none';
-          if (isVisible) setFocus(state.container, id);
-        });
-      });
-      observer.observe(document.body, { attributes: true, childList: true, subtree: true });
-
-      window.addEventListener('keydown', (e) => {
-        if (!focusedGalleryId) return;
-        const state = galleryStates[focusedGalleryId];
-        if (!state) return;
-
-        if (e.key === 'ArrowLeft' && state.currentIndex > 0) {
-          e.preventDefault();
-          state.currentIndex--;
-          state.updateImage();
-        } else if (e.key === 'ArrowRight' && state.currentIndex < state.images.length - 1) {
-          e.preventDefault();
-          state.currentIndex++;
-          state.updateImage();
         }
-      });
-
-      resizeHandler();
-    });
-
-    // --- Resize Handler ---
-    function resizeHandler() {
-      const maxWidth = window.innerWidth - 30;
-      const maxHeight = window.innerHeight - 160;
-      const galleries = document.querySelectorAll('.gallery');
-
-      galleries.forEach(gallery => {
-        const resizeFrame = (selector, aspectW, aspectH) => {
-          const el = gallery.querySelector(selector);
-          if (!el) return;
-          let width = maxWidth;
-          let height = (width * aspectH) / aspectW;
-          if (height > maxHeight) {
-            height = maxHeight;
-            width = (height * aspectW) / aspectH;
-          }
-          el.style.width = width + 'px';
-          el.style.height = height + 'px';
-        };
-
-        resizeFrame('.cine', 4, 3);
-        resizeFrame('.pan', 8, 3);
-        resizeFrame('.film', 5, 4);
-
-        const img = gallery.querySelector('.gallery-img img');
-        if (img && img.src) {
-          const temp = new Image();
-          temp.src = img.src;
-          temp.onload = () => {
-            const ratio = temp.naturalWidth / temp.naturalHeight;
-            if (maxWidth / ratio <= maxHeight) {
-              img.style.width = `${maxWidth}px`;
-              img.style.height = 'auto';
-            } else {
-              img.style.width = 'auto';
-              img.style.height = `${maxHeight}px`;
-            }
-          };
-        }
-      });
+      }
+      setFocus(state.container, gal.id);
     }
+  });
 
-    window.addEventListener('resize', resizeHandler);
-  </script>
+  // ---------- MutationObserver  ----------
+  // Using a small MutationObserver only to detect when 'style' attribute changes for galleries (display toggles)
+  const miniObserver = new MutationObserver(mutations => {
+    mutations.forEach(m => {
+      if (m.type === 'attributes' && m.attributeName === 'style') {
+        const target = m.target;
+        if (target.classList && target.classList.contains('gallery')) {
+          const isVisible = window.getComputedStyle(target).display !== 'none';
+          if (isVisible && galleryStates[target.id]) {
+            setFocus(galleryStates[target.id].container, target.id);
+          }
+        }
+      }
+    });
+  });
+  // observe only gallery nodes for attribute changes
+  galleries.forEach(g => miniObserver.observe(g, { attributes: true, attributeFilter: ['style'] }));
+
+  // ---------- Keyboard navigation for focused gallery ----------
+  window.addEventListener('keydown', (e) => {
+    if (!focusedGalleryId) return;
+    const state = galleryStates[focusedGalleryId];
+    if (!state) return;
+
+    if (e.key === 'ArrowLeft' && state.currentIndex > 0) {
+      e.preventDefault();
+      state.currentIndex--;
+      state.updateImage();
+    } else if (e.key === 'ArrowRight' && state.currentIndex < state.images.length - 1) {
+      e.preventDefault();
+      state.currentIndex++;
+      state.updateImage();
+    }
+  });
+
+  // ---------- Initial resize handling call ----------
+  resizeHandler();
+}); // end DOMContentLoaded
+
+// ---------- Resize Handler (stands outside DOMContentLoaded so arrows/resizes work on window events) ----------
+function resizeHandler() {
+  const maxWidth = window.innerWidth - 30;
+  const maxHeight = window.innerHeight - 160;
+  const galleries = document.querySelectorAll('.gallery');
+
+  galleries.forEach(gallery => {
+    // helper to resize an iframe frame with known aspect ratio classes
+    const resizeFrame = (selector, aspectW, aspectH) => {
+      const el = gallery.querySelector(selector);
+      if (!el) return;
+      let width = maxWidth;
+      let height = (width * aspectH) / aspectW;
+      if (height > maxHeight) {
+        height = maxHeight;
+        width = (height * aspectW) / aspectH;
+      }
+      el.style.width = width + 'px';
+      el.style.height = height + 'px';
+    };
+
+    resizeFrame('.cine', 4, 3);
+    resizeFrame('.pan', 8, 3);
+    resizeFrame('.film', 5, 4);
+
+    // Resize single displayed image (keeps natural aspect ratio)
+    const img = gallery.querySelector('.gallery-img img');
+    if (img && img.src) {
+      const temp = new Image();
+      temp.src = img.src;
+      temp.onload = () => {
+        const ratio = temp.naturalWidth / temp.naturalHeight;
+        if (maxWidth / ratio <= maxHeight) {
+          img.style.width = `${maxWidth}px`;
+          img.style.height = 'auto';
+        } else {
+          img.style.width = 'auto';
+          img.style.height = `${maxHeight}px`;
+        }
+      };
+    }
+  });
+}
+
+window.addEventListener('resize', resizeHandler);
+</script>
 </body>
 </html>
