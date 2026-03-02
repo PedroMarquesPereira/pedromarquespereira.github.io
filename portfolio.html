@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="Jexe25yZrqi_kKhEpiRcIGP85mnKzrqiQqF0oZaJYYA" />
+  <meta name="description" content="Lens-based artist working with photography and video">
+  <meta property="og:description" content="Lens-based artist working with photography and video" />
+  <meta property="og:title" content="About" />
+  <meta property="og:url" content="https://pedromarquespereira.com/about" />
+  <meta property="og:image" content="https://pedromarquespereira.com/img/about/margarida586.webp"/>
+  <meta property="og:type" content="website"/>
+  <title>Pedro Marques Pereira</title>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  </noscript>
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <link rel="alternate" hreflang="en" href="https://pedromarquespereira.com/about" />
+  <link rel="alternate" hreflang="pt" href="https://pedromarquespereira.com/about/pt" />
+  <link rel="alternate" hreflang="x-default" href="https://pedromarquespereira.com/about" />
+  <style>
+  /* === CSS RESET === */
+  html,
+  body,
+  section,
+  main,
+  nav,
+  footer,
+  div,
+  span,
+  h1,
+  h2,
+  p,
+  a,
+  img,
+  ul,
+  li
+  {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+  body {
+    background-color: #000;
+    height: 100%;
+    line-height: 1;
+  }
+
+  /* === TYPOGRAPHY === */
+  .back,
+  .btn{
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    font-size: 23px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+
+  .bottom {
+    position: fixed;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60px;
+    background-color: #000;
+    box-shadow: 0 0 1px #000, 0 0 3px #000, 0 0 7px #000, 0 0 10px #000;  }
+
+  .bottom {
+    bottom: 0;
+    outline: #000 3px;
+  }
+  /* === MENU COMPONENTS === */
+  .back{
+    position: absolute;
+    display: block;
+    margin-top: 20px;
+    width: 100dvw;
+    text-align: center;
+  }
+
+  .c,
+  .lang{
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    top:auto;
+  }
+  .c{
+    bottom:3px;
+    left: auto;
+    right: 5px;
+  }
+  .c span{
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 8px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .lang {
+    bottom: 30px;
+    left: 15px;
+  }
+/*_____PAGE CONTENT____*/
+main{
+  position: absolute;
+  display: block;
+  margin-top: 60px;
+  left:50%;
+  transform: translateX(-50%);
+  width:calc(100dvw - 30px);
+
+}
+  h1{
+    font-weight: normal;
+  }
+  .films{
+    position: relative;
+
+  }
+  .title{
+
+  }
+  /* === VIDEO FACADE STYLING === */
+    .video-facade {
+      position: relative;
+      width: 100%;
+      max-width: 560px; /* Matches your original size */
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .video-facade .thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-facade:hover .thumb {
+      opacity: 0.8;
+    }
+
+    /* Custom Play Button Overlay */
+    .play-button {
+      position: absolute;
+      width: 68px;
+      height: 48px;
+      background-color: rgba(255, 0, 0, 0.9);
+      border-radius: 12%;
+      transition: transform 0.2s ease;
+    }
+
+    .play-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      border-style: solid;
+      border-width: 10px 0 10px 20px;
+      border-color: transparent transparent transparent #fff;
+    }
+
+    .video-facade:hover .play-button {
+      transform: scale(1.1);
+      background-color: #ff0000;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+  <link rel="stylesheet" href="./style.css" media="print" onload="this.media='all'">
+</head>
+<body>
+  <header>
+    <h1 class="back">Pedro Marques Pereira</h1>
+  </header>
+  <main>
+  <div class="films">
+    <h2 class="title">ebb</h2>
+    <div id="youtube-facade" class="video-facade" onclick="loadVideo()">
+      <img src="https://img.youtube.com/vi/NCiAU51CbV0/maxresdefault.jpg" alt="Video Thumbnail" class="thumb">
+      <div class="play-button"></div>
+    </div>
+  </div>
+</main>
+  <footer class="bottom">
+      <div class="lang"><a href="./about/pt" lang="pt" class="btn">pt</a></div>
+      <div class="c"><span>© Pedro Marques Pereira 2025</span></div>
+  </footer>
+  <script>
+  function loadVideo() {
+      const container = document.getElementById('youtube-facade');
+      // Replace the div content with the actual iframe
+      container.innerHTML = `
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/NCiAU51CbV0?autoplay=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>`;
+      // Remove the click event so it doesn't try to reload
+      container.onclick = null;
+    }
+</script>
+</body>
+</html>
