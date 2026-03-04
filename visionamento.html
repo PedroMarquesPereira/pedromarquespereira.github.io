@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="https://pedromarquespereira.com/work/img/shinjukyo/1080/shinjukyo_7.webp"/>
+  <meta property="og:type" content="website"/>
+  <title>Pedro Marques Pereira</title>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  </noscript>
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <style>
+  /* === CSS RESET === */
+  html,
+  body,
+  section,
+  main,
+  nav,
+  footer,
+  div,
+  span,
+  h1,
+  h2,
+  p,
+  a,
+  img,
+  ul,
+  li
+  {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+  body {
+    background-color: #000;
+    height: 100%;
+    line-height: 1;
+  }
+  /* === TYPOGRAPHY === */
+  .head,
+  .head2,
+  .btn{
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .btn{
+    font-size: 23px;
+  }
+  .head{
+    font-size: 20px;
+    width:238px;
+    margin-bottom: 10px;
+  }
+  .head2{
+    width: 238px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 100;
+  }
+  .bottom {
+    position: fixed;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    background-color: #000;
+    box-shadow: 0 0 1px #000, 0 0 3px #000, 0 0 7px #000, 0 0 10px #000;
+  }
+  .bottom {
+    bottom: 0;
+    outline: #000 3px;
+  }
+  /* === MENU COMPONENTS === */
+  header{
+    position: absolute;
+    display: flex;
+    margin-top: 20px;
+    width: 500px;
+    max-width: calc(100dvw - 30px);
+    left:50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    align-items: left;
+  }
+  .c,
+  .lang{
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    top:auto;
+  }
+  .c{
+    bottom:3px;
+    left: auto;
+    right: 5px;
+  }
+  .c span{
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 8px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  }
+  .lang {
+    bottom: 30px;
+    left: 15px;
+  }
+  .btn:hover{
+      text-shadow: 0 0 1px #fff, 0 0 4px #fff;
+      transition-duration: 0.5s;
+  }
+/*_____PAGE CONTENT____*/
+  main{
+    position: absolute;
+    display: flex;
+    margin-top: 100px;
+    padding-bottom: 50px;
+    left:50%;
+    transform: translateX(-50%);
+    width:calc(100dvw - 30px);
+    flex-direction: column;
+    align-items: center;
+  }
+  h1{
+    font-weight: normal;
+  }
+  .films{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .info{
+    display: flex;
+    width:100%;
+    color: white;
+    font-size: 23px;
+    font-family: 'Inter', sans-serif;
+    margin: 15px 0;
+    grid-row-gap: 15px;
+    line-height: 10px;
+    flex-direction: column;
+  }
+  .title{
+    grid-column: 1/3;
+    grid-row: 1/2;
+    font-size: 17px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+  }
+  .media{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    font-size: 12px;
+  }
+/* === VIDEO FACADE STYLING === */
+  .video-facade {
+    position: relative;
+    width: 500px;
+    max-width: calc(100dvw - 30px);
+    aspect-ratio: 4 / 3;
+    background-color: #000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .video-facade .thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+  .video-facade:hover .thumb {
+    opacity: 0.5;
+  }
+  /* Custom Play Button Overlay */
+  .play-button {
+    position: absolute;
+    width: 68px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 12%;
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+  .play-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 10px 0 10px 18px;
+    border-color: transparent transparent transparent #fff;
+  }
+  /* Hover State */
+  .video-facade:hover .play-button {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(150, 150, 150, 0.8);
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="head">Pedro Marques Pereira</h1>
+    <h2 class="head2">visionamento</h2>
+  </header>
+  <main>
+  <div class="films">
+    <div class="video-facade" onclick="loadVideo(this, 'NCiAU51CbV0')">
+      <img src="./work/img/cascata/1080/cascata_1.webp" alt="Video Thumbnail" class="thumb">
+      <div class="play-button"></div>
+    </div>
+    <div class="info">
+      <h2 class="title">rio, árvore, chuva, lago, cascata</h2>
+      <span class="media">24 min, 2025</span>
+    </div>
+  </div>
+  <div class="films">
+    <div class="video-facade" onclick="loadVideo(this, 'gMniEer44KI')">
+      <img src="./work/img/cabodaroca/1080/cr_1.webp" alt="Video Thumbnail" class="thumb">
+      <div class="play-button"></div>
+    </div>
+    <div class="info">
+      <h2 class="title">cabo da roca</h2>
+      <span class="media">22 min, 2022</span>
+    </div>
+  </div>
+  <div class="films">
+    <div class="video-facade" onclick="loadVideo(this, 'w-G7DQMl9js')">
+      <img src="./work/img/montesclaros/1080/montesclaros_1.webp" alt="Video Thumbnail" class="thumb">
+      <div class="play-button"></div>
+    </div>
+    <div class="info">
+      <h2 class="title">montes claros</h2>
+      <span class="media">11 min, 2020</span>
+    </div>
+  </div>
+</main>
+  <footer class="bottom">
+      <div class="c"><span>© Pedro Marques Pereira 2026</span></div>
+  </footer>
+  <script>
+    function loadVideo(container, videoId) {
+      container.innerHTML = `
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>`;
+      container.onclick = null;
+    }
+  </script>
+</body>
+</html>
