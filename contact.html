@@ -143,21 +143,20 @@
       left: 15px;
     }
   /*___VIDEO__*/
-    .vdo-cont{
-      z-index: 0;
-      position: relative;
-      height:100dvh;
-      width:100dvw;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    .vdo {
-      aspect-ratio: 4 / 3;
-      height: 100vh;
-      width: auto;
-      display: block;
-    }
+  .vdo-cont{
+    z-index: 0;
+    position: relative;
+    height:100dvh;
+    width:100dvw;
+  }
+  .vdo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+    display: block;
+    background-position: left center;
+  }
 /*____CONTENT----*/
     .cinfo,
     .cinfo a,
@@ -223,74 +222,28 @@
       <div class="c"><span>© Pedro Marques Pereira 2026</span></div>
     </footer>
     <script>
-  const video = document.querySelector('.vdo');
-  let videoAspect = 4 / 3; // fallback aspect ratio
+    document.addEventListener('DOMContentLoaded', () => {
+        const trigger = document.querySelector('.dropd');
+        const menu = document.querySelector('.dropcontent');
+        let open = false;
 
-  function resizeVideo() {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+        trigger.addEventListener('click', () => {
+          open = !open;
+          menu.classList.toggle('show', open);
+        });
 
-    const heightIfFullWidth = vw / videoAspect;
-    const widthIfFullHeight = vh * videoAspect;
-
-    if (heightIfFullWidth >= vh) {
-      // Fill width
-      video.style.width = '100vw';
-      video.style.height = 'auto';
-    } else {
-      // Fill height
-      video.style.height = '100vh';
-      video.style.width = 'auto';
-    }
-  }
-
-  // Throttle resize calls for performance
-  let resizePending = false;
-  function onResize() {
-    if (!resizePending) {
-      resizePending = true;
-      requestAnimationFrame(() => {
-        resizeVideo();
-        resizePending = false;
+        ["mouseover", "mouseout"].forEach(evt => {
+          [trigger, menu].forEach(el =>
+            el.addEventListener(evt, () => {
+              if (evt === "mouseover") menu.classList.add("show");
+              else setTimeout(() => {
+                if (!menu.matches(":hover") && !trigger.matches(":hover"))
+                  menu.classList.remove("show");
+              }, 100);
+            })
+          );
+        });
       });
-    }
-  }
-
-  // Update aspect ratio once video metadata is ready
-  video.addEventListener('loadedmetadata', () => {
-    videoAspect = video.videoWidth / video.videoHeight || 4 / 3;
-    resizeVideo();
-  });
-
-  // Initial resize when page is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    resizeVideo();
-
-    // Dropdown menu logic
-    const trigger = document.querySelector('.dropd');
-    const menu = document.querySelector('.dropcontent');
-    let open = false;
-
-    trigger.addEventListener('click', () => {
-      open = !open;
-      menu.classList.toggle('show', open);
-    });
-
-    // Hover show/hide for desktop
-    ["mouseover", "mouseout"].forEach(evt => {
-      [trigger, menu].forEach(el =>
-        el.addEventListener(evt, () => {
-          if (evt === "mouseover") menu.classList.add("show");
-          else setTimeout(() => {
-            if (!menu.matches(":hover") && !trigger.matches(":hover"))
-              menu.classList.remove("show");
-          }, 100);
-        })
-      );
-    });
-  });
-
-  window.addEventListener('resize', onResize);
   </script>
   </body>
 </html>
