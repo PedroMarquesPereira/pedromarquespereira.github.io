@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mula">
+    <meta property="og:image" content="https://pedromarquespereira.com/img/homepage/cover_homepage.webp"/>
+    <meta property="og:type" content="website"/>
+    <title>Mula</title>
+    <noscript>
+    </noscript>
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="preload" as="image" href="./img/homepage/cover_homepage.webp" fetchpriority="high">
+    <style>
+    html,
+    body,
+    div,
+    a,
+    ul,
+    li,
+    h1
+    {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+      background: transparent;
+      overflow: hidden;
+    }
+    body {
+      background-color: #fff;
+      height: 100%;
+      line-height: 1;
+    }
+    .c{
+      z-index: 1;
+      position: fixed;
+      top:auto;
+      display: flex;
+      bottom:3px;
+      left: auto;
+      right: 5px;
+    }
+    .c span{
+      font-family: sans-serif;
+      font-weight: 300;
+      font-size: 8px;
+      color: #000;
+    }
+    /*menu button*/
+    .back{
+      position: fixed;
+      top:15px;
+      left:50%;
+      transform: translateX(-50%);
+      color:#000;
+      text-decoration: none;
+      font-size: 50px;
+      font-family: sans-serif;
+      font-weight: bold;
+    }
+    .back:hover{
+      text-shadow: 0 0 1px #000, 0 0 4px #000;
+      transition-duration: 0.3s;
+    }
+    /*video*/
+    main{
+      position: fixed;
+      width:calc(100dvw - 20px);
+      height:calc(100dvh - 120px);
+      top:60px;
+      left:10px;
+      gap:5px;
+      overflow: hidden;
+    }
+    main video{
+      position: absolute;
+      width: 25%;
+      height: auto;
+      pointer-events: none;
+    }
+    /* Mouse ball */
+    #mouseBall {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+    }
+    </style>
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+  </head>
+  <body>
+    <header>
+      <a class="back"href="https://pedromarquespereira.com/">*</a>
+    </header>
+    <div id="mouseBall"></div>
+    <main>
+      <video class="one" src="./1.mov" autoplay muted loop playsinline></video>
+      <video class="two" src="./2.mov" autoplay muted loop playsinline></video>
+      <video class="three" src="./3.mov" autoplay muted loop playsinline></video>
+      <video class="four" src="./4.mov" autoplay muted loop playsinline></video>
+    </main>
+    <footer>
+      <div class="c"><span>© Pedro Marques Pereira 2026</span></div>
+    </footer>
+    <script>
+const videos = document.querySelectorAll("main video");
+const container = document.querySelector("main");
+const mouseBall = document.getElementById("mouseBall");
+
+const objects = [];
+
+// Starting positions
+const positions = [
+  { x: 50, y: 50 },
+  { x: 300, y: 100 },
+  { x: 600, y: 200 },
+  { x: 900, y: 150 }
+];
+
+// Initialize videos
+videos.forEach((video, i) => {
+  objects.push({
+    el: video,
+    x: positions[i].x,
+    y: positions[i].y,
+    vx: (Math.random() * 1 + 0.5) * (Math.random() < 0.5 ? 1 : -1), // slower
+    vy: (Math.random() * 1 + 0.5) * (Math.random() < 0.5 ? 1 : -1),
+    radius: video.clientWidth / 2
+  });
+});
+
+// Mouse as a ball
+const mouse = { x: 0, y: 0, radius: 20 }; // smaller ball
+document.addEventListener("mousemove", e => {
+  const rect = container.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+
+  // Update visible ball position
+  mouseBall.style.left = e.clientX + "px";
+  mouseBall.style.top = e.clientY + "px";
+});
+
+function handleCollision(a, b) {
+  const dx = (b.x !== undefined ? b.x : b.x) - a.x;
+  const dy = (b.y !== undefined ? b.y : b.y) - a.y;
+  const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+  const minDist = (a.radius + b.radius);
+
+  if (dist < minDist) {
+    const nx = dx / dist;
+    const ny = dy / dist;
+
+    const vxRel = a.vx - (b.vx || 0);
+    const vyRel = a.vy - (b.vy || 0);
+    const dot = vxRel * nx + vyRel * ny;
+
+    if (dot < 0) {
+      const impulse = 2 * dot / 2;
+      a.vx -= impulse * nx;
+      a.vy -= impulse * ny;
+      if (b.vx !== undefined) {
+        b.vx += impulse * nx;
+        b.vy += impulse * ny;
+      }
+    }
+
+    const overlap = minDist - dist;
+    a.x -= nx * overlap / 2;
+    a.y -= ny * overlap / 2;
+    if (b.x !== undefined) {
+      b.x += nx * overlap / 2;
+      b.y += ny * overlap / 2;
+    }
+  }
+}
+
+function animate() {
+  const maxX = container.clientWidth;
+  const maxY = container.clientHeight;
+
+  // Move videos
+  objects.forEach(obj => {
+    obj.x += obj.vx;
+    obj.y += obj.vy;
+
+    const w = obj.el.clientWidth;
+    const h = obj.el.clientHeight;
+
+    // Bounce edges
+    if (obj.x <= 0) { obj.vx *= -1; obj.x = 0; }
+    if (obj.y <= 0) { obj.vy *= -1; obj.y = 0; }
+    if (obj.x + w >= maxX) { obj.vx *= -1; obj.x = maxX - w; }
+    if (obj.y + h >= maxY) { obj.vy *= -1; obj.y = maxY - h; }
+  });
+
+  // Video-to-video collisions
+  for (let i = 0; i < objects.length; i++) {
+    for (let j = i + 1; j < objects.length; j++) {
+      handleCollision(objects[i], objects[j]);
+    }
+  }
+
+  // Video-to-mouse collisions
+  objects.forEach(obj => handleCollision(obj, mouse));
+
+  // Clamp again after mouse collision to keep inside container
+  objects.forEach(obj => {
+    const w = obj.el.clientWidth;
+    const h = obj.el.clientHeight;
+    obj.x = Math.max(0, Math.min(obj.x, maxX - w));
+    obj.y = Math.max(0, Math.min(obj.y, maxY - h));
+    obj.el.style.left = obj.x + "px";
+    obj.el.style.top = obj.y + "px";
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+  </script>
+  </body>
+</html>
