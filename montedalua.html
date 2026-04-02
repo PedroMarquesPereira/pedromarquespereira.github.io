@@ -5,10 +5,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mula">
-    <meta property="og:image" content="https://pedromarquespereira.com/img/homepage/cover_homepage.webp"/>
+    <meta name="description" content="O Monte da Lua">
+    <meta property="og:image" content="https://pedromarquespereira.com/img/montedalua/1.webp"/>
     <meta property="og:type" content="website"/>
-    <title>O Monte da Lua</title>
+    <title>teaser</title>
     <noscript>
     </noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
-    <link rel="preload" as="image" href="./img/homepage/cover_homepage.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="./img/montedalua/1.webp" fetchpriority="high">
     <style>
     html,
     body,
@@ -40,13 +40,13 @@
       height: 100%;
       line-height: 1;
     }
-    /**/
+    /*title*/
     .title{
       position: fixed;
+      z-index: 2;
       top:20px;
       left:auto;
       right:15px;
-
       max-width: calc(100dvw - 30px);
       font-family: 'Inter', sans-serif;
     }
@@ -81,6 +81,7 @@
       right:15px;
       bottom: 40px;
       width:50dvw;
+      z-index: -1;
     }
     @media (max-width: 800px) {
       .tela {
@@ -88,6 +89,7 @@
         bottom: 170px;
       }
     }
+
     </style>
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
   </head>
@@ -98,16 +100,12 @@
       </div>
     </header>
     <main>
-      <video class="tela" src="./img/montedalua/3.mp4" autoplay loop muted poster="./img/montedalua/3.webp"></video>
+      <video class="tela" src="./img/montedalua/1.mp4" autoplay loop muted poster="./img/montedalua/1.webp"></video>
       <div class="texto">
         <p><i>vi uma luz, <br>saltava entre os ramos das árvores,<br>e corria para lá das nuvens,<br>parecia-se mexer com o tempo e quase que a perdi (...)</i></p>
       </div>
     </main>
     <footer>
     </footer>
-    <script>
-
-
-    </script>
   </body>
 </html>
