@@ -8,9 +8,12 @@
     <meta name="description" content="Mula">
     <meta property="og:image" content="https://pedromarquespereira.com/img/homepage/cover_homepage.webp"/>
     <meta property="og:type" content="website"/>
-    <title>Mula</title>
+    <title>O Monte da Lua</title>
     <noscript>
     </noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
@@ -31,7 +34,6 @@
       font-size: 100%;
       vertical-align: baseline;
       background: transparent;
-      overflow: hidden;
     }
     body {
       background-color: #fff;
@@ -53,183 +55,81 @@
       font-size: 8px;
       color: #000;
     }
-    /*menu button*/
-    .back{
+    /**/
+    .title{
       position: fixed;
-      top:15px;
+      top:20px;
       left:50%;
       transform: translateX(-50%);
-      color:#000;
-      text-decoration: none;
-      font-size: 50px;
-      font-family: sans-serif;
-      font-weight: bold;
+      
+      max-width: calc(100dvw - 30px);
+      font-family: "IBM Plex Sans", sans-serif;
     }
-    .back:hover{
-      text-shadow: 0 0 1px #000, 0 0 4px #000;
-      transition-duration: 0.3s;
+    h1{
+      font-size: 20px;
+      font-weight: 600;
+    }
+    /**/
+    main{
+      position: relative;
+      display: flex;
+      top:60px;
+      left:50%;
+      transform: translateX(-50%);
+      width:calc(100dvw - 30px);
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    .textoum{
+      width:700px;
+      max-width: calc(100dvw - 30px);
+      font-family: "IBM Plex Sans", sans-serif;
+      text-align: justify;
+      line-height: 20px;
+
+    }
+    .quote{
+      left:5px;
     }
     /*video*/
-    main{
-      position: fixed;
-      width:calc(100dvw - 20px);
-      height:calc(100dvh - 120px);
-      top:60px;
-      left:10px;
-      gap:5px;
-      overflow: hidden;
-    }
-    main video{
-      position: absolute;
-      width: 25%;
-      height: auto;
-      pointer-events: none;
-    }
-    /* Mouse ball */
-    #mouseBall {
-      position: fixed;
-      width: 40px;
-      height: 40px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 999;
-      transform: translate(-50%, -50%);
-    }
+
     </style>
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
   </head>
   <body>
     <header>
-      <a class="back"href="https://pedromarquespereira.com/">*</a>
+      <div class="title">
+        <h1>O Monte da Lua</h1>
+      </div>
     </header>
-    <div id="mouseBall"></div>
+
     <main>
-      <video class="one" src="./1.mov" autoplay muted loop playsinline></video>
-      <video class="two" src="./2.mov" autoplay muted loop playsinline></video>
-      <video class="three" src="./3.mov" autoplay muted loop playsinline></video>
-      <video class="four" src="./4.mov" autoplay muted loop playsinline></video>
+      <div class="textoum">
+        <p class="quote"><i>" vi uma luz, <br> &nbsp;&nbsp;saltava entre os ramos das árvores,<br>&nbsp; e corria para lá das nuvens,<br>&nbsp; parecia-se mexer com o tempo e quase que a perdi (...)"<i></p>
+        <p>A voz conta. Conta sobre um ponto amarelo e como se dissolve no horizonte, como se estica e, por vezes irritado, muda de cor, até que se perde de vista.</p>
+      </div>
+      <div class="textoum">
+        <p>Ouve-se uma lenda, sobre a árvore perdida pela luz do dia.</p>
+        <p class="quote"><i>“ como se a floresta a esconde-se”<i></p>
+      </div>
+      <div class="textoum">
+        <p>O silêncio manteve-se até que uma voz o interrompeu. Descreve um corpo de água, fala de um lago, que se estende para lá da vista. Outra voz comenta outro lago, ou talvez seja o mesmo, falam do que parece semelhante mas podia ser diferente, falam de um lago que podia ser o mar.</p>
+      </div>
+      <div class="textoum">
+        <p>A floresta, como muitas vozes antes, fala:</p>
+        <p class="quote"><i>“Senti algo, como pequenas nuvens que se arrastavam pelo corpo e procuravam por mim”.<i></p>
+      </div>
+      <div class="textoum">
+        <p>Para lá das montanhas e da civilização, há uma passagem, tímida e perdida entre ramos dourados e poeiras de carmesim, que serpenteia e escorre pelas entranhas do monte até um lugar quase esquecido.</p>
+        <p>Sobre este lugar existem muitos boatos, uns naturalmente mais verdadeiros que outros, mas todos, espero, dignos de mencionar. Imaginemos por enquanto uma pequena cidade, bem além do topo da montanha, escondendo-se e espreitando entre o crescimento excessivo de uma grande floresta carmesim, com os seus muros em ruínas, e as suas ruas sinuosas e seus edifícios de três andares. É claro que precisa de um nome, mas isso fica para depois, pois o nome só é realmente importante se nos importar-mos o suficiente para chamar-lo. Sabemos que é uma velha cidade, quantos anos é um mistério, com, obviamente, muitos deles de história, resquicios de povo, e muitos outros pequenos detalhes que fazem uma cidade digna de menção, como muitos mais espaços, e plantas, e cores e, claro, cheiros e sons, mas que melhor se adequam às estórias.</p>
+      </div>
     </main>
     <footer>
-      <div class="c"><span>© Pedro Marques Pereira 2026</span></div>
     </footer>
     <script>
-const videos = document.querySelectorAll("main video");
-const container = document.querySelector("main");
-const mouseBall = document.getElementById("mouseBall");
 
-const objects = [];
 
-// Starting positions
-const positions = [
-  { x: 50, y: 50 },
-  { x: 300, y: 100 },
-  { x: 600, y: 200 },
-  { x: 900, y: 150 }
-];
-
-// Initialize videos
-videos.forEach((video, i) => {
-  objects.push({
-    el: video,
-    x: positions[i].x,
-    y: positions[i].y,
-    vx: (Math.random() * 1 + 0.5) * (Math.random() < 0.5 ? 1 : -1), // slower
-    vy: (Math.random() * 1 + 0.5) * (Math.random() < 0.5 ? 1 : -1),
-    radius: video.clientWidth / 2
-  });
-});
-
-// Mouse as a ball
-const mouse = { x: 0, y: 0, radius: 20 }; // smaller ball
-document.addEventListener("mousemove", e => {
-  const rect = container.getBoundingClientRect();
-  mouse.x = e.clientX - rect.left;
-  mouse.y = e.clientY - rect.top;
-
-  // Update visible ball position
-  mouseBall.style.left = e.clientX + "px";
-  mouseBall.style.top = e.clientY + "px";
-});
-
-function handleCollision(a, b) {
-  const dx = (b.x !== undefined ? b.x : b.x) - a.x;
-  const dy = (b.y !== undefined ? b.y : b.y) - a.y;
-  const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-  const minDist = (a.radius + b.radius);
-
-  if (dist < minDist) {
-    const nx = dx / dist;
-    const ny = dy / dist;
-
-    const vxRel = a.vx - (b.vx || 0);
-    const vyRel = a.vy - (b.vy || 0);
-    const dot = vxRel * nx + vyRel * ny;
-
-    if (dot < 0) {
-      const impulse = 2 * dot / 2;
-      a.vx -= impulse * nx;
-      a.vy -= impulse * ny;
-      if (b.vx !== undefined) {
-        b.vx += impulse * nx;
-        b.vy += impulse * ny;
-      }
-    }
-
-    const overlap = minDist - dist;
-    a.x -= nx * overlap / 2;
-    a.y -= ny * overlap / 2;
-    if (b.x !== undefined) {
-      b.x += nx * overlap / 2;
-      b.y += ny * overlap / 2;
-    }
-  }
-}
-
-function animate() {
-  const maxX = container.clientWidth;
-  const maxY = container.clientHeight;
-
-  // Move videos
-  objects.forEach(obj => {
-    obj.x += obj.vx;
-    obj.y += obj.vy;
-
-    const w = obj.el.clientWidth;
-    const h = obj.el.clientHeight;
-
-    // Bounce edges
-    if (obj.x <= 0) { obj.vx *= -1; obj.x = 0; }
-    if (obj.y <= 0) { obj.vy *= -1; obj.y = 0; }
-    if (obj.x + w >= maxX) { obj.vx *= -1; obj.x = maxX - w; }
-    if (obj.y + h >= maxY) { obj.vy *= -1; obj.y = maxY - h; }
-  });
-
-  // Video-to-video collisions
-  for (let i = 0; i < objects.length; i++) {
-    for (let j = i + 1; j < objects.length; j++) {
-      handleCollision(objects[i], objects[j]);
-    }
-  }
-
-  // Video-to-mouse collisions
-  objects.forEach(obj => handleCollision(obj, mouse));
-
-  // Clamp again after mouse collision to keep inside container
-  objects.forEach(obj => {
-    const w = obj.el.clientWidth;
-    const h = obj.el.clientHeight;
-    obj.x = Math.max(0, Math.min(obj.x, maxX - w));
-    obj.y = Math.max(0, Math.min(obj.y, maxY - h));
-    obj.el.style.left = obj.x + "px";
-    obj.el.style.top = obj.y + "px";
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-</script>
-  </script>
+    </script>
   </body>
 </html>
