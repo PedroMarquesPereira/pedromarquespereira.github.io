@@ -13,7 +13,7 @@
     </noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
@@ -36,7 +36,7 @@
       background: transparent;
     }
     body {
-      background-color: #fff;
+      background-color: #000;
       height: 100%;
       line-height: 1;
     }
@@ -59,70 +59,59 @@
     .title{
       position: fixed;
       top:20px;
-      left:50%;
-      transform: translateX(-50%);
+      left:auto;
+      right:15px;
       
       max-width: calc(100dvw - 30px);
-      font-family: "IBM Plex Sans", sans-serif;
+      font-family: 'Inter', sans-serif;
     }
     h1{
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 500;
+      color:#fff;
     }
     /**/
     main{
-      position: relative;
+      position: fixed;
       display: flex;
-      top:60px;
-      left:50%;
-      transform: translateX(-50%);
+      align-items: flex-end;
+      height: 100vh;
+      left:15px;
       width:calc(100dvw - 30px);
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
     }
-    .textoum{
-      width:700px;
+    .texto{
+      width:550px;
       max-width: calc(100dvw - 30px);
-      font-family: "IBM Plex Sans", sans-serif;
+      font-family: sans-serif;
       text-align: justify;
-      line-height: 20px;
-
-    }
-    .quote{
-      left:5px;
+      font-size: 14px;
+      line-height: 25px;
+      color:#fff;
     }
     /*video*/
-
+    .tela{
+      position: fixed;
+      min-height:100dvh;
+      min-width: 100dvw;
+      left:50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+    }
     </style>
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
   </head>
   <body>
+    <video class="tela" src="./.mp4" autoplay loop mute poster="posterimage.jpg">
+
+    </video>
     <header>
       <div class="title">
         <h1>O Monte da Lua</h1>
       </div>
     </header>
-
     <main>
-      <div class="textoum">
-        <p class="quote"><i>" vi uma luz, <br> &nbsp;&nbsp;saltava entre os ramos das árvores,<br>&nbsp; e corria para lá das nuvens,<br>&nbsp; parecia-se mexer com o tempo e quase que a perdi (...)"<i></p>
-        <p>A voz conta. Conta sobre um ponto amarelo e como se dissolve no horizonte, como se estica e, por vezes irritado, muda de cor, até que se perde de vista.</p>
-      </div>
-      <div class="textoum">
-        <p>Ouve-se uma lenda, sobre a árvore perdida pela luz do dia.</p>
-        <p class="quote"><i>“ como se a floresta a esconde-se”<i></p>
-      </div>
-      <div class="textoum">
-        <p>O silêncio manteve-se até que uma voz o interrompeu. Descreve um corpo de água, fala de um lago, que se estende para lá da vista. Outra voz comenta outro lago, ou talvez seja o mesmo, falam do que parece semelhante mas podia ser diferente, falam de um lago que podia ser o mar.</p>
-      </div>
-      <div class="textoum">
-        <p>A floresta, como muitas vozes antes, fala:</p>
-        <p class="quote"><i>“Senti algo, como pequenas nuvens que se arrastavam pelo corpo e procuravam por mim”.<i></p>
-      </div>
-      <div class="textoum">
-        <p>Para lá das montanhas e da civilização, há uma passagem, tímida e perdida entre ramos dourados e poeiras de carmesim, que serpenteia e escorre pelas entranhas do monte até um lugar quase esquecido.</p>
-        <p>Sobre este lugar existem muitos boatos, uns naturalmente mais verdadeiros que outros, mas todos, espero, dignos de mencionar. Imaginemos por enquanto uma pequena cidade, bem além do topo da montanha, escondendo-se e espreitando entre o crescimento excessivo de uma grande floresta carmesim, com os seus muros em ruínas, e as suas ruas sinuosas e seus edifícios de três andares. É claro que precisa de um nome, mas isso fica para depois, pois o nome só é realmente importante se nos importar-mos o suficiente para chamar-lo. Sabemos que é uma velha cidade, quantos anos é um mistério, com, obviamente, muitos deles de história, resquicios de povo, e muitos outros pequenos detalhes que fazem uma cidade digna de menção, como muitos mais espaços, e plantas, e cores e, claro, cheiros e sons, mas que melhor se adequam às estórias.</p>
+      <div class="texto">
+        <p><i>vi uma luz, <br>saltava entre os ramos das árvores,<br>e corria para lá das nuvens,<br>parecia-se mexer com o tempo e quase que a perdi (...)<i></p>
       </div>
     </main>
     <footer>
